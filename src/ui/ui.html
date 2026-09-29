@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DDS Handover Builder</title>
+    <!-- UI_STYLE -->
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="panel panel-left">
+        <div class="panel-header">
+          <h2>Selection</h2>
+        </div>
+        <div id="selection-summary" class="empty-state">No component selected.</div>
+      </aside>
+
+      <main class="panel panel-right">
+        <div class="panel-header panel-header-right">
+          <h2>Inspector JSON</h2>
+          <div class="actions">
+            <button id="inspect-selection" class="primary">Inspect selection</button>
+            <button id="copy-json" class="secondary">Copy JSON</button>
+          </div>
+        </div>
+        <pre id="json-output">{}</pre>
+      </main>
+    </div>
+    <!-- UI_SCRIPT -->
+  </body>
+</html>

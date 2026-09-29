@@ -1,0 +1,23 @@
+{
+  "name": "DDS Handover Builder",
+  "id": "com.dds.handover-builder",
+  "api": "1.0.0",
+  "main": "build/main.js",
+  "ui": "build/ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "permissions": ["teamlibrary"],
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  },
+  "menu": [
+    {
+      "name": "Open",
+      "command": "open"
+    },
+    {
+      "name": "Inspect selection",
+      "command": "inspect-selection"
+    }
+  ]
+}
