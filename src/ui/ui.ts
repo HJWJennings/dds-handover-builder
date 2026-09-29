@@ -26,7 +26,23 @@ copyButton?.addEventListener('click', async () => {
   const text = jsonOutput?.textContent ?? '{}';
 
   try {
-    await navigator.clipboard.writeText(text);
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', 'true');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.style.pointerEvents = 'none';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    const copied = document.execCommand('copy');
+    document.body.removeChild(textarea);
+
+    if (!copied) {
+      throw new Error('execCommand copy returned false');
+    }
+
     const originalText = copyButton.textContent ?? 'Copy JSON';
     copyButton.textContent = 'Copied';
     window.setTimeout(() => {

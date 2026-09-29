@@ -1,0 +1,1894 @@
+{
+  "selectedNodeId": "62109:1159",
+  "nodeType": "COMPONENT_SET",
+  "name": "User chat bubble",
+  "source": "component-set",
+  "componentPropertyDefinitions": [
+    {
+      "propertyName": "Headline#75:0",
+      "type": "BOOLEAN",
+      "defaultValue": false,
+      "variantOptions": []
+    },
+    {
+      "propertyName": "Info#75:1",
+      "type": "BOOLEAN",
+      "defaultValue": true,
+      "variantOptions": []
+    },
+    {
+      "propertyName": "User label#62285:3",
+      "type": "BOOLEAN",
+      "defaultValue": true,
+      "variantOptions": []
+    },
+    {
+      "propertyName": "Width",
+      "type": "VARIANT",
+      "defaultValue": "Narrow",
+      "variantOptions": [
+        "Narrow",
+        "Wide"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "name": "Width=Narrow",
+      "variantProperties": {
+        "Width": "Narrow"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "Width=Narrow",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 343,
+            "height": 86
+          },
+          "boundVariables": {
+            "paddingLeft": {
+              "id": "VariableID:23085:7389",
+              "name": "Spacing/Space-28",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            }
+          },
+          "children": [
+            {
+              "name": "Chat bubble + Info",
+              "type": "FRAME",
+              "absoluteBoundingBox": {
+                "x": 143,
+                "y": 0,
+                "width": 200,
+                "height": 86
+              },
+              "children": [
+                {
+                  "name": "Info",
+                  "type": "FRAME",
+                  "absoluteBoundingBox": {
+                    "x": 207,
+                    "y": 0,
+                    "width": 136,
+                    "height": 20
+                  },
+                  "boundVariables": {
+                    "paddingTop": {
+                      "id": "VariableID:e13542c6ea2ca7f12f663f99a72b783de4dcbdab/5471:45",
+                      "name": "Sizing/size-2",
+                      "resolvedType": "FLOAT",
+                      "remote": true,
+                      "collectionId": "VariableCollectionId:e1dac41a1c67f493eff7d77b961854930382077e/5054:234",
+                      "collection": {
+                        "name": "Global tokens",
+                        "modes": [
+                          "Value"
+                        ]
+                      }
+                    }
+                  },
+                  "children": [
+                    {
+                      "name": "Sender",
+                      "type": "TEXT",
+                      "absoluteBoundingBox": {
+                        "x": 207,
+                        "y": 2,
+                        "width": 24,
+                        "height": 18
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27514",
+                            "name": "Typography/colour-text-header-primary",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontSize": [
+                          {
+                            "id": "VariableID:18243:1233",
+                            "name": "Typography tokens/Size/fontsize-14",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontStyle": [
+                          {
+                            "id": "VariableID:18242:35923",
+                            "name": "Typography tokens/Weight/Sans-Bold",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontFamily": [
+                          {
+                            "id": "VariableID:18242:35911",
+                            "name": "Typography tokens/Family/Heading",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "lineHeight": [
+                          {
+                            "id": "VariableID:18492:3932",
+                            "name": "Typography tokens/Line height/lineheight-18",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27514",
+                              "name": "Typography/colour-text-header-primary",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "characters": "You"
+                    },
+                    {
+                      "name": "Date",
+                      "type": "TEXT",
+                      "absoluteBoundingBox": {
+                        "x": 235,
+                        "y": 2,
+                        "width": 69,
+                        "height": 18
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27517",
+                            "name": "Typography/colour-text-body",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontSize": [
+                          {
+                            "id": "VariableID:18243:1233",
+                            "name": "Typography tokens/Size/fontsize-14",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontStyle": [
+                          {
+                            "id": "VariableID:18242:35926",
+                            "name": "Typography tokens/Weight/Sans-Regular",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontFamily": [
+                          {
+                            "id": "VariableID:18242:35914",
+                            "name": "Typography tokens/Family/Body",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "lineHeight": [
+                          {
+                            "id": "VariableID:18492:3932",
+                            "name": "Typography tokens/Line height/lineheight-18",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27517",
+                              "name": "Typography/colour-text-body",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "characters": "Tue 24 Mar"
+                    },
+                    {
+                      "name": "Time",
+                      "type": "TEXT",
+                      "absoluteBoundingBox": {
+                        "x": 308,
+                        "y": 2,
+                        "width": 35,
+                        "height": 18
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27517",
+                            "name": "Typography/colour-text-body",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontSize": [
+                          {
+                            "id": "VariableID:18243:1233",
+                            "name": "Typography tokens/Size/fontsize-14",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontStyle": [
+                          {
+                            "id": "VariableID:18242:35926",
+                            "name": "Typography tokens/Weight/Sans-Regular",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontFamily": [
+                          {
+                            "id": "VariableID:18242:35914",
+                            "name": "Typography tokens/Family/Body",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "lineHeight": [
+                          {
+                            "id": "VariableID:18492:3932",
+                            "name": "Typography tokens/Line height/lineheight-18",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27517",
+                              "name": "Typography/colour-text-body",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "characters": "12:00"
+                    }
+                  ]
+                },
+                {
+                  "name": "Chat bubble",
+                  "type": "FRAME",
+                  "absoluteBoundingBox": {
+                    "x": 143,
+                    "y": 28,
+                    "width": 200,
+                    "height": 58
+                  },
+                  "children": [
+                    {
+                      "name": "Chat bubble content",
+                      "type": "FRAME",
+                      "absoluteBoundingBox": {
+                        "x": 143,
+                        "y": 28,
+                        "width": 200,
+                        "height": 46
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27537",
+                            "name": "Background/colour-background-dark-primary",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27537",
+                              "name": "Background/colour-background-dark-primary",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "name": "Text",
+                          "type": "FRAME",
+                          "absoluteBoundingBox": {
+                            "x": 159,
+                            "y": 40,
+                            "width": 168,
+                            "height": 22
+                          },
+                          "children": [
+                            {
+                              "name": "Headline",
+                              "type": "TEXT",
+                              "absoluteBoundingBox": {
+                                "x": 159,
+                                "y": 40,
+                                "width": 344,
+                                "height": 20
+                              },
+                              "boundVariables": {
+                                "fills": [
+                                  {
+                                    "id": "VariableID:1714:27519",
+                                    "name": "Typography/colour-text-on-dark",
+                                    "resolvedType": "COLOR",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontSize": [
+                                  {
+                                    "id": "VariableID:18243:1233",
+                                    "name": "Typography tokens/Size/fontsize-14",
+                                    "resolvedType": "FLOAT",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontStyle": [
+                                  {
+                                    "id": "VariableID:18242:35923",
+                                    "name": "Typography tokens/Weight/Sans-Bold",
+                                    "resolvedType": "STRING",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontFamily": [
+                                  {
+                                    "id": "VariableID:18242:35911",
+                                    "name": "Typography tokens/Family/Heading",
+                                    "resolvedType": "STRING",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "lineHeight": [
+                                  {
+                                    "id": "VariableID:18492:3932",
+                                    "name": "Typography tokens/Line height/lineheight-18",
+                                    "resolvedType": "FLOAT",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fillsPaintBindings": [
+                                  {
+                                    "index": 0,
+                                    "color": {
+                                      "id": "VariableID:1714:27519",
+                                      "name": "Typography/colour-text-on-dark",
+                                      "resolvedType": "COLOR",
+                                      "remote": false,
+                                      "collectionId": "VariableCollectionId:1483:26764",
+                                      "collection": {
+                                        "name": "Web",
+                                        "modes": [
+                                          "Tesco",
+                                          "Tesco dark mode",
+                                          "F&F",
+                                          "F&F dark mode",
+                                          "Lo-Fi"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              "characters": "Headline"
+                            },
+                            {
+                              "name": "Body",
+                              "type": "TEXT",
+                              "absoluteBoundingBox": {
+                                "x": 159,
+                                "y": 40,
+                                "width": 168,
+                                "height": 22
+                              },
+                              "boundVariables": {
+                                "fills": [
+                                  {
+                                    "id": "VariableID:1714:27519",
+                                    "name": "Typography/colour-text-on-dark",
+                                    "resolvedType": "COLOR",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontSize": [
+                                  {
+                                    "id": "VariableID:18243:1233",
+                                    "name": "Typography tokens/Size/fontsize-14",
+                                    "resolvedType": "FLOAT",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontStyle": [
+                                  {
+                                    "id": "VariableID:18242:35926",
+                                    "name": "Typography tokens/Weight/Sans-Regular",
+                                    "resolvedType": "STRING",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontFamily": [
+                                  {
+                                    "id": "VariableID:18242:35914",
+                                    "name": "Typography tokens/Family/Body",
+                                    "resolvedType": "STRING",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "lineHeight": [
+                                  {
+                                    "id": "VariableID:18492:3950",
+                                    "name": "Typography tokens/Line height/lineheight-22",
+                                    "resolvedType": "FLOAT",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fillsPaintBindings": [
+                                  {
+                                    "index": 0,
+                                    "color": {
+                                      "id": "VariableID:1714:27519",
+                                      "name": "Typography/colour-text-on-dark",
+                                      "resolvedType": "COLOR",
+                                      "remote": false,
+                                      "collectionId": "VariableCollectionId:1483:26764",
+                                      "collection": {
+                                        "name": "Web",
+                                        "modes": [
+                                          "Tesco",
+                                          "Tesco dark mode",
+                                          "F&F",
+                                          "F&F dark mode",
+                                          "Lo-Fi"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              "characters": "I want to know how I can..."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tail",
+                      "type": "VECTOR",
+                      "absoluteBoundingBox": {
+                        "x": 331,
+                        "y": 74,
+                        "width": 12,
+                        "height": 12
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27537",
+                            "name": "Background/colour-background-dark-primary",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27537",
+                              "name": "Background/colour-background-dark-primary",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Width=Wide",
+      "variantProperties": {
+        "Width": "Wide"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "Width=Wide",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 774,
+            "height": 86
+          },
+          "boundVariables": {
+            "paddingLeft": {
+              "id": "VariableID:23085:7389",
+              "name": "Spacing/Space-28",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            }
+          },
+          "children": [
+            {
+              "name": "Chat bubble + Info",
+              "type": "FRAME",
+              "absoluteBoundingBox": {
+                "x": 574,
+                "y": 0,
+                "width": 200,
+                "height": 86
+              },
+              "children": [
+                {
+                  "name": "Info",
+                  "type": "FRAME",
+                  "absoluteBoundingBox": {
+                    "x": 638,
+                    "y": 0,
+                    "width": 136,
+                    "height": 20
+                  },
+                  "boundVariables": {
+                    "paddingTop": {
+                      "id": "VariableID:e13542c6ea2ca7f12f663f99a72b783de4dcbdab/5471:45",
+                      "name": "Sizing/size-2",
+                      "resolvedType": "FLOAT",
+                      "remote": true,
+                      "collectionId": "VariableCollectionId:e1dac41a1c67f493eff7d77b961854930382077e/5054:234",
+                      "collection": {
+                        "name": "Global tokens",
+                        "modes": [
+                          "Value"
+                        ]
+                      }
+                    }
+                  },
+                  "children": [
+                    {
+                      "name": "Sender",
+                      "type": "TEXT",
+                      "absoluteBoundingBox": {
+                        "x": 638,
+                        "y": 2,
+                        "width": 24,
+                        "height": 18
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27514",
+                            "name": "Typography/colour-text-header-primary",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontSize": [
+                          {
+                            "id": "VariableID:18243:1233",
+                            "name": "Typography tokens/Size/fontsize-14",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontStyle": [
+                          {
+                            "id": "VariableID:18242:35923",
+                            "name": "Typography tokens/Weight/Sans-Bold",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontFamily": [
+                          {
+                            "id": "VariableID:18242:35911",
+                            "name": "Typography tokens/Family/Heading",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "lineHeight": [
+                          {
+                            "id": "VariableID:18492:3932",
+                            "name": "Typography tokens/Line height/lineheight-18",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27514",
+                              "name": "Typography/colour-text-header-primary",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "characters": "You"
+                    },
+                    {
+                      "name": "Date",
+                      "type": "TEXT",
+                      "absoluteBoundingBox": {
+                        "x": 666,
+                        "y": 2,
+                        "width": 69,
+                        "height": 18
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27517",
+                            "name": "Typography/colour-text-body",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontSize": [
+                          {
+                            "id": "VariableID:18243:1233",
+                            "name": "Typography tokens/Size/fontsize-14",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontStyle": [
+                          {
+                            "id": "VariableID:18242:35926",
+                            "name": "Typography tokens/Weight/Sans-Regular",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontFamily": [
+                          {
+                            "id": "VariableID:18242:35914",
+                            "name": "Typography tokens/Family/Body",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "lineHeight": [
+                          {
+                            "id": "VariableID:18492:3932",
+                            "name": "Typography tokens/Line height/lineheight-18",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27517",
+                              "name": "Typography/colour-text-body",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "characters": "Tue 24 Mar"
+                    },
+                    {
+                      "name": "Time",
+                      "type": "TEXT",
+                      "absoluteBoundingBox": {
+                        "x": 739,
+                        "y": 2,
+                        "width": 35,
+                        "height": 18
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27517",
+                            "name": "Typography/colour-text-body",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontSize": [
+                          {
+                            "id": "VariableID:18243:1233",
+                            "name": "Typography tokens/Size/fontsize-14",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontStyle": [
+                          {
+                            "id": "VariableID:18242:35926",
+                            "name": "Typography tokens/Weight/Sans-Regular",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fontFamily": [
+                          {
+                            "id": "VariableID:18242:35914",
+                            "name": "Typography tokens/Family/Body",
+                            "resolvedType": "STRING",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "lineHeight": [
+                          {
+                            "id": "VariableID:18492:3932",
+                            "name": "Typography tokens/Line height/lineheight-18",
+                            "resolvedType": "FLOAT",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27517",
+                              "name": "Typography/colour-text-body",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "characters": "12:00"
+                    }
+                  ]
+                },
+                {
+                  "name": "Chat bubble",
+                  "type": "FRAME",
+                  "absoluteBoundingBox": {
+                    "x": 574,
+                    "y": 28,
+                    "width": 200,
+                    "height": 58
+                  },
+                  "children": [
+                    {
+                      "name": "Chat bubble content",
+                      "type": "FRAME",
+                      "absoluteBoundingBox": {
+                        "x": 574,
+                        "y": 28,
+                        "width": 200,
+                        "height": 46
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27537",
+                            "name": "Background/colour-background-dark-primary",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27537",
+                              "name": "Background/colour-background-dark-primary",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "children": [
+                        {
+                          "name": "Text",
+                          "type": "FRAME",
+                          "absoluteBoundingBox": {
+                            "x": 590,
+                            "y": 40,
+                            "width": 168,
+                            "height": 22
+                          },
+                          "children": [
+                            {
+                              "name": "Headline",
+                              "type": "TEXT",
+                              "absoluteBoundingBox": {
+                                "x": 590,
+                                "y": 40,
+                                "width": 58,
+                                "height": 18
+                              },
+                              "boundVariables": {
+                                "fills": [
+                                  {
+                                    "id": "VariableID:1714:27519",
+                                    "name": "Typography/colour-text-on-dark",
+                                    "resolvedType": "COLOR",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontSize": [
+                                  {
+                                    "id": "VariableID:18243:1233",
+                                    "name": "Typography tokens/Size/fontsize-14",
+                                    "resolvedType": "FLOAT",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontStyle": [
+                                  {
+                                    "id": "VariableID:18242:35923",
+                                    "name": "Typography tokens/Weight/Sans-Bold",
+                                    "resolvedType": "STRING",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontFamily": [
+                                  {
+                                    "id": "VariableID:18242:35911",
+                                    "name": "Typography tokens/Family/Heading",
+                                    "resolvedType": "STRING",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "lineHeight": [
+                                  {
+                                    "id": "VariableID:18492:3932",
+                                    "name": "Typography tokens/Line height/lineheight-18",
+                                    "resolvedType": "FLOAT",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fillsPaintBindings": [
+                                  {
+                                    "index": 0,
+                                    "color": {
+                                      "id": "VariableID:1714:27519",
+                                      "name": "Typography/colour-text-on-dark",
+                                      "resolvedType": "COLOR",
+                                      "remote": false,
+                                      "collectionId": "VariableCollectionId:1483:26764",
+                                      "collection": {
+                                        "name": "Web",
+                                        "modes": [
+                                          "Tesco",
+                                          "Tesco dark mode",
+                                          "F&F",
+                                          "F&F dark mode",
+                                          "Lo-Fi"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              "characters": "Headline"
+                            },
+                            {
+                              "name": "Body",
+                              "type": "TEXT",
+                              "absoluteBoundingBox": {
+                                "x": 590,
+                                "y": 40,
+                                "width": 168,
+                                "height": 22
+                              },
+                              "boundVariables": {
+                                "fills": [
+                                  {
+                                    "id": "VariableID:1714:27519",
+                                    "name": "Typography/colour-text-on-dark",
+                                    "resolvedType": "COLOR",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontSize": [
+                                  {
+                                    "id": "VariableID:18243:1233",
+                                    "name": "Typography tokens/Size/fontsize-14",
+                                    "resolvedType": "FLOAT",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontStyle": [
+                                  {
+                                    "id": "VariableID:18242:35926",
+                                    "name": "Typography tokens/Weight/Sans-Regular",
+                                    "resolvedType": "STRING",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fontFamily": [
+                                  {
+                                    "id": "VariableID:18242:35914",
+                                    "name": "Typography tokens/Family/Body",
+                                    "resolvedType": "STRING",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "lineHeight": [
+                                  {
+                                    "id": "VariableID:18492:3950",
+                                    "name": "Typography tokens/Line height/lineheight-22",
+                                    "resolvedType": "FLOAT",
+                                    "remote": false,
+                                    "collectionId": "VariableCollectionId:1483:26764",
+                                    "collection": {
+                                      "name": "Web",
+                                      "modes": [
+                                        "Tesco",
+                                        "Tesco dark mode",
+                                        "F&F",
+                                        "F&F dark mode",
+                                        "Lo-Fi"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "fillsPaintBindings": [
+                                  {
+                                    "index": 0,
+                                    "color": {
+                                      "id": "VariableID:1714:27519",
+                                      "name": "Typography/colour-text-on-dark",
+                                      "resolvedType": "COLOR",
+                                      "remote": false,
+                                      "collectionId": "VariableCollectionId:1483:26764",
+                                      "collection": {
+                                        "name": "Web",
+                                        "modes": [
+                                          "Tesco",
+                                          "Tesco dark mode",
+                                          "F&F",
+                                          "F&F dark mode",
+                                          "Lo-Fi"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              "characters": "I want to know how I can..."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Tail",
+                      "type": "VECTOR",
+                      "absoluteBoundingBox": {
+                        "x": 762,
+                        "y": 74,
+                        "width": 12,
+                        "height": 12
+                      },
+                      "boundVariables": {
+                        "fills": [
+                          {
+                            "id": "VariableID:1714:27537",
+                            "name": "Background/colour-background-dark-primary",
+                            "resolvedType": "COLOR",
+                            "remote": false,
+                            "collectionId": "VariableCollectionId:1483:26764",
+                            "collection": {
+                              "name": "Web",
+                              "modes": [
+                                "Tesco",
+                                "Tesco dark mode",
+                                "F&F",
+                                "F&F dark mode",
+                                "Lo-Fi"
+                              ]
+                            }
+                          }
+                        ],
+                        "fillsPaintBindings": [
+                          {
+                            "index": 0,
+                            "color": {
+                              "id": "VariableID:1714:27537",
+                              "name": "Background/colour-background-dark-primary",
+                              "resolvedType": "COLOR",
+                              "remote": false,
+                              "collectionId": "VariableCollectionId:1483:26764",
+                              "collection": {
+                                "name": "Web",
+                                "modes": [
+                                  "Tesco",
+                                  "Tesco dark mode",
+                                  "F&F",
+                                  "F&F dark mode",
+                                  "Lo-Fi"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "setBoundVariables": {},
+  "setExplicitVariableModes": {},
+  "variantBoundVariables": [
+    {
+      "name": "Width=Narrow",
+      "boundVariables": {
+        "paddingLeft": {
+          "id": "VariableID:23085:7389",
+          "name": "Spacing/Space-28",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        }
+      },
+      "explicitVariableModes": {}
+    },
+    {
+      "name": "Width=Wide",
+      "boundVariables": {
+        "paddingLeft": {
+          "id": "VariableID:23085:7389",
+          "name": "Spacing/Space-28",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        }
+      },
+      "explicitVariableModes": {}
+    }
+  ],
+  "fileVariableCollections": [
+    {
+      "id": "VariableCollectionId:1483:26764",
+      "name": "Web",
+      "modes": [
+        "Tesco",
+        "Tesco dark mode",
+        "F&F",
+        "F&F dark mode",
+        "Lo-Fi"
+      ]
+    },
+    {
+      "id": "VariableCollectionId:46143:83757",
+      "name": "Web brand 2026",
+      "modes": [
+        "Tesco",
+        "Tesco dark mode",
+        "F&F",
+        "F&F dark mode",
+        "Lo-Fi"
+      ]
+    }
+  ],
+  "libraryVariableCollections": [
+    {
+      "name": "Variable collection",
+      "libraryName": "DDS Enterprise Domain Library",
+      "key": "fd9955985e4d961c8e2e317f5130f6b976586111"
+    },
+    {
+      "name": "Global tokens",
+      "libraryName": "DDS Global reference",
+      "key": "e1dac41a1c67f493eff7d77b961854930382077e"
+    },
+    {
+      "name": "Web applications",
+      "libraryName": "DDS Web applications library",
+      "key": "aaf96adcd2d35aefb9c88a49757a25003c67bcd5"
+    },
+    {
+      "name": "Web apps brand 2026",
+      "libraryName": "DDS Web applications library",
+      "key": "f059847a63aa4d65d5ed36a64a6b8c3b401bfd94"
+    },
+    {
+      "name": "Web",
+      "libraryName": "DDS Web library",
+      "key": "61c10722b9c6b22fd0636694cff185117060ef46"
+    },
+    {
+      "name": "Web brand 2026",
+      "libraryName": "DDS Web library",
+      "key": "98518575d4959350a884fa650e5f65aceb38b6a5"
+    }
+  ],
+  "fileVariableModes": [
+    {
+      "collection": "Web",
+      "modes": [
+        "Tesco",
+        "Tesco dark mode",
+        "F&F",
+        "F&F dark mode",
+        "Lo-Fi"
+      ]
+    },
+    {
+      "collection": "Web brand 2026",
+      "modes": [
+        "Tesco",
+        "Tesco dark mode",
+        "F&F",
+        "F&F dark mode",
+        "Lo-Fi"
+      ]
+    }
+  ],
+  "meta": {
+    "selectionType": "COMPONENT_SET",
+    "variantCount": 2,
+    "nodesWithBoundVariables": 2,
+    "resolvedFromInstance": false,
+    "errors": []
+  }
+}

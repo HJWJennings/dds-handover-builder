@@ -91,3 +91,13 @@ src/
 - Work in the phases I give you. Don't build ahead.
 - At the end of each phase, list: what was built, what's stubbed, any API assumption you couldn't verify in the typings, and how I can test it manually in Figma.
 - Prefer small, readable functions over clever abstractions. Designers on the team may read this code.
+
+## DDS file findings (from inspector, Sept 2026)
+
+- Theming is done with variable modes, not variants. Collections: `Web` and `Web brand 2026`, both with modes Tesco, Tesco dark mode, F&F, F&F dark mode, Lo-Fi.
+- On-dark section: wrap instances in a frame and setExplicitVariableModeForCollection to "Tesco dark mode" on BOTH collections.
+- Optional brand section: same approach with "F&F".
+- DDS vs EDS comparison is a separate library (DDS Enterprise Domain Library). Not auto-generated; leave it as a manual section.
+- Components don't use TEXT properties (DDS convention). Show text content via the layer's existing characters and don't try to set text properties.
+- BOOLEAN property names carry ID suffixes (e.g. "Headline#75:0"). Strip "#…" for display, keep the full name for setProperties.
+- No prototype reactions currently. The interactions section is hidden unless reactions exist.

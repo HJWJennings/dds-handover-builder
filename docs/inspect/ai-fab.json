@@ -1,0 +1,4862 @@
+{
+  "selectedNodeId": "62109:984",
+  "nodeType": "COMPONENT_SET",
+  "name": "AI FAB",
+  "source": "component-set",
+  "componentPropertyDefinitions": [
+    {
+      "propertyName": "With label",
+      "type": "VARIANT",
+      "defaultValue": "No",
+      "variantOptions": [
+        "No",
+        "Yes"
+      ]
+    },
+    {
+      "propertyName": "Type",
+      "type": "VARIANT",
+      "defaultValue": "Primary",
+      "variantOptions": [
+        "Secondary",
+        "Primary"
+      ]
+    },
+    {
+      "propertyName": "Focused",
+      "type": "VARIANT",
+      "defaultValue": "False",
+      "variantOptions": [
+        "False",
+        "True"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "name": "With label=No, Type=Primary, Focused=False",
+      "variantProperties": {
+        "With label": "No",
+        "Type": "Primary",
+        "Focused": "False"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "With label=No, Type=Primary, Focused=False",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 40
+          },
+          "boundVariables": {
+            "topLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "fills": [
+              {
+                "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                "name": "colour-ai-secondary",
+                "resolvedType": "COLOR",
+                "remote": true,
+                "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                "collection": {
+                  "name": "AI",
+                  "modes": [
+                    "Tesco"
+                  ]
+                }
+              },
+              {
+                "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                "name": "colour-ai-primary",
+                "resolvedType": "COLOR",
+                "remote": true,
+                "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                "collection": {
+                  "name": "AI",
+                  "modes": [
+                    "Tesco"
+                  ]
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "24px Icons/AI",
+              "type": "INSTANCE",
+              "absoluteBoundingBox": {
+                "x": 8,
+                "y": 8,
+                "width": 24,
+                "height": 24
+              },
+              "mainComponentName": "24px Icons/AI",
+              "isRemote": false,
+              "children": [
+                {
+                  "name": "icon",
+                  "type": "VECTOR",
+                  "absoluteBoundingBox": {
+                    "x": 10.5,
+                    "y": 10,
+                    "width": 20,
+                    "height": 20.01
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:1714:27527",
+                        "name": "Interaction/colour-interactive-inverse",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:1714:27527",
+                          "name": "Interaction/colour-interactive-inverse",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Focus",
+              "type": "RECTANGLE",
+              "absoluteBoundingBox": {
+                "x": -4,
+                "y": -4,
+                "width": 48,
+                "height": 48
+              },
+              "boundVariables": {
+                "topLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "topRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "strokes": [
+                  {
+                    "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                    "name": "colour-ai-secondary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  },
+                  {
+                    "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                    "name": "colour-ai-primary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "With label=Yes, Type=Primary, Focused=False",
+      "variantProperties": {
+        "With label": "Yes",
+        "Type": "Primary",
+        "Focused": "False"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "With label=Yes, Type=Primary, Focused=False",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 107,
+            "height": 40
+          },
+          "boundVariables": {
+            "itemSpacing": {
+              "id": "VariableID:22800:1027",
+              "name": "Spacing/Space-4",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingLeft": {
+              "id": "VariableID:22800:1035",
+              "name": "Spacing/Space-12",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingTop": {
+              "id": "VariableID:22800:1033",
+              "name": "Spacing/Space-8",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingRight": {
+              "id": "VariableID:22800:1035",
+              "name": "Spacing/Space-12",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingBottom": {
+              "id": "VariableID:22800:1033",
+              "name": "Spacing/Space-8",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "fills": [
+              {
+                "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                "name": "colour-ai-secondary",
+                "resolvedType": "COLOR",
+                "remote": true,
+                "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                "collection": {
+                  "name": "AI",
+                  "modes": [
+                    "Tesco"
+                  ]
+                }
+              },
+              {
+                "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                "name": "colour-ai-primary",
+                "resolvedType": "COLOR",
+                "remote": true,
+                "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                "collection": {
+                  "name": "AI",
+                  "modes": [
+                    "Tesco"
+                  ]
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "24px Icons/AI",
+              "type": "INSTANCE",
+              "absoluteBoundingBox": {
+                "x": 12,
+                "y": 8,
+                "width": 24,
+                "height": 24
+              },
+              "mainComponentName": "24px Icons/AI",
+              "isRemote": false,
+              "children": [
+                {
+                  "name": "icon",
+                  "type": "VECTOR",
+                  "absoluteBoundingBox": {
+                    "x": 14.5,
+                    "y": 10,
+                    "width": 20,
+                    "height": 20.01
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:1714:27527",
+                        "name": "Interaction/colour-interactive-inverse",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:1714:27527",
+                          "name": "Interaction/colour-interactive-inverse",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Label",
+              "type": "FRAME",
+              "absoluteBoundingBox": {
+                "x": 40,
+                "y": 8,
+                "width": 55,
+                "height": 24
+              },
+              "children": [
+                {
+                  "name": "Text",
+                  "type": "TEXT",
+                  "absoluteBoundingBox": {
+                    "x": 40,
+                    "y": 10,
+                    "width": 55,
+                    "height": 20
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:1714:27527",
+                        "name": "Interaction/colour-interactive-inverse",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontSize": [
+                      {
+                        "id": "VariableID:18243:1231",
+                        "name": "Typography tokens/Size/fontsize-16",
+                        "resolvedType": "FLOAT",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontStyle": [
+                      {
+                        "id": "VariableID:18242:35923",
+                        "name": "Typography tokens/Weight/Sans-Bold",
+                        "resolvedType": "STRING",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontFamily": [
+                      {
+                        "id": "VariableID:18242:35917",
+                        "name": "Typography tokens/Family/Label",
+                        "resolvedType": "STRING",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "lineHeight": [
+                      {
+                        "id": "VariableID:18492:3952",
+                        "name": "Typography tokens/Line height/lineheight-20",
+                        "resolvedType": "FLOAT",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:1714:27527",
+                          "name": "Interaction/colour-interactive-inverse",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "characters": "AI label"
+                }
+              ]
+            },
+            {
+              "name": "Focus",
+              "type": "RECTANGLE",
+              "absoluteBoundingBox": {
+                "x": -4,
+                "y": -4,
+                "width": 115,
+                "height": 48
+              },
+              "boundVariables": {
+                "topLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "topRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "strokes": [
+                  {
+                    "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                    "name": "colour-ai-secondary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  },
+                  {
+                    "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                    "name": "colour-ai-primary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "With label=No, Type=Primary, Focused=True",
+      "variantProperties": {
+        "With label": "No",
+        "Type": "Primary",
+        "Focused": "True"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "With label=No, Type=Primary, Focused=True",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 40
+          },
+          "boundVariables": {
+            "topLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "fills": [
+              {
+                "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                "name": "colour-ai-secondary",
+                "resolvedType": "COLOR",
+                "remote": true,
+                "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                "collection": {
+                  "name": "AI",
+                  "modes": [
+                    "Tesco"
+                  ]
+                }
+              },
+              {
+                "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                "name": "colour-ai-primary",
+                "resolvedType": "COLOR",
+                "remote": true,
+                "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                "collection": {
+                  "name": "AI",
+                  "modes": [
+                    "Tesco"
+                  ]
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "24px Icons/AI",
+              "type": "INSTANCE",
+              "absoluteBoundingBox": {
+                "x": 8,
+                "y": 8,
+                "width": 24,
+                "height": 24
+              },
+              "mainComponentName": "24px Icons/AI",
+              "isRemote": false,
+              "children": [
+                {
+                  "name": "icon",
+                  "type": "VECTOR",
+                  "absoluteBoundingBox": {
+                    "x": 10.5,
+                    "y": 10,
+                    "width": 20,
+                    "height": 20.01
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:1714:27527",
+                        "name": "Interaction/colour-interactive-inverse",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:1714:27527",
+                          "name": "Interaction/colour-interactive-inverse",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Focus",
+              "type": "RECTANGLE",
+              "absoluteBoundingBox": {
+                "x": -4,
+                "y": -4,
+                "width": 48,
+                "height": 48
+              },
+              "boundVariables": {
+                "topLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "topRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "strokes": [
+                  {
+                    "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                    "name": "colour-ai-secondary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  },
+                  {
+                    "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                    "name": "colour-ai-primary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "With label=Yes, Type=Primary, Focused=True",
+      "variantProperties": {
+        "With label": "Yes",
+        "Type": "Primary",
+        "Focused": "True"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "With label=Yes, Type=Primary, Focused=True",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 107,
+            "height": 40
+          },
+          "boundVariables": {
+            "itemSpacing": {
+              "id": "VariableID:22800:1027",
+              "name": "Spacing/Space-4",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingLeft": {
+              "id": "VariableID:22800:1035",
+              "name": "Spacing/Space-12",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingTop": {
+              "id": "VariableID:22800:1033",
+              "name": "Spacing/Space-8",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingRight": {
+              "id": "VariableID:22800:1035",
+              "name": "Spacing/Space-12",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingBottom": {
+              "id": "VariableID:22800:1033",
+              "name": "Spacing/Space-8",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "fills": [
+              {
+                "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                "name": "colour-ai-secondary",
+                "resolvedType": "COLOR",
+                "remote": true,
+                "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                "collection": {
+                  "name": "AI",
+                  "modes": [
+                    "Tesco"
+                  ]
+                }
+              },
+              {
+                "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                "name": "colour-ai-primary",
+                "resolvedType": "COLOR",
+                "remote": true,
+                "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                "collection": {
+                  "name": "AI",
+                  "modes": [
+                    "Tesco"
+                  ]
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "24px Icons/AI",
+              "type": "INSTANCE",
+              "absoluteBoundingBox": {
+                "x": 12,
+                "y": 8,
+                "width": 24,
+                "height": 24
+              },
+              "mainComponentName": "24px Icons/AI",
+              "isRemote": false,
+              "children": [
+                {
+                  "name": "icon",
+                  "type": "VECTOR",
+                  "absoluteBoundingBox": {
+                    "x": 14.5,
+                    "y": 10,
+                    "width": 20,
+                    "height": 20.01
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:1714:27527",
+                        "name": "Interaction/colour-interactive-inverse",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:1714:27527",
+                          "name": "Interaction/colour-interactive-inverse",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Label",
+              "type": "FRAME",
+              "absoluteBoundingBox": {
+                "x": 40,
+                "y": 8,
+                "width": 55,
+                "height": 24
+              },
+              "children": [
+                {
+                  "name": "Text",
+                  "type": "TEXT",
+                  "absoluteBoundingBox": {
+                    "x": 40,
+                    "y": 10,
+                    "width": 55,
+                    "height": 20
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:1714:27527",
+                        "name": "Interaction/colour-interactive-inverse",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontSize": [
+                      {
+                        "id": "VariableID:18243:1231",
+                        "name": "Typography tokens/Size/fontsize-16",
+                        "resolvedType": "FLOAT",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontStyle": [
+                      {
+                        "id": "VariableID:18242:35923",
+                        "name": "Typography tokens/Weight/Sans-Bold",
+                        "resolvedType": "STRING",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontFamily": [
+                      {
+                        "id": "VariableID:18242:35917",
+                        "name": "Typography tokens/Family/Label",
+                        "resolvedType": "STRING",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "lineHeight": [
+                      {
+                        "id": "VariableID:18492:3952",
+                        "name": "Typography tokens/Line height/lineheight-20",
+                        "resolvedType": "FLOAT",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:1714:27527",
+                          "name": "Interaction/colour-interactive-inverse",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "characters": "AI label"
+                }
+              ]
+            },
+            {
+              "name": "Focus",
+              "type": "RECTANGLE",
+              "absoluteBoundingBox": {
+                "x": -4,
+                "y": -4,
+                "width": 115,
+                "height": 48
+              },
+              "boundVariables": {
+                "topLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "topRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "strokes": [
+                  {
+                    "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                    "name": "colour-ai-secondary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  },
+                  {
+                    "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                    "name": "colour-ai-primary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "With label=No, Type=Secondary, Focused=False",
+      "variantProperties": {
+        "With label": "No",
+        "Type": "Secondary",
+        "Focused": "False"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "With label=No, Type=Secondary, Focused=False",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 40
+          },
+          "boundVariables": {
+            "topLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "fills": [
+              {
+                "id": "VariableID:1714:27533",
+                "name": "Background/colour-background-1",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              }
+            ],
+            "strokes": [
+              {
+                "id": "VariableID:61578:117453",
+                "name": "Ai/colour-ai-primary",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              },
+              {
+                "id": "VariableID:61578:127590",
+                "name": "Ai/colour-ai-secondary",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              }
+            ],
+            "fillsPaintBindings": [
+              {
+                "index": 0,
+                "color": {
+                  "id": "VariableID:1714:27533",
+                  "name": "Background/colour-background-1",
+                  "resolvedType": "COLOR",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "24px Icons/AI",
+              "type": "INSTANCE",
+              "absoluteBoundingBox": {
+                "x": 8,
+                "y": 8,
+                "width": 24,
+                "height": 24
+              },
+              "mainComponentName": "24px Icons/AI",
+              "isRemote": false,
+              "children": [
+                {
+                  "name": "icon",
+                  "type": "VECTOR",
+                  "absoluteBoundingBox": {
+                    "x": 10.5,
+                    "y": 10,
+                    "width": 20,
+                    "height": 20.01
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:61578:117453",
+                        "name": "Ai/colour-ai-primary",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:61578:117453",
+                          "name": "Ai/colour-ai-primary",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Focus",
+              "type": "RECTANGLE",
+              "absoluteBoundingBox": {
+                "x": -4,
+                "y": -4,
+                "width": 48,
+                "height": 48
+              },
+              "boundVariables": {
+                "topLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "topRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "strokes": [
+                  {
+                    "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                    "name": "colour-ai-secondary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  },
+                  {
+                    "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                    "name": "colour-ai-primary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "With label=Yes, Type=Secondary, Focused=False",
+      "variantProperties": {
+        "With label": "Yes",
+        "Type": "Secondary",
+        "Focused": "False"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "With label=Yes, Type=Secondary, Focused=False",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 107,
+            "height": 40
+          },
+          "boundVariables": {
+            "itemSpacing": {
+              "id": "VariableID:22800:1027",
+              "name": "Spacing/Space-4",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingLeft": {
+              "id": "VariableID:22800:1035",
+              "name": "Spacing/Space-12",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingTop": {
+              "id": "VariableID:22800:1033",
+              "name": "Spacing/Space-8",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingRight": {
+              "id": "VariableID:22800:1035",
+              "name": "Spacing/Space-12",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingBottom": {
+              "id": "VariableID:22800:1033",
+              "name": "Spacing/Space-8",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "fills": [
+              {
+                "id": "VariableID:1714:27533",
+                "name": "Background/colour-background-1",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              }
+            ],
+            "strokes": [
+              {
+                "id": "VariableID:61578:117453",
+                "name": "Ai/colour-ai-primary",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              },
+              {
+                "id": "VariableID:61578:127590",
+                "name": "Ai/colour-ai-secondary",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              }
+            ],
+            "fillsPaintBindings": [
+              {
+                "index": 0,
+                "color": {
+                  "id": "VariableID:1714:27533",
+                  "name": "Background/colour-background-1",
+                  "resolvedType": "COLOR",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "24px Icons/AI",
+              "type": "INSTANCE",
+              "absoluteBoundingBox": {
+                "x": 12,
+                "y": 8,
+                "width": 24,
+                "height": 24
+              },
+              "mainComponentName": "24px Icons/AI",
+              "isRemote": false,
+              "children": [
+                {
+                  "name": "icon",
+                  "type": "VECTOR",
+                  "absoluteBoundingBox": {
+                    "x": 14.5,
+                    "y": 10,
+                    "width": 20,
+                    "height": 20.01
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:61578:117453",
+                        "name": "Ai/colour-ai-primary",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:61578:117453",
+                          "name": "Ai/colour-ai-primary",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Label",
+              "type": "FRAME",
+              "absoluteBoundingBox": {
+                "x": 40,
+                "y": 8,
+                "width": 55,
+                "height": 24
+              },
+              "children": [
+                {
+                  "name": "Text",
+                  "type": "TEXT",
+                  "absoluteBoundingBox": {
+                    "x": 40,
+                    "y": 10,
+                    "width": 55,
+                    "height": 20
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:1714:27514",
+                        "name": "Typography/colour-text-header-primary",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontSize": [
+                      {
+                        "id": "VariableID:18243:1231",
+                        "name": "Typography tokens/Size/fontsize-16",
+                        "resolvedType": "FLOAT",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontStyle": [
+                      {
+                        "id": "VariableID:18242:35923",
+                        "name": "Typography tokens/Weight/Sans-Bold",
+                        "resolvedType": "STRING",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontFamily": [
+                      {
+                        "id": "VariableID:18242:35917",
+                        "name": "Typography tokens/Family/Label",
+                        "resolvedType": "STRING",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "lineHeight": [
+                      {
+                        "id": "VariableID:18492:3952",
+                        "name": "Typography tokens/Line height/lineheight-20",
+                        "resolvedType": "FLOAT",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:1714:27514",
+                          "name": "Typography/colour-text-header-primary",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "characters": "AI label"
+                }
+              ]
+            },
+            {
+              "name": "Focus",
+              "type": "RECTANGLE",
+              "absoluteBoundingBox": {
+                "x": -4,
+                "y": -4,
+                "width": 115,
+                "height": 48
+              },
+              "boundVariables": {
+                "topLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "topRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "strokes": [
+                  {
+                    "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                    "name": "colour-ai-secondary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  },
+                  {
+                    "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                    "name": "colour-ai-primary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "With label=No, Type=Secondary, Focused=True",
+      "variantProperties": {
+        "With label": "No",
+        "Type": "Secondary",
+        "Focused": "True"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "With label=No, Type=Secondary, Focused=True",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 40
+          },
+          "boundVariables": {
+            "topLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "fills": [
+              {
+                "id": "VariableID:1714:27533",
+                "name": "Background/colour-background-1",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              }
+            ],
+            "strokes": [
+              {
+                "id": "VariableID:61578:117453",
+                "name": "Ai/colour-ai-primary",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              },
+              {
+                "id": "VariableID:61578:127590",
+                "name": "Ai/colour-ai-secondary",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              }
+            ],
+            "fillsPaintBindings": [
+              {
+                "index": 0,
+                "color": {
+                  "id": "VariableID:1714:27533",
+                  "name": "Background/colour-background-1",
+                  "resolvedType": "COLOR",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "24px Icons/AI",
+              "type": "INSTANCE",
+              "absoluteBoundingBox": {
+                "x": 8,
+                "y": 8,
+                "width": 24,
+                "height": 24
+              },
+              "mainComponentName": "24px Icons/AI",
+              "isRemote": false,
+              "children": [
+                {
+                  "name": "icon",
+                  "type": "VECTOR",
+                  "absoluteBoundingBox": {
+                    "x": 10.5,
+                    "y": 10,
+                    "width": 20,
+                    "height": 20.01
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:61578:117453",
+                        "name": "Ai/colour-ai-primary",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:61578:117453",
+                          "name": "Ai/colour-ai-primary",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Focus",
+              "type": "RECTANGLE",
+              "absoluteBoundingBox": {
+                "x": -4,
+                "y": -4,
+                "width": 48,
+                "height": 48
+              },
+              "boundVariables": {
+                "topLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "topRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "strokes": [
+                  {
+                    "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                    "name": "colour-ai-secondary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  },
+                  {
+                    "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                    "name": "colour-ai-primary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "With label=Yes, Type=Secondary, Focused=True",
+      "variantProperties": {
+        "With label": "Yes",
+        "Type": "Secondary",
+        "Focused": "True"
+      },
+      "reactions": [],
+      "layerTree": [
+        {
+          "name": "With label=Yes, Type=Secondary, Focused=True",
+          "type": "COMPONENT",
+          "absoluteBoundingBox": {
+            "x": 0,
+            "y": 0,
+            "width": 107,
+            "height": 40
+          },
+          "boundVariables": {
+            "itemSpacing": {
+              "id": "VariableID:22800:1027",
+              "name": "Spacing/Space-4",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingLeft": {
+              "id": "VariableID:22800:1035",
+              "name": "Spacing/Space-12",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingTop": {
+              "id": "VariableID:22800:1033",
+              "name": "Spacing/Space-8",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingRight": {
+              "id": "VariableID:22800:1035",
+              "name": "Spacing/Space-12",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "paddingBottom": {
+              "id": "VariableID:22800:1033",
+              "name": "Spacing/Space-8",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "topRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomLeftRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "bottomRightRadius": {
+              "id": "VariableID:44702:88784",
+              "name": "Border radius/borderradius-button-xlg",
+              "resolvedType": "FLOAT",
+              "remote": false,
+              "collectionId": "VariableCollectionId:1483:26764",
+              "collection": {
+                "name": "Web",
+                "modes": [
+                  "Tesco",
+                  "Tesco dark mode",
+                  "F&F",
+                  "F&F dark mode",
+                  "Lo-Fi"
+                ]
+              }
+            },
+            "fills": [
+              {
+                "id": "VariableID:1714:27533",
+                "name": "Background/colour-background-1",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              }
+            ],
+            "strokes": [
+              {
+                "id": "VariableID:61578:117453",
+                "name": "Ai/colour-ai-primary",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              },
+              {
+                "id": "VariableID:61578:127590",
+                "name": "Ai/colour-ai-secondary",
+                "resolvedType": "COLOR",
+                "remote": false,
+                "collectionId": "VariableCollectionId:1483:26764",
+                "collection": {
+                  "name": "Web",
+                  "modes": [
+                    "Tesco",
+                    "Tesco dark mode",
+                    "F&F",
+                    "F&F dark mode",
+                    "Lo-Fi"
+                  ]
+                }
+              }
+            ],
+            "fillsPaintBindings": [
+              {
+                "index": 0,
+                "color": {
+                  "id": "VariableID:1714:27533",
+                  "name": "Background/colour-background-1",
+                  "resolvedType": "COLOR",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "children": [
+            {
+              "name": "24px Icons/AI",
+              "type": "INSTANCE",
+              "absoluteBoundingBox": {
+                "x": 12,
+                "y": 8,
+                "width": 24,
+                "height": 24
+              },
+              "mainComponentName": "24px Icons/AI",
+              "isRemote": false,
+              "children": [
+                {
+                  "name": "icon",
+                  "type": "VECTOR",
+                  "absoluteBoundingBox": {
+                    "x": 14.5,
+                    "y": 10,
+                    "width": 20,
+                    "height": 20.01
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:61578:117453",
+                        "name": "Ai/colour-ai-primary",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:61578:117453",
+                          "name": "Ai/colour-ai-primary",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Label",
+              "type": "FRAME",
+              "absoluteBoundingBox": {
+                "x": 40,
+                "y": 8,
+                "width": 55,
+                "height": 24
+              },
+              "children": [
+                {
+                  "name": "Text",
+                  "type": "TEXT",
+                  "absoluteBoundingBox": {
+                    "x": 40,
+                    "y": 10,
+                    "width": 55,
+                    "height": 20
+                  },
+                  "boundVariables": {
+                    "fills": [
+                      {
+                        "id": "VariableID:1714:27514",
+                        "name": "Typography/colour-text-header-primary",
+                        "resolvedType": "COLOR",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontSize": [
+                      {
+                        "id": "VariableID:18243:1231",
+                        "name": "Typography tokens/Size/fontsize-16",
+                        "resolvedType": "FLOAT",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontStyle": [
+                      {
+                        "id": "VariableID:18242:35923",
+                        "name": "Typography tokens/Weight/Sans-Bold",
+                        "resolvedType": "STRING",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fontFamily": [
+                      {
+                        "id": "VariableID:18242:35917",
+                        "name": "Typography tokens/Family/Label",
+                        "resolvedType": "STRING",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "lineHeight": [
+                      {
+                        "id": "VariableID:18492:3952",
+                        "name": "Typography tokens/Line height/lineheight-20",
+                        "resolvedType": "FLOAT",
+                        "remote": false,
+                        "collectionId": "VariableCollectionId:1483:26764",
+                        "collection": {
+                          "name": "Web",
+                          "modes": [
+                            "Tesco",
+                            "Tesco dark mode",
+                            "F&F",
+                            "F&F dark mode",
+                            "Lo-Fi"
+                          ]
+                        }
+                      }
+                    ],
+                    "fillsPaintBindings": [
+                      {
+                        "index": 0,
+                        "color": {
+                          "id": "VariableID:1714:27514",
+                          "name": "Typography/colour-text-header-primary",
+                          "resolvedType": "COLOR",
+                          "remote": false,
+                          "collectionId": "VariableCollectionId:1483:26764",
+                          "collection": {
+                            "name": "Web",
+                            "modes": [
+                              "Tesco",
+                              "Tesco dark mode",
+                              "F&F",
+                              "F&F dark mode",
+                              "Lo-Fi"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "characters": "AI label"
+                }
+              ]
+            },
+            {
+              "name": "Focus",
+              "type": "RECTANGLE",
+              "absoluteBoundingBox": {
+                "x": -4,
+                "y": -4,
+                "width": 115,
+                "height": 48
+              },
+              "boundVariables": {
+                "topLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "topRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomLeftRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "bottomRightRadius": {
+                  "id": "VariableID:44745:85945",
+                  "name": "Border radius/borderradius-focus-xlg",
+                  "resolvedType": "FLOAT",
+                  "remote": false,
+                  "collectionId": "VariableCollectionId:1483:26764",
+                  "collection": {
+                    "name": "Web",
+                    "modes": [
+                      "Tesco",
+                      "Tesco dark mode",
+                      "F&F",
+                      "F&F dark mode",
+                      "Lo-Fi"
+                    ]
+                  }
+                },
+                "strokes": [
+                  {
+                    "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+                    "name": "colour-ai-secondary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  },
+                  {
+                    "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+                    "name": "colour-ai-primary",
+                    "resolvedType": "COLOR",
+                    "remote": true,
+                    "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+                    "collection": {
+                      "name": "AI",
+                      "modes": [
+                        "Tesco"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "setBoundVariables": {},
+  "setExplicitVariableModes": {},
+  "variantBoundVariables": [
+    {
+      "name": "With label=No, Type=Primary, Focused=False",
+      "boundVariables": {
+        "topLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "fills": [
+          {
+            "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+            "name": "colour-ai-secondary",
+            "resolvedType": "COLOR",
+            "remote": true,
+            "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+            "collection": {
+              "name": "AI",
+              "modes": [
+                "Tesco"
+              ]
+            }
+          },
+          {
+            "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+            "name": "colour-ai-primary",
+            "resolvedType": "COLOR",
+            "remote": true,
+            "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+            "collection": {
+              "name": "AI",
+              "modes": [
+                "Tesco"
+              ]
+            }
+          }
+        ]
+      },
+      "explicitVariableModes": {}
+    },
+    {
+      "name": "With label=Yes, Type=Primary, Focused=False",
+      "boundVariables": {
+        "itemSpacing": {
+          "id": "VariableID:22800:1027",
+          "name": "Spacing/Space-4",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingLeft": {
+          "id": "VariableID:22800:1035",
+          "name": "Spacing/Space-12",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingTop": {
+          "id": "VariableID:22800:1033",
+          "name": "Spacing/Space-8",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingRight": {
+          "id": "VariableID:22800:1035",
+          "name": "Spacing/Space-12",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingBottom": {
+          "id": "VariableID:22800:1033",
+          "name": "Spacing/Space-8",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "fills": [
+          {
+            "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+            "name": "colour-ai-secondary",
+            "resolvedType": "COLOR",
+            "remote": true,
+            "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+            "collection": {
+              "name": "AI",
+              "modes": [
+                "Tesco"
+              ]
+            }
+          },
+          {
+            "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+            "name": "colour-ai-primary",
+            "resolvedType": "COLOR",
+            "remote": true,
+            "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+            "collection": {
+              "name": "AI",
+              "modes": [
+                "Tesco"
+              ]
+            }
+          }
+        ]
+      },
+      "explicitVariableModes": {}
+    },
+    {
+      "name": "With label=No, Type=Primary, Focused=True",
+      "boundVariables": {
+        "topLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "fills": [
+          {
+            "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+            "name": "colour-ai-secondary",
+            "resolvedType": "COLOR",
+            "remote": true,
+            "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+            "collection": {
+              "name": "AI",
+              "modes": [
+                "Tesco"
+              ]
+            }
+          },
+          {
+            "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+            "name": "colour-ai-primary",
+            "resolvedType": "COLOR",
+            "remote": true,
+            "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+            "collection": {
+              "name": "AI",
+              "modes": [
+                "Tesco"
+              ]
+            }
+          }
+        ]
+      },
+      "explicitVariableModes": {}
+    },
+    {
+      "name": "With label=Yes, Type=Primary, Focused=True",
+      "boundVariables": {
+        "itemSpacing": {
+          "id": "VariableID:22800:1027",
+          "name": "Spacing/Space-4",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingLeft": {
+          "id": "VariableID:22800:1035",
+          "name": "Spacing/Space-12",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingTop": {
+          "id": "VariableID:22800:1033",
+          "name": "Spacing/Space-8",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingRight": {
+          "id": "VariableID:22800:1035",
+          "name": "Spacing/Space-12",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingBottom": {
+          "id": "VariableID:22800:1033",
+          "name": "Spacing/Space-8",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "fills": [
+          {
+            "id": "VariableID:e9658f27ce53cf8f59bba5742e6e39a6e64ca57d/3:11",
+            "name": "colour-ai-secondary",
+            "resolvedType": "COLOR",
+            "remote": true,
+            "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+            "collection": {
+              "name": "AI",
+              "modes": [
+                "Tesco"
+              ]
+            }
+          },
+          {
+            "id": "VariableID:ed5556afd763672abec5728b0202a3e18d7b6778/3:7",
+            "name": "colour-ai-primary",
+            "resolvedType": "COLOR",
+            "remote": true,
+            "collectionId": "VariableCollectionId:150d3550799fb7313cd9e34d50e4bd5f4f1f721f/3:6",
+            "collection": {
+              "name": "AI",
+              "modes": [
+                "Tesco"
+              ]
+            }
+          }
+        ]
+      },
+      "explicitVariableModes": {}
+    },
+    {
+      "name": "With label=No, Type=Secondary, Focused=False",
+      "boundVariables": {
+        "topLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "fills": [
+          {
+            "id": "VariableID:1714:27533",
+            "name": "Background/colour-background-1",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          }
+        ],
+        "strokes": [
+          {
+            "id": "VariableID:61578:117453",
+            "name": "Ai/colour-ai-primary",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          },
+          {
+            "id": "VariableID:61578:127590",
+            "name": "Ai/colour-ai-secondary",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          }
+        ]
+      },
+      "explicitVariableModes": {}
+    },
+    {
+      "name": "With label=Yes, Type=Secondary, Focused=False",
+      "boundVariables": {
+        "itemSpacing": {
+          "id": "VariableID:22800:1027",
+          "name": "Spacing/Space-4",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingLeft": {
+          "id": "VariableID:22800:1035",
+          "name": "Spacing/Space-12",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingTop": {
+          "id": "VariableID:22800:1033",
+          "name": "Spacing/Space-8",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingRight": {
+          "id": "VariableID:22800:1035",
+          "name": "Spacing/Space-12",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingBottom": {
+          "id": "VariableID:22800:1033",
+          "name": "Spacing/Space-8",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "fills": [
+          {
+            "id": "VariableID:1714:27533",
+            "name": "Background/colour-background-1",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          }
+        ],
+        "strokes": [
+          {
+            "id": "VariableID:61578:117453",
+            "name": "Ai/colour-ai-primary",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          },
+          {
+            "id": "VariableID:61578:127590",
+            "name": "Ai/colour-ai-secondary",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          }
+        ]
+      },
+      "explicitVariableModes": {}
+    },
+    {
+      "name": "With label=No, Type=Secondary, Focused=True",
+      "boundVariables": {
+        "topLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "fills": [
+          {
+            "id": "VariableID:1714:27533",
+            "name": "Background/colour-background-1",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          }
+        ],
+        "strokes": [
+          {
+            "id": "VariableID:61578:117453",
+            "name": "Ai/colour-ai-primary",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          },
+          {
+            "id": "VariableID:61578:127590",
+            "name": "Ai/colour-ai-secondary",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          }
+        ]
+      },
+      "explicitVariableModes": {}
+    },
+    {
+      "name": "With label=Yes, Type=Secondary, Focused=True",
+      "boundVariables": {
+        "itemSpacing": {
+          "id": "VariableID:22800:1027",
+          "name": "Spacing/Space-4",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingLeft": {
+          "id": "VariableID:22800:1035",
+          "name": "Spacing/Space-12",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingTop": {
+          "id": "VariableID:22800:1033",
+          "name": "Spacing/Space-8",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingRight": {
+          "id": "VariableID:22800:1035",
+          "name": "Spacing/Space-12",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "paddingBottom": {
+          "id": "VariableID:22800:1033",
+          "name": "Spacing/Space-8",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "topRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomLeftRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "bottomRightRadius": {
+          "id": "VariableID:44702:88784",
+          "name": "Border radius/borderradius-button-xlg",
+          "resolvedType": "FLOAT",
+          "remote": false,
+          "collectionId": "VariableCollectionId:1483:26764",
+          "collection": {
+            "name": "Web",
+            "modes": [
+              "Tesco",
+              "Tesco dark mode",
+              "F&F",
+              "F&F dark mode",
+              "Lo-Fi"
+            ]
+          }
+        },
+        "fills": [
+          {
+            "id": "VariableID:1714:27533",
+            "name": "Background/colour-background-1",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          }
+        ],
+        "strokes": [
+          {
+            "id": "VariableID:61578:117453",
+            "name": "Ai/colour-ai-primary",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          },
+          {
+            "id": "VariableID:61578:127590",
+            "name": "Ai/colour-ai-secondary",
+            "resolvedType": "COLOR",
+            "remote": false,
+            "collectionId": "VariableCollectionId:1483:26764",
+            "collection": {
+              "name": "Web",
+              "modes": [
+                "Tesco",
+                "Tesco dark mode",
+                "F&F",
+                "F&F dark mode",
+                "Lo-Fi"
+              ]
+            }
+          }
+        ]
+      },
+      "explicitVariableModes": {}
+    }
+  ],
+  "fileVariableCollections": [
+    {
+      "id": "VariableCollectionId:1483:26764",
+      "name": "Web",
+      "modes": [
+        "Tesco",
+        "Tesco dark mode",
+        "F&F",
+        "F&F dark mode",
+        "Lo-Fi"
+      ]
+    },
+    {
+      "id": "VariableCollectionId:46143:83757",
+      "name": "Web brand 2026",
+      "modes": [
+        "Tesco",
+        "Tesco dark mode",
+        "F&F",
+        "F&F dark mode",
+        "Lo-Fi"
+      ]
+    }
+  ],
+  "libraryVariableCollections": [
+    {
+      "name": "Variable collection",
+      "libraryName": "DDS Enterprise Domain Library",
+      "key": "fd9955985e4d961c8e2e317f5130f6b976586111"
+    },
+    {
+      "name": "Global tokens",
+      "libraryName": "DDS Global reference",
+      "key": "e1dac41a1c67f493eff7d77b961854930382077e"
+    },
+    {
+      "name": "Web applications",
+      "libraryName": "DDS Web applications library",
+      "key": "aaf96adcd2d35aefb9c88a49757a25003c67bcd5"
+    },
+    {
+      "name": "Web apps brand 2026",
+      "libraryName": "DDS Web applications library",
+      "key": "f059847a63aa4d65d5ed36a64a6b8c3b401bfd94"
+    },
+    {
+      "name": "Web",
+      "libraryName": "DDS Web library",
+      "key": "61c10722b9c6b22fd0636694cff185117060ef46"
+    },
+    {
+      "name": "Web brand 2026",
+      "libraryName": "DDS Web library",
+      "key": "98518575d4959350a884fa650e5f65aceb38b6a5"
+    }
+  ],
+  "fileVariableModes": [
+    {
+      "collection": "Web",
+      "modes": [
+        "Tesco",
+        "Tesco dark mode",
+        "F&F",
+        "F&F dark mode",
+        "Lo-Fi"
+      ]
+    },
+    {
+      "collection": "Web brand 2026",
+      "modes": [
+        "Tesco",
+        "Tesco dark mode",
+        "F&F",
+        "F&F dark mode",
+        "Lo-Fi"
+      ]
+    }
+  ],
+  "meta": {
+    "selectionType": "COMPONENT_SET",
+    "variantCount": 8,
+    "nodesWithBoundVariables": 8,
+    "resolvedFromInstance": false,
+    "errors": []
+  }
+}

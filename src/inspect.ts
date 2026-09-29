@@ -16,6 +16,8 @@ type LayerTreeNode = {
   } | null;
   mainComponentName?: string | null;
   isRemote?: boolean;
+  boundVariables?: Record<string, unknown>;
+  characters?: string;
   children?: LayerTreeNode[];
 };
 
@@ -70,7 +72,10 @@ export type InspectionResult = {
     modes: string[];
   }>;
   libraryVariableCollections: LibraryVariableCollection[];
-  fileVariableModes: string[];
+  fileVariableModes: Array<{
+    collection: string;
+    modes: string[];
+  }>;
   meta: {
     selectionType: string;
     variantCount: number;
@@ -204,12 +209,12 @@ const serializeBoundVariables = async (boundVariables: Record<string, unknown> |
 
   const output: Record<string, unknown> = {};
 
-  for (const [key, value] of Object.entries(boundVariables)) {
-    const alias = value as { id?: string; type?: string } | undefined;
+  const resolveAlias = async (aliasValue: unknown) => {
+    const alias = aliasValue as { id?: string; type?: string } | undefined;
     const variableId = alias?.id ?? null;
     const resolved = variableId ? await resolveVariableMetadata(variableId, collector) : null;
 
-    output[key] = {
+    return {
       id: variableId,
       name: resolved?.name ?? null,
       resolvedType: resolved?.resolvedType ?? alias?.type ?? null,
@@ -217,6 +222,53 @@ const serializeBoundVariables = async (boundVariables: Record<string, unknown> |
       collectionId: resolved?.collectionId ?? null,
       collection: resolved?.collection ?? null,
     };
+  };
+
+  for (const [key, value] of Object.entries(boundVariables)) {
+    if (Array.isArray(value)) {
+      output[key] = await Promise.all(value.map((entry) => resolveAlias(entry)));
+      continue;
+    }
+
+    output[key] = await resolveAlias(value);
+  }
+
+  return output;
+};
+
+const getPaintLevelBindings = async (node: BaseNode, collector: ErrorCollector) => {
+  const output: Record<string, unknown> = {};
+
+  const resolvePaintArray = async (paints: unknown, key: 'fills' | 'strokes') => {
+    if (!Array.isArray(paints)) {
+      return;
+    }
+
+    const resolved = await Promise.all(paints.map(async (paint, index) => {
+      const colorAlias = (paint as { boundVariables?: { color?: unknown } })?.boundVariables?.color;
+      if (!colorAlias) {
+        return null;
+      }
+
+      const serialized = await serializeBoundVariables({ color: colorAlias }, collector);
+      return {
+        index,
+        color: serialized?.color ?? null,
+      };
+    }));
+
+    const filtered = resolved.filter((entry): entry is NonNullable<typeof entry> => entry !== null);
+    if (filtered.length > 0) {
+      output[`${key}PaintBindings`] = filtered;
+    }
+  };
+
+  if ('fills' in node) {
+    await resolvePaintArray((node as unknown as { fills?: unknown }).fills, 'fills');
+  }
+
+  if ('strokes' in node) {
+    await resolvePaintArray((node as unknown as { strokes?: unknown }).strokes, 'strokes');
   }
 
   return output;
@@ -248,6 +300,25 @@ const collectLayerTree = async (node: BaseNode, root: BaseNode, collector: Error
       self.mainComponentName = null;
     }
     self.isRemote = Boolean((node as unknown as { remote?: boolean }).remote);
+  }
+
+  const nodeBoundVariables = await serializeBoundVariables(
+    (node as unknown as { boundVariables?: Record<string, unknown> }).boundVariables,
+    collector,
+  );
+  const paintBindings = await getPaintLevelBindings(node, collector);
+  const mergedBindings = {
+    ...(nodeBoundVariables ?? {}),
+    ...paintBindings,
+  };
+
+  if (Object.keys(mergedBindings).length > 0) {
+    self.boundVariables = mergedBindings;
+  }
+
+  if (node.type === 'TEXT') {
+    const raw = node.characters ?? '';
+    self.characters = raw.length > 80 ? `${raw.slice(0, 80)}...` : raw;
   }
 
   if ('children' in node && Array.isArray(node.children)) {
@@ -364,6 +435,13 @@ const getLibraryVariableCollections = async (collector: ErrorCollector) => {
   }
 };
 
+const getFileVariableModes = (collections: Array<{ name: string; modes: string[] }>) => {
+  return collections.map((collection) => ({
+    collection: collection.name,
+    modes: Array.from(new Set(collection.modes)),
+  }));
+};
+
 export async function inspectSelectionNode(node: BaseNode | null): Promise<InspectionResult> {
   const collector: ErrorCollector = { errors: [] };
 
@@ -417,7 +495,7 @@ export async function inspectSelectionNode(node: BaseNode | null): Promise<Inspe
           variantBoundVariables: [],
           fileVariableCollections: localVariableCollections,
           libraryVariableCollections,
-          fileVariableModes: localVariableCollections.flatMap((collection) => collection.modes),
+          fileVariableModes: getFileVariableModes(localVariableCollections),
           meta: {
             selectionType: node.type,
             variantCount: 0,
@@ -467,7 +545,7 @@ export async function inspectSelectionNode(node: BaseNode | null): Promise<Inspe
         variantBoundVariables: [],
         fileVariableCollections: localVariableCollections,
         libraryVariableCollections,
-        fileVariableModes: localVariableCollections.flatMap((collection) => collection.modes),
+        fileVariableModes: getFileVariableModes(localVariableCollections),
         meta: {
           selectionType: node.type,
           variantCount: 0,
@@ -526,7 +604,7 @@ export async function inspectSelectionNode(node: BaseNode | null): Promise<Inspe
       variantBoundVariables,
       fileVariableCollections: localVariableCollections,
       libraryVariableCollections,
-      fileVariableModes: localVariableCollections.flatMap((collection) => collection.modes),
+      fileVariableModes: getFileVariableModes(localVariableCollections),
       meta: {
         selectionType: node.type,
         variantCount: variantList.length,
@@ -554,7 +632,7 @@ export async function inspectSelectionNode(node: BaseNode | null): Promise<Inspe
       variantBoundVariables: [],
       fileVariableCollections: localVariableCollections,
       libraryVariableCollections,
-      fileVariableModes: localVariableCollections.flatMap((collection) => collection.modes),
+      fileVariableModes: getFileVariableModes(localVariableCollections),
       meta: {
         selectionType: node.type,
         variantCount: 0,
