@@ -18,6 +18,7 @@ figma.showUI(uiHtml, {
 });
 
 let uiReady = false;
+let devTabActive = false;
 
 const emitSelectionData = async () => {
   try {
@@ -369,9 +370,11 @@ figma.ui.onmessage = (message: UIToPluginMessage) => {
   switch (message.type) {
     case 'UI_READY': {
       uiReady = true;
-      void emitSelectionData().catch((error) => {
-        console.error('[main] emitSelectionData rejected on UI_READY', error);
-      });
+      if (devTabActive) {
+        void emitSelectionData().catch((error) => {
+          console.error('[main] emitSelectionData rejected on UI_READY', error);
+        });
+      }
       void emitEditorForSelection();
       void runScan(lastScope);
       break;
@@ -414,6 +417,15 @@ figma.ui.onmessage = (message: UIToPluginMessage) => {
       void handleClearDocsBulk(message.ids);
       break;
     }
+    case 'DEV_TAB_ACTIVE': {
+      devTabActive = message.active;
+      if (devTabActive) {
+        void emitSelectionData().catch((error) => {
+          console.error('[main] emitSelectionData rejected on DEV_TAB_ACTIVE', error);
+        });
+      }
+      break;
+    }
     case 'SELECT_NODE': {
       void (async () => {
         try {
@@ -444,9 +456,11 @@ figma.on('selectionchange', () => {
   try {
     console.log('[main] selectionchange', figma.currentPage.name, figma.currentPage.selection.length, figma.currentPage.selection.map((n) => `${n.type}:${n.name}`));
     if (uiReady) {
-      void emitSelectionData().catch((error) => {
-        console.error('[main] emitSelectionData rejected on selectionchange', error);
-      });
+      if (devTabActive) {
+        void emitSelectionData().catch((error) => {
+          console.error('[main] emitSelectionData rejected on selectionchange', error);
+        });
+      }
       void emitEditorForSelection();
       scheduleSelectionRescan();
     }

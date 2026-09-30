@@ -119,6 +119,10 @@ export type UIToPluginMessage =
       id: string;
     }
   | {
+      type: 'DEV_TAB_ACTIVE';
+      active: boolean;
+    }
+  | {
       type: 'SAVE_DOC';
       payload: SaveDocPayload;
     }

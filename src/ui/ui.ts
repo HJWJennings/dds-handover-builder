@@ -19,6 +19,7 @@ tabButtons.forEach((button) => {
     const target = button.dataset.tab;
     tabButtons.forEach((b) => b.classList.toggle('is-active', b === button));
     tabPanels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.tabPanel === target));
+    post({ type: 'DEV_TAB_ACTIVE', active: target === 'dev' });
   });
 });
 
