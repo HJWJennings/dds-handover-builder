@@ -1,3 +1,5 @@
+import type { ScanResult, ScanScope } from './scan';
+
 export type PluginToUIMessage =
   | {
       type: 'INSPECT_RESULT';
@@ -15,6 +17,31 @@ export type PluginToUIMessage =
       payload: {
         message: string;
       };
+    }
+  | {
+      type: 'SCAN_RESULT';
+      payload: ScanResult;
+    }
+  | {
+      type: 'SCAN_PROGRESS';
+      payload: {
+        scannedPages: number;
+        totalPages: number;
+      };
+    }
+  | {
+      type: 'SCAN_ERROR';
+      payload: {
+        message: string;
+      };
+    }
+  | {
+      type: 'SELECTED_INFO';
+      payload: {
+        id: string;
+        name: string;
+        type: string;
+      } | null;
     };
 
 export type UIToPluginMessage =
@@ -26,4 +53,15 @@ export type UIToPluginMessage =
     }
   | {
       type: 'CLEAR_RESULT';
+    }
+  | {
+      type: 'SCAN_REQUEST';
+      scope: ScanScope;
+    }
+  | {
+      type: 'REFRESH_LIST';
+    }
+  | {
+      type: 'SELECT_NODE';
+      id: string;
     };

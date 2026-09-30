@@ -8,24 +8,81 @@
   </head>
   <body>
     <div class="app-shell">
-      <aside class="panel panel-left">
-        <div class="panel-header">
-          <h2>Selection</h2>
-        </div>
-        <div id="selection-summary" class="empty-state">No component selected.</div>
-      </aside>
+      <div class="tab-bar">
+        <button type="button" class="tab-button is-active" data-tab="components">Components</button>
+        <button type="button" class="tab-button" data-tab="dev">Dev</button>
+      </div>
 
-      <main class="panel panel-right">
-        <div class="panel-header panel-header-right">
-          <h2>Inspector JSON</h2>
-          <div class="actions">
-            <button id="inspect-selection" class="primary">Inspect selection</button>
-            <button id="copy-json" class="secondary">Copy JSON</button>
-          </div>
+      <div class="tab-panel is-active" data-tab-panel="components">
+        <div class="components-shell">
+          <aside class="panel panel-left">
+            <div class="panel-header list-header">
+              <h2>Components</h2>
+              <div class="scope-row">
+                <div class="scope-toggle" role="tablist" aria-label="Scan scope">
+                  <button type="button" class="scope-button is-active" data-scope="page">This page</button>
+                  <button type="button" class="scope-button" data-scope="all">All pages</button>
+                </div>
+                <button type="button" id="refresh-list" class="icon-button" title="Refresh list" aria-label="Refresh list">↻</button>
+              </div>
+            </div>
+
+            <div class="list-controls">
+              <input id="search-input" type="search" placeholder="Search components…" autocomplete="off" />
+              <div class="list-controls-row">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="filter-needs-doc" />
+                  Needs documentation
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="filter-hide-private" />
+                  Hide private
+                </label>
+              </div>
+              <div class="list-controls-row">
+                <button type="button" id="expand-all" class="link-button">Expand all</button>
+                <button type="button" id="collapse-all" class="link-button">Collapse all</button>
+                <span id="scan-progress" class="scan-progress"></span>
+              </div>
+            </div>
+
+            <div id="component-tree" class="component-tree">
+              <div class="empty-state">Scanning…</div>
+            </div>
+          </aside>
+
+          <main class="panel panel-right">
+            <div class="panel-header panel-header-right">
+              <h2>Selection</h2>
+            </div>
+            <div id="selected-info" class="empty-state">No component selected.</div>
+          </main>
         </div>
-        <pre id="json-output">{}</pre>
-      </main>
+      </div>
+
+      <div class="tab-panel" data-tab-panel="dev">
+        <div class="dev-shell">
+          <aside class="panel panel-left">
+            <div class="panel-header">
+              <h2>Selection</h2>
+            </div>
+            <div id="selection-summary" class="empty-state">No component selected.</div>
+          </aside>
+
+          <main class="panel panel-right">
+            <div class="panel-header panel-header-right">
+              <h2>Inspector JSON</h2>
+              <div class="actions">
+                <button id="inspect-selection" class="primary">Inspect selection</button>
+                <button id="copy-json" class="secondary">Copy JSON</button>
+              </div>
+            </div>
+            <pre id="json-output">{}</pre>
+          </main>
+        </div>
+      </div>
     </div>
     <!-- UI_SCRIPT -->
   </body>
 </html>
+
