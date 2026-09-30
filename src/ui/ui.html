@@ -29,19 +29,20 @@
 
             <div class="list-controls">
               <input id="search-input" type="search" placeholder="Search components…" autocomplete="off" />
-              <div class="list-controls-row">
-                <label class="checkbox-label">
-                  <input type="checkbox" id="filter-needs-doc" />
-                  Needs documentation
-                </label>
-                <label class="checkbox-label">
-                  <input type="checkbox" id="filter-hide-private" />
-                  Hide private
-                </label>
+              <div class="list-controls-row filter-row">
+                <span class="filter-row-label">Filter</span>
+                <button type="button" id="filter-needs-doc" class="filter-chip">Needs documentation</button>
+                <button type="button" id="filter-hide-private" class="filter-chip">Hide private</button>
+              </div>
+              <div class="list-controls-row list-meta-row">
+                <span id="results-count" class="results-count"></span>
+                <button type="button" id="clear-filters" class="link-button" hidden>Clear filters</button>
               </div>
               <div class="list-controls-row">
                 <button type="button" id="expand-all" class="link-button">Expand all</button>
                 <button type="button" id="collapse-all" class="link-button">Collapse all</button>
+                <button type="button" id="select-all-shown" class="link-button">Select all shown</button>
+                <button type="button" id="clear-selection" class="link-button" hidden>Clear selection</button>
                 <span id="scan-progress" class="scan-progress"></span>
               </div>
             </div>
@@ -49,13 +50,74 @@
             <div id="component-tree" class="component-tree">
               <div class="empty-state">Scanning…</div>
             </div>
+
+            <div id="bulk-bar" class="bulk-bar" hidden>
+              <span id="bulk-count"></span>
+              <button type="button" id="bulk-clear" class="link-button danger-link">Clear documentation…</button>
+            </div>
           </aside>
 
-          <main class="panel panel-right">
-            <div class="panel-header panel-header-right">
-              <h2>Selection</h2>
+          <main class="panel panel-right editor-pane">
+            <div id="editor-empty" class="empty-state">Select a component to document it.</div>
+
+            <div id="editor-root" class="editor-root" hidden>
+              <div class="editor-header">
+                <div class="editor-title">
+                  <h2 id="editor-name">—</h2>
+                  <div id="editor-meta" class="editor-meta"></div>
+                </div>
+                <div class="editor-header-actions">
+                  <span id="editor-status-pill" class="status-pill"></span>
+                  <button type="button" id="clear-doc-button" class="link-button danger-link" hidden>Clear documentation</button>
+                </div>
+              </div>
+
+              <div id="editor-guard" class="editor-guard" hidden>
+                <span>You have unsaved changes.</span>
+                <div class="editor-guard-actions">
+                  <button type="button" id="guard-save" class="primary">Save</button>
+                  <button type="button" id="guard-discard" class="secondary">Discard</button>
+                  <button type="button" id="guard-cancel" class="secondary">Cancel</button>
+                </div>
+              </div>
+
+              <div class="editor-scroll">
+                <div id="editor-fields" class="editor-fields"></div>
+
+                <div class="editor-links">
+                  <div class="editor-links-header">
+                    <h3>Links</h3>
+                    <button type="button" id="add-link" class="link-button">+ Add link</button>
+                  </div>
+                  <div id="links-list" class="links-list"></div>
+                </div>
+
+                <div class="editor-options">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="sync-to-description" />
+                    Sync to description (Purpose + When to use + AI guidance)
+                  </label>
+                </div>
+              </div>
+
+              <div class="editor-footer">
+                <div class="footer-nav">
+                  <button type="button" id="editor-prev" class="secondary">← Prev</button>
+                  <button type="button" id="editor-skip" class="secondary">Skip</button>
+                  <span class="footer-spacer"></span>
+                  <button type="button" id="editor-next" class="secondary">Next →</button>
+                </div>
+                <div class="footer-status">
+                  <span id="required-progress" class="required-progress"></span>
+                  <span id="unsaved-label" class="unsaved-label" hidden>Unsaved changes</span>
+                  <button type="button" id="move-to-draft" class="link-button" hidden>Move back to draft</button>
+                </div>
+                <div class="footer-actions">
+                  <button type="button" id="save-draft" class="secondary">Save draft</button>
+                  <button type="button" id="save-primary" class="primary">Mark as ready</button>
+                </div>
+              </div>
             </div>
-            <div id="selected-info" class="empty-state">No component selected.</div>
           </main>
         </div>
       </div>
@@ -79,6 +141,18 @@
             </div>
             <pre id="json-output">{}</pre>
           </main>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirm-modal" class="modal-overlay" hidden>
+      <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="modal-title">
+        <h3 id="modal-title"></h3>
+        <p id="modal-body"></p>
+        <div id="modal-list" class="modal-list"></div>
+        <div class="modal-actions">
+          <button type="button" id="modal-cancel" class="secondary">Cancel</button>
+          <button type="button" id="modal-confirm" class="danger">Clear documentation</button>
         </div>
       </div>
     </div>

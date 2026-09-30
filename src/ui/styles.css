@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+/* Component styles like `.editor-guard { display: flex }` have the same specificity as the
+   UA `[hidden] { display: none }` rule and can win on source order, so force it here. */
+[hidden] {
+  display: none !important;
+}
+
 html,
 body {
   margin: 0;
@@ -362,4 +368,446 @@ button.primary:hover {
   color: var(--figma-color-text-secondary);
   font-size: 10px;
 }
+
+/* Editor pane (right pane, Components tab) */
+
+.editor-pane {
+  min-height: 0;
+}
+
+.editor-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.editor-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--figma-color-border);
+  background: var(--figma-color-bg-secondary);
+  flex: none;
+}
+
+.editor-title h2 {
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.editor-meta {
+  font-size: 11px;
+  color: var(--figma-color-text-secondary);
+}
+
+.status-pill {
+  flex: none;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: var(--figma-color-bg-tertiary, var(--figma-color-bg-secondary));
+  color: var(--figma-color-text-secondary);
+}
+
+.status-pill.status-documented {
+  background: var(--figma-color-bg-success, #d3f4de);
+  color: var(--figma-color-text-onsuccess, #14622f);
+}
+
+.status-pill.status-draft {
+  background: var(--figma-color-bg-warning, #fdecc8);
+  color: var(--figma-color-text-onwarning, #7a4900);
+}
+
+.status-pill.status-missing {
+  background: var(--figma-color-bg-danger, #fddad7);
+  color: var(--figma-color-text-ondanger, #7a2018);
+}
+
+.editor-guard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--figma-color-bg-warning, #fdecc8);
+  color: var(--figma-color-text-onwarning, #7a4900);
+  font-size: 12px;
+  flex: none;
+}
+
+.editor-guard-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.editor-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
+}
+
+.editor-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.field-label-row label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.field.is-invalid .field-label-row label {
+  color: var(--figma-color-text-danger, #f24822);
+}
+
+.field-hint {
+  font-size: 11px;
+  color: var(--figma-color-text-secondary);
+  margin: -4px 0 0;
+}
+
+.toolbar {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.toolbar button {
+  border: 1px solid var(--figma-color-border);
+  border-radius: 4px;
+  background: var(--figma-color-bg);
+  color: var(--figma-color-text);
+  padding: 3px 7px;
+  font-size: 11px;
+  line-height: 1.4;
+  min-width: 22px;
+}
+
+.field textarea,
+.field input[type='text'] {
+  border: 1px solid var(--figma-color-border);
+  border-radius: 6px;
+  background: var(--figma-color-bg);
+  color: var(--figma-color-text);
+  padding: 8px;
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.field textarea {
+  min-height: 72px;
+}
+
+.field.is-invalid textarea,
+.field.is-invalid input[type='text'] {
+  border-color: var(--figma-color-border-danger, #f24822);
+}
+
+.field-error {
+  font-size: 11px;
+  color: var(--figma-color-text-danger, #f24822);
+}
+
+.preview {
+  border: 1px solid var(--figma-color-border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  background: var(--figma-color-bg-secondary);
+}
+
+.preview h1 {
+  font-size: 14px;
+  margin: 0 0 6px;
+}
+
+.preview p {
+  margin: 0 0 8px;
+}
+
+.preview ul,
+.preview ol {
+  margin: 0 0 8px;
+  padding-left: 18px;
+}
+
+.preview pre {
+  background: var(--figma-color-bg);
+  border: 1px solid var(--figma-color-border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  overflow: auto;
+  font-size: 11px;
+}
+
+.preview code {
+  font-family: 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+}
+
+.editor-links {
+  margin-top: 24px;
+}
+
+.editor-links-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editor-links-header h3 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--figma-color-text-secondary);
+}
+
+.links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.link-row {
+  display: flex;
+  gap: 6px;
+}
+
+.link-row input {
+  border: 1px solid var(--figma-color-border);
+  border-radius: 6px;
+  background: var(--figma-color-bg);
+  color: var(--figma-color-text);
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+.link-row .link-label {
+  width: 35%;
+}
+
+.link-row .link-url {
+  flex: 1;
+  min-width: 0;
+}
+
+.link-row.is-invalid .link-url {
+  border-color: var(--figma-color-border-danger, #f24822);
+}
+
+.link-row-remove {
+  border: 1px solid var(--figma-color-border);
+  border-radius: 6px;
+  background: var(--figma-color-bg);
+  padding: 4px 8px;
+}
+
+.editor-options {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--figma-color-border);
+}
+
+.editor-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--figma-color-border);
+  background: var(--figma-color-bg-secondary);
+  flex: none;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-spacer {
+  flex: 1;
+}
+
+.footer-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  min-height: 16px;
+}
+
+.required-progress {
+  color: var(--figma-color-text-secondary);
+}
+
+.unsaved-label {
+  color: var(--figma-color-text-warning, #a35200);
+  font-weight: 600;
+}
+
+.footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Filter chips, results count, selection helpers (left pane) */
+
+.filter-row {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-row-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--figma-color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.filter-chip {
+  border: 1px solid var(--figma-color-border);
+  border-radius: 999px;
+  background: var(--figma-color-bg);
+  color: var(--figma-color-text-secondary);
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+.filter-chip.is-active {
+  background: var(--figma-color-bg-brand);
+  border-color: var(--figma-color-bg-brand);
+  color: var(--figma-color-text-onbrand);
+  font-weight: 600;
+}
+
+.list-meta-row {
+  justify-content: space-between;
+  color: var(--figma-color-text-secondary);
+}
+
+.results-count {
+  font-size: 11px;
+}
+
+.danger-link {
+  color: var(--figma-color-text-danger, #f24822);
+}
+
+.bulk-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--figma-color-border);
+  background: var(--figma-color-bg-secondary);
+  font-size: 12px;
+  flex: none;
+}
+
+#bulk-count {
+  font-weight: 600;
+}
+
+/* Editor header actions (status pill + Clear documentation) */
+
+.editor-header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex: none;
+}
+
+/* Confirm modal */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.modal-card {
+  width: 340px;
+  max-width: calc(100% - 32px);
+  background: var(--figma-color-bg);
+  color: var(--figma-color-text);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.modal-card h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.modal-card p {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--figma-color-text-secondary);
+  line-height: 1.5;
+}
+
+.modal-list {
+  margin: 0 0 12px;
+}
+
+.modal-list ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+button.danger {
+  background: var(--figma-color-bg-danger, #f24822);
+  border-color: var(--figma-color-bg-danger, #f24822);
+  color: var(--figma-color-text-ondanger, #fff);
+}
+
+button.danger:hover {
+  opacity: 0.9;
+}
+
 

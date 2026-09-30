@@ -16,6 +16,36 @@ function escapeForJsonString(value) {
   return JSON.stringify(value);
 }
 
+/**
+ * Escapes any literal "</tagName" inside `source` as "<\/tagName" so it can't be
+ * misread as a closing tag by the HTML parser once embedded inside <style>/<script>.
+ */
+function escapeClosingTag(source, tagName) {
+  const pattern = new RegExp(`</(${tagName})`, 'gi');
+  return source.replace(pattern, (_match, name) => `<\\/${name}`);
+}
+
+/** Fails the build if `script` isn't syntactically valid JS (catches corrupted string-replace inlining). */
+function assertValidScript(script, label) {
+  try {
+    // eslint-disable-next-line no-new-func
+    new Function(script);
+  } catch (error) {
+    throw new Error(`Inlined script "${label}" is not valid JavaScript: ${error.message}`);
+  }
+}
+
+/** Extracts the raw contents of every <script>...</script> block in `html`. */
+function extractInlineScripts(html) {
+  const scripts = [];
+  const pattern = /<script>([\s\S]*?)<\/script>/g;
+  let match;
+  while ((match = pattern.exec(html)) !== null) {
+    scripts.push(match[1]);
+  }
+  return scripts;
+}
+
 async function writeUiEmbed() {
   const templatePath = path.join(rootDir, 'src', 'ui', 'ui.html');
   const cssPath = path.join(rootDir, 'src', 'ui', 'styles.css');
@@ -33,12 +63,30 @@ async function writeUiEmbed() {
     sourcemap: false,
   });
 
-  const script = uiBuild.outputFiles[0]?.text ?? '';
+  const rawScript = uiBuild.outputFiles[0]?.text ?? '';
+
+  // Validate the bundle itself before any string surgery, so failures point at esbuild's output.
+  assertValidScript(rawScript, 'ui.ts bundle (pre-inline)');
+
+  const safeCss = escapeClosingTag(css, 'style');
+  const safeScript = escapeClosingTag(rawScript, 'script');
+
+  // Function replacers, never string replacers: a string replacement re-interprets
+  // $&, $`, $', $1 etc. found inside minified CSS/JS, silently corrupting the output.
   const html = template
-    .replace('<!-- UI_STYLE -->', `<style>${css}</style>`)
-    .replace('<!-- UI_SCRIPT -->', `<script>${script}</script>`);
+    .replace('<!-- UI_STYLE -->', () => `<style>${safeCss}</style>`)
+    .replace('<!-- UI_SCRIPT -->', () => `<script>${safeScript}</script>`);
 
   await fs.writeFile(path.join(buildDir, 'ui.html'), html, 'utf8');
+
+  // Re-extract from the actual written HTML and validate again: this is the real guard,
+  // since it catches corruption introduced by the inlining/escaping step itself.
+  const inlineScripts = extractInlineScripts(html);
+  if (inlineScripts.length === 0) {
+    throw new Error('build/ui.html has no <script> block after inlining; UI_SCRIPT marker probably failed to match.');
+  }
+  inlineScripts.forEach((script, index) => assertValidScript(script, `build/ui.html <script> #${index + 1}`));
+  console.log(`[build] ui.html inline script check passed (${inlineScripts.length} block(s), ${safeScript.length} chars).`);
 
   const embedContent = `export default ${escapeForJsonString(html)};\n`;
   await fs.writeFile(path.join(generatedDir, 'ui-embed.ts'), embedContent, 'utf8');
