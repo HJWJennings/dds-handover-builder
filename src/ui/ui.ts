@@ -1,4 +1,4 @@
-import type { EditorPayload, PluginToUIMessage, SaveResultPayload, UIToPluginMessage } from '../messages';
+import type { EditorPayload, ExportFormat, ImportPreviewEntry, ImportPreviewPayload, ImportResultEntry, PluginToUIMessage, SaveResultPayload, UIToPluginMessage } from '../messages';
 import type { ComponentGroup, ComponentListItem, ScanScope } from '../scan';
 import type { ComponentDoc, ComponentDocLink } from '../store/types';
 import { applyMarkdownAction, parseMarkdown, type BlockNode, type InlineNode, type MarkdownAction } from '../shared/markdown';
@@ -100,6 +100,37 @@ const refreshButton = document.getElementById('refresh-list') as HTMLButtonEleme
 const bulkBarEl = document.getElementById('bulk-bar') as HTMLDivElement | null;
 const bulkCountEl = document.getElementById('bulk-count') as HTMLSpanElement | null;
 const bulkClearButton = document.getElementById('bulk-clear') as HTMLButtonElement | null;
+const exportMenuButton = document.getElementById('export-menu-button') as HTMLButtonElement | null;
+const exportMenuEl = document.getElementById('export-menu') as HTMLDivElement | null;
+const exportScopeLabel = document.getElementById('export-scope-label') as HTMLDivElement | null;
+const exportSourceLabel = document.getElementById('export-source-label') as HTMLSpanElement | null;
+const importJsonButton = document.getElementById('import-json-button') as HTMLButtonElement | null;
+const importFileInput = document.getElementById('import-file') as HTMLInputElement | null;
+
+interface BatchOutcome {
+  label: string;
+  count: number;
+  danger?: boolean;
+}
+
+const renderBatchSummary = (target: HTMLElement | null, outcomes: BatchOutcome[]) => {
+  if (!target) return;
+  const visible = outcomes.filter((outcome) => outcome.count > 0);
+  target.replaceChildren();
+  target.classList.remove('outcome-failure');
+  target.classList.toggle('has-failure', visible.some((outcome) => outcome.danger));
+  if (visible.length === 0) {
+    target.textContent = 'Nothing changed';
+    return;
+  }
+  visible.forEach((outcome, index) => {
+    if (index > 0) target.append(document.createTextNode(' · '));
+    const part = document.createElement('span');
+    part.textContent = `${outcome.label} ${outcome.count}`;
+    if (outcome.danger) part.className = 'outcome-failure';
+    target.appendChild(part);
+  });
+};
 
 const STATUS_ICON: Record<string, string> = {
   documented: '✓',
@@ -173,6 +204,7 @@ const updateListMeta = () => {
   const totalCount = state.groups.reduce((sum, group) => sum + group.items.length, 0);
   const visibleCount = getFilteredFlatList().length;
   if (resultsCountEl) resultsCountEl.textContent = `Showing ${visibleCount} of ${totalCount}`;
+  if (exportScopeLabel) exportScopeLabel.textContent = state.checked.size > 0 ? `${state.checked.size} checked` : `${visibleCount} shown`;
   if (clearFiltersButton) clearFiltersButton.hidden = !isAnyFilterActive();
   if (clearSelectionButton) clearSelectionButton.hidden = state.checked.size === 0;
   updateBulkBar();
@@ -390,6 +422,8 @@ interface ConfirmModalOptions {
   body: string;
   confirmLabel: string;
   listItems?: string[];
+  confirmClass?: string;
+  hideCancel?: boolean;
   onConfirm: () => void;
 }
 
@@ -399,16 +433,44 @@ const modalOverlay = document.getElementById('confirm-modal') as HTMLDivElement 
 const modalTitleEl = document.getElementById('modal-title') as HTMLHeadingElement | null;
 const modalBodyEl = document.getElementById('modal-body') as HTMLParagraphElement | null;
 const modalListEl = document.getElementById('modal-list') as HTMLDivElement | null;
+const modalExtraEl = document.getElementById('modal-extra') as HTMLDivElement | null;
+const modalProgressEl = document.getElementById('modal-progress') as HTMLDivElement | null;
+const modalProgressBar = document.getElementById('modal-progress-bar') as HTMLProgressElement | null;
+const modalProgressLabel = document.getElementById('modal-progress-label') as HTMLDivElement | null;
+const modalProgressName = document.getElementById('modal-progress-name') as HTMLDivElement | null;
+const modalExportContent = document.getElementById('modal-export-content') as HTMLTextAreaElement | null;
 const modalCancelButton = document.getElementById('modal-cancel') as HTMLButtonElement | null;
 const modalConfirmButton = document.getElementById('modal-confirm') as HTMLButtonElement | null;
+const modalCopyButton = document.getElementById('modal-copy') as HTMLButtonElement | null;
+const modalActions = modalOverlay?.querySelector<HTMLDivElement>('.modal-actions') ?? null;
+let progressModalLocked = false;
+let progressModalStartedAt = 0;
+let progressVerb = 'Processing';
 
 const closeModal = () => {
+  if (progressModalLocked) return;
   activeModal = null;
   if (modalOverlay) modalOverlay.hidden = true;
 };
 
 const openConfirmModal = (options: ConfirmModalOptions) => {
+  progressModalLocked = false;
   activeModal = options;
+  if (modalCancelButton) modalCancelButton.textContent = 'Cancel';
+  if (modalCancelButton) modalCancelButton.hidden = Boolean(options.hideCancel);
+  if (modalConfirmButton) {
+    modalConfirmButton.hidden = false;
+    modalConfirmButton.className = options.confirmClass ?? 'danger';
+  }
+  if (modalCopyButton) modalCopyButton.hidden = true;
+  if (modalCancelButton) modalCancelButton.disabled = false;
+  if (modalConfirmButton) modalConfirmButton.disabled = false;
+  if (modalActions) modalActions.hidden = false;
+  if (modalProgressEl) modalProgressEl.hidden = true;
+  if (modalListEl) modalListEl.hidden = false;
+  if (modalExtraEl) modalExtraEl.hidden = false;
+  if (modalExportContent) modalExportContent.hidden = true;
+  if (modalExtraEl) modalExtraEl.innerHTML = '';
   if (modalTitleEl) modalTitleEl.textContent = options.title;
   if (modalBodyEl) modalBodyEl.textContent = options.body;
   if (modalListEl) {
@@ -428,6 +490,56 @@ const openConfirmModal = (options: ConfirmModalOptions) => {
   modalCancelButton?.focus();
 };
 
+const startProgressModal = (title: string, total: number, verb: string) => {
+  openConfirmModal({ title, body: '', confirmLabel: '', hideCancel: true, onConfirm: () => {} });
+  progressModalLocked = true;
+  progressModalStartedAt = Date.now();
+  progressVerb = verb;
+  if (modalCancelButton) modalCancelButton.disabled = true;
+  if (modalConfirmButton) modalConfirmButton.disabled = true;
+  if (modalCopyButton) modalCopyButton.disabled = true;
+  if (modalActions) modalActions.hidden = true;
+  if (modalListEl) modalListEl.hidden = true;
+  if (modalExtraEl) modalExtraEl.hidden = true;
+  if (modalExportContent) modalExportContent.hidden = true;
+  if (modalProgressEl) modalProgressEl.hidden = false;
+  if (modalProgressBar) {
+    modalProgressBar.max = Math.max(total, 1);
+    modalProgressBar.value = 0;
+  }
+  updateProgressModal(0, total, '');
+};
+
+const updateProgressModal = (done: number, total: number, name: string) => {
+  if (!progressModalLocked) return;
+  if (modalProgressBar) {
+    modalProgressBar.max = Math.max(total, 1);
+    modalProgressBar.value = Math.min(done, total);
+  }
+  if (modalProgressLabel) modalProgressLabel.textContent = `${progressVerb} ${done} of ${total}…`;
+  if (modalProgressName) modalProgressName.textContent = name;
+};
+
+const completeProgressModal = (finish: () => void) => {
+  if (!progressModalLocked) {
+    finish();
+    return;
+  }
+  const remaining = Math.max(0, 400 - (Date.now() - progressModalStartedAt));
+  window.setTimeout(() => {
+    progressModalLocked = false;
+    finish();
+  }, remaining);
+};
+
+modalCopyButton?.addEventListener('click', () => {
+  if (!modalExportContent) return;
+  modalExportContent.focus();
+  modalExportContent.select();
+  const copied = document.execCommand('copy');
+  modalCopyButton.textContent = copied ? 'Copied' : 'Copy failed';
+});
+
 modalCancelButton?.addEventListener('click', closeModal);
 
 modalConfirmButton?.addEventListener('click', () => {
@@ -437,11 +549,15 @@ modalConfirmButton?.addEventListener('click', () => {
 });
 
 modalOverlay?.addEventListener('click', (event) => {
-  if (event.target === modalOverlay) closeModal();
+  if (!progressModalLocked && event.target === modalOverlay) closeModal();
 });
 
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && modalOverlay && !modalOverlay.hidden) {
+    if (progressModalLocked) {
+      event.preventDefault();
+      return;
+    }
     closeModal();
   }
 });
@@ -465,10 +581,317 @@ bulkClearButton?.addEventListener('click', () => {
     confirmLabel: `Clear ${ids.length}`,
     listItems: confirmClearNames(ids),
     onConfirm: () => {
+      startProgressModal('Clearing documentation', ids.length, 'Clearing');
       post({ type: 'CLEAR_DOCS_BULK', ids });
     },
   });
 });
+
+const exportFormatButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-export-format]'));
+
+exportMenuButton?.addEventListener('click', () => {
+  if (exportMenuEl) exportMenuEl.hidden = !exportMenuEl.hidden;
+});
+
+document.addEventListener('click', (event) => {
+  const target = event.target as Node | null;
+  if (exportMenuEl && target && !exportMenuEl.contains(target) && !exportMenuButton?.contains(target)) {
+    exportMenuEl.hidden = true;
+  }
+});
+
+const requestExport = (format: ExportFormat) => {
+  const checkedIds = Array.from(state.checked);
+  const source = checkedIds.length > 0 ? 'checked' : 'shown';
+  const ids = source === 'checked' ? checkedIds : getFilteredFlatList().map((item) => item.id);
+  exportSourceLabel?.classList.remove('outcome-failure');
+  if (exportMenuEl) exportMenuEl.hidden = true;
+  if (ids.length > 20) startProgressModal('Exporting components', ids.length, 'Exporting');
+  post({ type: 'EXPORT_REQUEST', format, ids, source });
+};
+
+exportFormatButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const format = button.dataset.exportFormat as ExportFormat;
+    if (format === 'csv' || format === 'json') requestExport(format);
+  });
+});
+
+importJsonButton?.addEventListener('click', () => {
+  if (exportMenuEl) exportMenuEl.hidden = true;
+  if (importFileInput) {
+    importFileInput.value = '';
+    importFileInput.click();
+  }
+});
+
+importFileInput?.addEventListener('change', async () => {
+  const file = importFileInput.files?.[0];
+  if (!file) return;
+  try {
+    const content = JSON.parse(await file.text()) as unknown;
+    post({ type: 'IMPORT_PREVIEW_REQUEST', content });
+    if (exportSourceLabel) exportSourceLabel.textContent = `Preparing import from ${file.name}…`;
+  } catch (error) {
+    if (exportSourceLabel) {
+      exportSourceLabel.textContent = `Import error: ${error instanceof Error ? error.message : String(error)}`;
+      exportSourceLabel.classList.add('outcome-failure');
+    }
+  }
+});
+
+interface ExportDataPayload {
+  format: ExportFormat;
+  fileName: string;
+  content: string;
+  count: number;
+  source: 'checked' | 'shown';
+}
+
+const showExportContent = (payload: ExportDataPayload) => {
+  const content = payload.format === 'csv' ? `\uFEFF${payload.content}` : payload.content;
+  try {
+    const blob = new Blob([content], { type: payload.format === 'csv' ? 'text/csv;charset=utf-8' : 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = payload.fileName;
+    anchor.style.display = 'none';
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  } catch (error) {
+    console.warn('[ui] download was blocked; showing copy fallback', error);
+  }
+
+  const showDownloadFallback = () => {
+    openConfirmModal({
+      title: `${payload.format.toUpperCase()} export ready`,
+      body: `Exporting ${payload.count} ${payload.source}. The download should start automatically; copy the content below if Figma blocks it.`,
+      confirmLabel: 'Close',
+      confirmClass: 'secondary',
+      hideCancel: true,
+      onConfirm: () => {},
+    });
+    if (modalExportContent) {
+      modalExportContent.hidden = false;
+      modalExportContent.value = content;
+    }
+    if (modalConfirmButton) modalConfirmButton.hidden = true;
+    if (modalCopyButton) modalCopyButton.hidden = false;
+    if (modalCancelButton) {
+      modalCancelButton.hidden = false;
+      modalCancelButton.textContent = 'Close';
+      modalCancelButton.focus();
+    }
+  };
+  if (payload.count > 20) {
+    completeProgressModal(showDownloadFallback);
+  } else {
+    showDownloadFallback();
+  }
+  renderBatchSummary(exportSourceLabel, [{ label: 'Exported', count: payload.count }]);
+};
+
+const appendOutcomeSection = (
+  container: HTMLElement,
+  title: string,
+  names: string[],
+  appendDetail?: (list: HTMLElement, entry: ImportPreviewEntry) => void,
+  detailEntries: ImportPreviewEntry[] = [],
+) => {
+  const section = document.createElement('section');
+  section.className = 'outcome-section';
+  const heading = document.createElement('h4');
+  heading.textContent = title;
+  section.appendChild(heading);
+  if (names.length > 0) {
+    const list = document.createElement('ul');
+    names.slice(0, 5).forEach((name) => {
+      const item = document.createElement('li');
+      item.textContent = name;
+      list.appendChild(item);
+    });
+    if (names.length > 5) {
+      const more = document.createElement('li');
+      more.textContent = `+ ${names.length - 5} more`;
+      list.appendChild(more);
+    }
+    section.appendChild(list);
+    if (appendDetail) {
+      detailEntries.forEach((entry) => appendDetail(section, entry));
+    }
+  }
+  container.appendChild(section);
+};
+
+const appendResultSection = (container: HTMLElement, title: string, entries: ImportResultEntry[]) => {
+  if (entries.length === 0) return;
+  const section = document.createElement('section');
+  section.className = 'result-section';
+  const heading = document.createElement('h4');
+  heading.textContent = title;
+  section.appendChild(heading);
+  if (entries.length > 0) {
+    const list = document.createElement('ul');
+    entries.forEach((entry) => {
+      const item = document.createElement('li');
+      item.textContent = entry.reason ? `${entry.name}: ${entry.reason}` : entry.name;
+      list.appendChild(item);
+    });
+    section.appendChild(list);
+  }
+  container.appendChild(section);
+};
+
+const showImportPreview = (preview: ImportPreviewPayload) => {
+  let choice: 'keep' | 'replace' | null = null;
+  const differs = preview.counts.different;
+  const formatDate = (value?: string) => {
+    if (!value) return 'unknown date';
+    const timestamp = Date.parse(value);
+    return Number.isFinite(timestamp) ? new Date(timestamp).toLocaleDateString() : value;
+  };
+
+  const updateImportChoice = () => {
+    if (!modalConfirmButton) return;
+    const replacing = choice === 'replace' ? differs : 0;
+    const count = preview.counts.new + replacing;
+    modalConfirmButton.disabled = (differs > 0 && choice === null) || count === 0;
+    modalConfirmButton.textContent = count === 0
+      ? 'Nothing to import'
+      : replacing > 0
+        ? `Import ${count} components`
+        : `Add ${count} component${count === 1 ? '' : 's'}`;
+
+    const keptAsIs = preview.counts.unchanged + (choice === 'keep' ? differs : 0);
+    const summary = modalExtraEl?.querySelector<HTMLElement>('.import-live-summary');
+    if (summary) {
+      if (differs > 0 && choice === null) {
+        summary.textContent = `Choose whether to keep or replace ${differs} different component${differs === 1 ? '' : 's'}.`;
+      } else {
+        const parts: string[] = [];
+        if (preview.counts.new > 0) parts.push(`add ${preview.counts.new}`);
+        if (replacing > 0) parts.push(`replace ${replacing}`);
+        if (keptAsIs > 0) parts.push(`keep existing ${keptAsIs}`);
+        summary.textContent = parts.length > 0 ? `This will ${parts.join(' · ')}.` : 'Nothing changed';
+      }
+    }
+  };
+
+  openConfirmModal({
+    title: 'Import documentation',
+    body: `File contains ${preview.fileCount} components.`,
+    confirmLabel: 'Nothing to import',
+    confirmClass: 'primary',
+    hideCancel: false,
+    onConfirm: () => {
+      const selectedChoice = choice;
+      if (differs > 0 && selectedChoice === null) return;
+      const total = preview.counts.new + (selectedChoice === 'replace' ? differs : 0);
+      startProgressModal('Importing documentation', preview.fileCount, 'Importing');
+      post({ type: 'IMPORT_CONFIRM', planId: preview.planId, choice: selectedChoice });
+      if (exportSourceLabel) exportSourceLabel.textContent = `Importing ${total} components…`;
+    },
+  });
+
+  if (modalExtraEl) {
+    appendOutcomeSection(modalExtraEl, `Will be added (${preview.counts.new})`, preview.entries.filter((entry) => entry.outcome === 'NEW').map((entry) => entry.name));
+    appendOutcomeSection(modalExtraEl, `Already documented, identical (${preview.counts.unchanged})`, preview.entries.filter((entry) => entry.outcome === 'UNCHANGED').map((entry) => entry.name));
+    appendOutcomeSection(modalExtraEl, `Already documented, different (${differs})`, preview.entries.filter((entry) => entry.outcome === 'DIFFERENT').map((entry) => entry.name), (list, entry) => {
+      const detail = document.createElement('div');
+      detail.className = 'outcome-detail';
+      detail.textContent = `Existing: updated ${formatDate(entry.existingUpdatedAt)}${entry.existingUpdatedBy ? ` by ${entry.existingUpdatedBy}` : ''} / File: updated ${formatDate(entry.fileUpdatedAt)}${entry.fileUpdatedBy ? ` by ${entry.fileUpdatedBy}` : ''}`;
+      list.appendChild(detail);
+      if (entry.existingIsNewer) {
+        const warning = document.createElement('div');
+        warning.className = 'outcome-detail outcome-warning';
+        warning.textContent = 'Existing version is newer';
+        list.appendChild(warning);
+      }
+    }, preview.entries.filter((entry) => entry.outcome === 'DIFFERENT'));
+
+    const cannotImport = preview.entries.filter((entry) => entry.outcome === 'UNMATCHED' || entry.outcome === 'INVALID');
+    appendOutcomeSection(modalExtraEl, `Can't import: ${cannotImport.length}`, cannotImport.map((entry) => `${entry.name}: ${entry.reason ?? 'Unknown reason'}`));
+
+    if (differs > 0) {
+      const choices = document.createElement('fieldset');
+      choices.className = 'import-choice';
+      const legend = document.createElement('legend');
+      legend.textContent = 'Choose what to do with different documentation';
+      choices.appendChild(legend);
+      const choiceOptions: Array<{ value: 'keep' | 'replace'; label: string }> = [
+        { value: 'keep', label: `Keep existing documentation (skip these ${differs})` },
+        { value: 'replace', label: `Replace existing documentation with the file's version (${differs})` },
+      ];
+      for (const option of choiceOptions) {
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'import-conflict-choice';
+        input.value = option.value;
+        input.required = true;
+        input.addEventListener('change', () => {
+          choice = option.value;
+          updateImportChoice();
+        });
+        const text = document.createElement('span');
+        text.textContent = option.label;
+        label.append(input, text);
+        choices.appendChild(label);
+      }
+      modalExtraEl.appendChild(choices);
+    }
+
+    const summary = document.createElement('div');
+    summary.className = 'import-live-summary';
+    summary.id = 'modal-import-summary';
+    modalExtraEl.appendChild(summary);
+  }
+  updateImportChoice();
+};
+
+const showImportResult = (result: Extract<PluginToUIMessage, { type: 'IMPORT_RESULT' }>['payload']) => {
+  const added = result.added;
+  const replaced = result.replaced;
+  const kept = result.keptExisting;
+  const unchanged = result.unchanged;
+  const couldNotImport = result.couldNotImport;
+  for (const entry of [...added, ...replaced]) {
+    if (entry.id) updateItemStatus(entry.id, entry.status ?? 'missing');
+  }
+  renderTree();
+  const outcomes: BatchOutcome[] = [
+    { label: 'Added', count: added.length },
+    { label: 'Replaced', count: replaced.length },
+    { label: 'Kept existing', count: kept.length },
+    { label: 'Unchanged', count: unchanged.length },
+    { label: "Couldn't import", count: couldNotImport.length, danger: true },
+  ];
+  openConfirmModal({
+    title: 'Import result',
+    body: '',
+    confirmLabel: 'Close',
+    confirmClass: 'secondary',
+    hideCancel: true,
+    onConfirm: () => {},
+  });
+  renderBatchSummary(modalBodyEl, outcomes);
+  if (modalExtraEl) {
+    appendResultSection(modalExtraEl, `Added (${added.length})`, added);
+    appendResultSection(modalExtraEl, `Replaced (${replaced.length})`, replaced);
+    appendResultSection(modalExtraEl, `Kept existing (${kept.length})`, kept);
+    appendResultSection(modalExtraEl, `Unchanged (${unchanged.length})`, unchanged);
+    appendResultSection(modalExtraEl, `Couldn't import: ${couldNotImport.length}`, couldNotImport);
+  }
+  if (modalConfirmButton) {
+    modalConfirmButton.hidden = false;
+    modalConfirmButton.textContent = 'Close';
+    modalConfirmButton.focus();
+  }
+  renderBatchSummary(exportSourceLabel, outcomes);
+};
 
 // ---------------------------------------------------------------------------
 // Editor (right pane, Components tab)
@@ -707,15 +1130,14 @@ const buildField = (config: FieldConfig): HTMLElement => {
 
   fieldEl.appendChild(labelRow);
 
+  const hint = document.createElement('p');
+  hint.className = 'field-hint';
+  hint.textContent = config.placeholder;
+  fieldEl.appendChild(hint);
+
   const value = (editorState.fields[config.key as keyof ComponentDoc['fields']] as string) ?? '';
 
   if (config.richText && editorState.previewFields.has(config.key)) {
-    if (config.richText) {
-      const toolbar = document.createElement('div');
-      toolbar.className = 'toolbar';
-      toolbar.style.visibility = 'hidden';
-      fieldEl.appendChild(toolbar);
-    }
     const preview = document.createElement('div');
     preview.className = 'preview';
     renderPreview(preview, value);
@@ -752,11 +1174,6 @@ const buildField = (config: FieldConfig): HTMLElement => {
       }
       fieldEl.appendChild(toolbar);
     }
-
-    const hint = document.createElement('p');
-    hint.className = 'field-hint';
-    hint.textContent = config.placeholder;
-    fieldEl.appendChild(hint);
 
     if (config.richText) {
       const textarea = document.createElement('textarea');
@@ -1064,9 +1481,14 @@ const resetClearedState = (id: string) => {
 const handleClearDocResult = (payload: { id: string; success: boolean; message?: string }) => {
   if (!payload.success) {
     console.error('[ui] clear doc failed', payload.message);
+    if (exportSourceLabel) {
+      exportSourceLabel.textContent = payload.message ?? 'Couldn’t clear documentation';
+      exportSourceLabel.classList.add('outcome-failure');
+    }
     return;
   }
   resetClearedState(payload.id);
+  renderBatchSummary(exportSourceLabel, [{ label: 'Cleared', count: 1 }]);
   renderEditor();
   renderTree();
 };
@@ -1083,12 +1505,10 @@ const handleClearDocsResult = (results: Array<{ id: string; success: boolean; me
   }
 
   const failedCount = results.length - successCount;
-  if (scanProgressLabel) {
-    scanProgressLabel.textContent = failedCount > 0 ? `Cleared ${successCount}, ${failedCount} failed` : `Cleared ${successCount}`;
-    window.setTimeout(() => {
-      if (scanProgressLabel) scanProgressLabel.textContent = '';
-    }, 4000);
-  }
+  renderBatchSummary(exportSourceLabel, [
+    { label: 'Cleared', count: successCount },
+    { label: "Couldn't clear", count: failedCount, danger: true },
+  ]);
 
   renderEditor();
   renderTree();
@@ -1269,14 +1689,46 @@ window.addEventListener('message', (event) => {
       break;
     }
     case 'CLEAR_DOCS_PROGRESS': {
-      if (scanProgressLabel) {
-        const { done, total } = message.payload;
-        scanProgressLabel.textContent = `Clearing ${done}/${total}…`;
-      }
+      updateProgressModal(message.payload.done, message.payload.total, message.payload.name);
       break;
     }
     case 'CLEAR_DOCS_RESULT': {
-      handleClearDocsResult(message.payload.results);
+      completeProgressModal(() => {
+        handleClearDocsResult(message.payload.results);
+        closeModal();
+      });
+      break;
+    }
+    case 'EXPORT_DATA': {
+      showExportContent(message.payload);
+      break;
+    }
+    case 'EXPORT_ERROR': {
+      if (progressModalLocked) completeProgressModal(() => closeModal());
+      if (exportSourceLabel) {
+        exportSourceLabel.textContent = message.payload.message;
+        exportSourceLabel.classList.add('outcome-failure');
+      }
+      break;
+    }
+    case 'IMPORT_PREVIEW': {
+      showImportPreview(message.payload);
+      break;
+    }
+    case 'IMPORT_PROGRESS': {
+      updateProgressModal(message.payload.done, message.payload.total, message.payload.name);
+      if (exportSourceLabel) {
+        exportSourceLabel.classList.remove('outcome-failure');
+        exportSourceLabel.textContent = `Importing ${message.payload.done} of ${message.payload.total}…`;
+      }
+      break;
+    }
+    case 'IMPORT_RESULT': {
+      completeProgressModal(() => showImportResult(message.payload));
+      break;
+    }
+    case 'EXPORT_PROGRESS': {
+      updateProgressModal(message.payload.done, message.payload.total, message.payload.name);
       break;
     }
   }

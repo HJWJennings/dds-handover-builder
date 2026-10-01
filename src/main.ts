@@ -1,11 +1,14 @@
 import uiHtml from './generated/ui-embed';
-import type { EditorPayload, PluginToUIMessage, SaveDocPayload, UIToPluginMessage } from './messages';
-import { inspectSelectionNode } from './inspect';
+import type { EditorPayload, ExportFormat, ImportPreviewEntry, ImportPreviewPayload, ImportResultEntry, PluginToUIMessage, SaveDocPayload, UIToPluginMessage } from './messages';
+import { getComponentPropertyDefinitions, inspectSelectionNode } from './inspect';
 import { scanComponents, getGroupLabelForNode } from './scan';
 import type { ScanResult, ScanScope } from './scan';
 import { resolveDocumentableNode, type DocumentableNode } from './store/resolveComponent';
 import { getOrCreateDoc, getDocStatus, readComponentDoc, writeComponentDoc, buildDescriptionMarkdown } from './store/docStatus';
 import { PLUGIN_DATA_NAMESPACE, PLUGIN_DATA_DOC_KEY, REQUIRED_FIELDS, type ComponentDoc } from './store/types';
+import { serializeCsv } from './export/csv';
+import { serializeJson } from './export/json';
+import { parseImportEnvelope, validateComponentDoc, type ImportComponentRecord } from './export/import';
 
 const sendToUI = (message: PluginToUIMessage) => {
   figma.ui.postMessage(message);
@@ -117,15 +120,18 @@ const handleClearDoc = async (id: string) => {
 };
 
 const handleClearDocsBulk = async (ids: string[]) => {
+  const progressStartedAt = Date.now();
   const results: Array<{ id: string; success: boolean; message?: string }> = [];
 
   for (let index = 0; index < ids.length; index += 1) {
     const id = ids[index];
+    let name = id;
     try {
       const resolved = await resolveClearableNode(id);
       if ('error' in resolved) {
         results.push({ id, success: false, message: resolved.error });
       } else {
+        name = resolved.node.name;
         clearDocForNode(resolved.node);
         results.push({ id, success: true });
       }
@@ -133,12 +139,304 @@ const handleClearDocsBulk = async (ids: string[]) => {
       results.push({ id, success: false, message: error instanceof Error ? error.message : String(error) });
     }
 
-    sendToUI({ type: 'CLEAR_DOCS_PROGRESS', payload: { done: index + 1, total: ids.length } });
+    sendToUI({ type: 'CLEAR_DOCS_PROGRESS', payload: { done: index + 1, total: ids.length, name } });
     // Yield between components so a large selection doesn't freeze the UI.
     await new Promise((resolve) => setTimeout(resolve, 0));
   }
 
+  await keepProgressVisible(progressStartedAt);
   sendToUI({ type: 'CLEAR_DOCS_RESULT', payload: { results } });
+};
+
+const keepProgressVisible = async (startedAt: number) => {
+  const remaining = 400 - (Date.now() - startedAt);
+  if (remaining > 0) await new Promise((resolve) => setTimeout(resolve, remaining));
+};
+
+const makeExportFileName = (format: ExportFormat): string => {
+  const fileName = figma.root.name
+    .normalize('NFKD')
+    .replace(/[^a-zA-Z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+    .toLowerCase() || 'figma-file';
+  const date = new Date().toISOString().slice(0, 10);
+  return `dds-compdoc-${fileName}-${date}.${format}`;
+};
+
+const handleExportRequest = async (format: ExportFormat, ids: string[], source: 'checked' | 'shown') => {
+  try {
+    const records = [];
+    const showProgress = ids.length > 20;
+    const progressStartedAt = Date.now();
+    for (let index = 0; index < ids.length; index += 1) {
+      const id = ids[index];
+      const node = await figma.getNodeByIdAsync(id);
+      if (!node || node.removed || (node.type !== 'COMPONENT' && node.type !== 'COMPONENT_SET')) {
+        if (showProgress) sendToUI({ type: 'EXPORT_PROGRESS', payload: { done: index + 1, total: ids.length, name: id } });
+        if (showProgress) await new Promise((resolve) => setTimeout(resolve, 0));
+        continue;
+      }
+      if (node.type === 'COMPONENT' && node.parent?.type === 'COMPONENT_SET') {
+        if (showProgress) sendToUI({ type: 'EXPORT_PROGRESS', payload: { done: index + 1, total: ids.length, name: node.name } });
+        if (showProgress) await new Promise((resolve) => setTimeout(resolve, 0));
+        continue;
+      }
+
+      const definitions = getComponentPropertyDefinitions(node);
+      const variantProperties = definitions.map((definition) => ({
+        name: definition.propertyName.replace(/#.*$/, ''),
+        rawName: definition.propertyName,
+        type: definition.type ?? '',
+        options: definition.variantOptions,
+      }));
+      const doc = readComponentDoc(node);
+      const common = {
+        name: node.name,
+        group: getGroupLabelForNode(node),
+        type: node.type === 'COMPONENT_SET' ? 'set' as const : 'component' as const,
+        id: node.id,
+        key: node.key,
+        status: doc ? getDocStatus(node) : 'missing',
+        doc,
+      };
+
+      records.push(format === 'csv' ? common : { ...common, variantProperties });
+      if (showProgress) {
+        sendToUI({ type: 'EXPORT_PROGRESS', payload: { done: index + 1, total: ids.length, name: node.name } });
+        await new Promise((resolve) => setTimeout(resolve, 0));
+      }
+    }
+
+    if (showProgress) await keepProgressVisible(progressStartedAt);
+
+    const fileName = makeExportFileName(format);
+    const content = format === 'csv'
+      ? serializeCsv(records as Parameters<typeof serializeCsv>[0])
+      : serializeJson({
+          schemaVersion: 1,
+          exportedAt: new Date().toISOString(),
+          fileName: figma.root.name,
+          components: records as Parameters<typeof serializeJson>[0]['components'],
+        });
+
+    sendToUI({ type: 'EXPORT_DATA', payload: { format, fileName, content, count: records.length, source } });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    sendToUI({ type: 'EXPORT_ERROR', payload: { message } });
+  }
+};
+
+interface PlannedImport {
+  outcome: ImportPreviewEntry['outcome'];
+  name: string;
+  nodeId?: string;
+  doc?: ComponentDoc;
+  existingDoc?: ComponentDoc | null;
+  reason?: string;
+}
+
+const importPlans = new Map<string, PlannedImport[]>();
+
+const canonicalize = (value: unknown): unknown => {
+  if (Array.isArray(value)) return value.map(canonicalize);
+  if (!value || typeof value !== 'object') return value;
+  return Object.fromEntries(
+    Object.entries(value as Record<string, unknown>)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([key, entry]) => [key, canonicalize(entry)]),
+  );
+};
+
+const docsAreIdentical = (left: ComponentDoc, right: ComponentDoc): boolean => {
+  const comparable = (doc: ComponentDoc) => {
+    const { updatedAt: _updatedAt, updatedBy: _updatedBy, ...content } = doc;
+    return canonicalize(content);
+  };
+  return JSON.stringify(comparable(left)) === JSON.stringify(comparable(right));
+};
+
+const findImportTarget = (
+  record: ImportComponentRecord,
+  nodes: DocumentableNode[],
+): DocumentableNode | null => {
+  if (typeof record.key === 'string' && record.key) {
+    const byKey = nodes.find((node) => node.key === record.key);
+    if (byKey) return byKey;
+  }
+  if (typeof record.id === 'string' && record.id) {
+    const byId = nodes.find((node) => node.id === record.id);
+    if (byId) return byId;
+  }
+  if (typeof record.name === 'string' && typeof record.group === 'string') {
+    return nodes.find((node) => node.name === record.name && getGroupLabelForNode(node) === record.group) ?? null;
+  }
+  return null;
+};
+
+const handleImportPreview = async (content: unknown) => {
+  try {
+    const records = parseImportEnvelope(content);
+    await figma.loadAllPagesAsync();
+    const nodes: DocumentableNode[] = [];
+    for (const page of figma.root.children) {
+      const found = page.findAllWithCriteria({ types: ['COMPONENT', 'COMPONENT_SET'] });
+      for (const node of found) {
+        if (node.type === 'COMPONENT_SET' || (node.type === 'COMPONENT' && node.parent?.type !== 'COMPONENT_SET')) {
+          nodes.push(node);
+        }
+      }
+    }
+
+    const plans: PlannedImport[] = [];
+    const plannedNodeIds = new Set<string>();
+
+    for (let index = 0; index < records.length; index += 1) {
+      const record = records[index] as ImportComponentRecord;
+      if (!record || typeof record !== 'object' || Array.isArray(record)) {
+        plans.push({ outcome: 'INVALID', name: `Entry ${index + 1}`, reason: 'Component entry must be an object.' });
+        continue;
+      }
+      if (
+        typeof record.name !== 'string' ||
+        typeof record.group !== 'string' ||
+        typeof record.id !== 'string' ||
+        typeof record.key !== 'string' ||
+        (record.type !== 'set' && record.type !== 'component')
+      ) {
+        plans.push({ outcome: 'INVALID', name: record.name || `Entry ${index + 1}`, reason: 'Component entry is missing valid name, group, type, id, or key fields.' });
+        continue;
+      }
+      let doc: ComponentDoc;
+      try {
+        doc = validateComponentDoc(record?.doc);
+      } catch (error) {
+        plans.push({
+          outcome: 'INVALID',
+          name: typeof record?.name === 'string' && record.name ? record.name : `Entry ${index + 1}`,
+          reason: error instanceof Error ? error.message : String(error),
+        });
+        continue;
+      }
+
+      const target = findImportTarget(record, nodes);
+      if (!target) {
+        plans.push({ outcome: 'UNMATCHED', name: record.name || `Entry ${index + 1}`, reason: 'No matching component.' });
+        continue;
+      }
+      if (plannedNodeIds.has(target.id)) {
+        plans.push({ outcome: 'INVALID', name: record.name || target.name, reason: 'Multiple import entries match the same component.' });
+        continue;
+      }
+      plannedNodeIds.add(target.id);
+
+      const rawExisting = target.getSharedPluginData(PLUGIN_DATA_NAMESPACE, PLUGIN_DATA_DOC_KEY);
+      const existing = readComponentDoc(target);
+      const hasStoredDoc = rawExisting.length > 0;
+      const outcome: PlannedImport['outcome'] = !hasStoredDoc
+        ? 'NEW'
+        : existing && docsAreIdentical(existing, doc)
+          ? 'UNCHANGED'
+          : 'DIFFERENT';
+      plans.push({
+        outcome,
+        nodeId: target.id,
+        doc,
+        name: target.name,
+        existingDoc: existing,
+      });
+    }
+
+    const planId = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    importPlans.set(planId, plans);
+    const entries: ImportPreviewEntry[] = plans.map((plan) => {
+      const existingDoc = plan.existingDoc;
+      const fileDoc = plan.doc;
+      const existingIsNewer = Boolean(
+        existingDoc && fileDoc && Date.parse(existingDoc.updatedAt) > Date.parse(fileDoc.updatedAt),
+      );
+      return {
+        id: plan.nodeId,
+        name: plan.name,
+        outcome: plan.outcome,
+        reason: plan.reason,
+        existingUpdatedAt: existingDoc?.updatedAt,
+        existingUpdatedBy: existingDoc?.updatedBy,
+        fileUpdatedAt: fileDoc?.updatedAt,
+        fileUpdatedBy: fileDoc?.updatedBy,
+        existingIsNewer,
+      };
+    });
+    const preview: ImportPreviewPayload = {
+      planId,
+      fileCount: records.length,
+      counts: {
+        new: plans.filter((plan) => plan.outcome === 'NEW').length,
+        unchanged: plans.filter((plan) => plan.outcome === 'UNCHANGED').length,
+        different: plans.filter((plan) => plan.outcome === 'DIFFERENT').length,
+        unmatched: plans.filter((plan) => plan.outcome === 'UNMATCHED').length,
+        invalid: plans.filter((plan) => plan.outcome === 'INVALID').length,
+      },
+      entries,
+    };
+    sendToUI({ type: 'IMPORT_PREVIEW', payload: preview });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    sendToUI({ type: 'EXPORT_ERROR', payload: { message: `Import preview failed: ${message}` } });
+  }
+};
+
+const handleImportConfirm = async (planId: string, choice: 'keep' | 'replace' | null) => {
+  const plans = importPlans.get(planId);
+  if (!plans) {
+    sendToUI({ type: 'IMPORT_RESULT', payload: { added: [], replaced: [], keptExisting: [], unchanged: [], couldNotImport: [{ name: 'Import', reason: 'Preview expired. Select the file again.' }] } });
+    return;
+  }
+  if (plans.some((plan) => plan.outcome === 'DIFFERENT') && choice === null) return;
+  importPlans.delete(planId);
+
+  const added: ImportResultEntry[] = [];
+  const replaced: ImportResultEntry[] = [];
+  const keptExisting: ImportResultEntry[] = [];
+  const unchanged: ImportResultEntry[] = [];
+  const couldNotImport: ImportResultEntry[] = [];
+  const progressStartedAt = Date.now();
+  let completed = 0;
+
+  for (const plan of plans) {
+    let resultEntry: ImportResultEntry = { id: plan.nodeId, name: plan.name };
+    if (plan.outcome === 'UNCHANGED') {
+      unchanged.push(resultEntry);
+    } else if (plan.outcome === 'UNMATCHED' || plan.outcome === 'INVALID') {
+      couldNotImport.push({ ...resultEntry, reason: plan.reason });
+    } else if (plan.outcome === 'DIFFERENT' && choice === 'keep') {
+      keptExisting.push(resultEntry);
+    } else if ((plan.outcome === 'NEW' || plan.outcome === 'DIFFERENT') && plan.nodeId && plan.doc) {
+      try {
+        const node = await figma.getNodeByIdAsync(plan.nodeId);
+        if (!node || node.removed || (node.type !== 'COMPONENT' && node.type !== 'COMPONENT_SET') ||
+          (node.type === 'COMPONENT' && node.parent?.type === 'COMPONENT_SET')) {
+          throw new Error('Target component no longer exists or is a variant.');
+        }
+        writeComponentDoc(node, plan.doc);
+        if (plan.doc.syncToDescription) {
+          node.description = buildDescriptionMarkdown(plan.doc.fields);
+        }
+        resultEntry = { ...resultEntry, status: getDocStatus(node) };
+        if (plan.outcome === 'NEW') added.push(resultEntry);
+        else replaced.push(resultEntry);
+      } catch (error) {
+        couldNotImport.push({ ...resultEntry, reason: error instanceof Error ? error.message : String(error) });
+      }
+    } else {
+      couldNotImport.push({ ...resultEntry, reason: 'Import entry could not be applied.' });
+    }
+    completed += 1;
+    sendToUI({ type: 'IMPORT_PROGRESS', payload: { done: completed, total: plans.length, name: plan.name } });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  }
+
+  await keepProgressVisible(progressStartedAt);
+  sendToUI({ type: 'IMPORT_RESULT', payload: { added, replaced, keptExisting, unchanged, couldNotImport } });
 };
 
 const handleSaveDoc = async (payload: SaveDocPayload) => {
@@ -415,6 +713,18 @@ figma.ui.onmessage = (message: UIToPluginMessage) => {
     }
     case 'CLEAR_DOCS_BULK': {
       void handleClearDocsBulk(message.ids);
+      break;
+    }
+    case 'EXPORT_REQUEST': {
+      void handleExportRequest(message.format, message.ids, message.source);
+      break;
+    }
+    case 'IMPORT_PREVIEW_REQUEST': {
+      void handleImportPreview(message.content);
+      break;
+    }
+    case 'IMPORT_CONFIRM': {
+      void handleImportConfirm(message.planId, message.choice);
       break;
     }
     case 'DEV_TAB_ACTIVE': {

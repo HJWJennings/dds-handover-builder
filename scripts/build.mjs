@@ -46,6 +46,28 @@ function extractInlineScripts(html) {
   return scripts;
 }
 
+function assertNoRejectedImportExpressions(source, label) {
+  const pattern = /import\s*\(/gi;
+  let match;
+  let found = false;
+
+  while ((match = pattern.exec(source)) !== null) {
+    found = true;
+    const lineStart = source.lastIndexOf('\n', match.index - 1) + 1;
+    const nextNewline = source.indexOf('\n', match.index);
+    const lineEnd = nextNewline === -1 ? source.length : nextNewline;
+    const lineNumber = source.slice(0, lineStart).split('\n').length;
+    const contextStart = Math.max(lineStart, match.index - 40);
+    const contextEnd = Math.min(lineEnd, match.index + match[0].length + 40);
+    const context = source.slice(contextStart, contextEnd);
+    console.error(`[build] Forbidden dynamic-import syntax in ${label}:${lineNumber}: ${context}`);
+  }
+
+  if (found) {
+    throw new Error(`Figma sandbox rejects dynamic-import syntax in ${label}.`);
+  }
+}
+
 async function writeUiEmbed() {
   const templatePath = path.join(rootDir, 'src', 'ui', 'ui.html');
   const cssPath = path.join(rootDir, 'src', 'ui', 'styles.css');
@@ -107,6 +129,16 @@ async function buildMain() {
       '.html': 'text',
     },
   });
+
+  const mainBundle = await fs.readFile(path.join(buildDir, 'main.js'), 'utf8');
+  assertNoRejectedImportExpressions(mainBundle, 'build/main.js');
+
+  const builtUi = await fs.readFile(path.join(buildDir, 'ui.html'), 'utf8');
+  const inlineScripts = extractInlineScripts(builtUi);
+  inlineScripts.forEach((script, index) => {
+    assertNoRejectedImportExpressions(script, `build/ui.html <script> #${index + 1}`);
+  });
+  console.log(`[build] sandbox import-expression check passed (main.js + ${inlineScripts.length} inline UI script(s)).`);
 }
 
 async function runBuild() {

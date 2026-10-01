@@ -329,7 +329,7 @@ const collectLayerTree = async (node: BaseNode, root: BaseNode, collector: Error
   return [self];
 };
 
-const getComponentPropertyDefinitions = (node: BaseNode, collector: ErrorCollector) => {
+export const getComponentPropertyDefinitions = (node: BaseNode, collector?: ErrorCollector) => {
   if (!('componentPropertyDefinitions' in node)) {
     return [] as ComponentDefSummary[];
   }
@@ -355,7 +355,9 @@ const getComponentPropertyDefinitions = (node: BaseNode, collector: ErrorCollect
       };
     });
   } catch (error) {
-    pushError(collector, `Failed to read componentPropertyDefinitions for ${node.name}`, error);
+    if (collector) {
+      pushError(collector, `Failed to read componentPropertyDefinitions for ${node.name}`, error);
+    }
     return [] as ComponentDefSummary[];
   }
 };

@@ -38,6 +38,40 @@ export interface ClearDocsResultPayload {
   results: ClearDocResultPayload[];
 }
 
+export type ExportFormat = 'csv' | 'json';
+
+export interface ImportPreviewEntry {
+  id?: string;
+  name: string;
+  outcome: 'NEW' | 'UNCHANGED' | 'DIFFERENT' | 'UNMATCHED' | 'INVALID';
+  reason?: string;
+  existingUpdatedAt?: string;
+  existingUpdatedBy?: string;
+  fileUpdatedAt?: string;
+  fileUpdatedBy?: string;
+  existingIsNewer?: boolean;
+}
+
+export interface ImportPreviewPayload {
+  planId: string;
+  fileCount: number;
+  counts: {
+    new: number;
+    unchanged: number;
+    different: number;
+    unmatched: number;
+    invalid: number;
+  };
+  entries: ImportPreviewEntry[];
+}
+
+export interface ImportResultEntry {
+  id?: string;
+  name: string;
+  reason?: string;
+  status?: DocStatus;
+}
+
 export type PluginToUIMessage =
   | {
       type: 'INSPECT_RESULT';
@@ -90,11 +124,48 @@ export type PluginToUIMessage =
       payload: {
         done: number;
         total: number;
+        name: string;
       };
     }
   | {
       type: 'CLEAR_DOCS_RESULT';
       payload: ClearDocsResultPayload;
+    }
+  | {
+      type: 'EXPORT_DATA';
+      payload: {
+        format: ExportFormat;
+        fileName: string;
+        content: string;
+        count: number;
+        source: 'checked' | 'shown';
+      };
+    }
+  | {
+      type: 'EXPORT_ERROR';
+      payload: { message: string };
+    }
+  | {
+      type: 'EXPORT_PROGRESS';
+      payload: { done: number; total: number; name: string };
+    }
+  | {
+      type: 'IMPORT_PREVIEW';
+      payload: ImportPreviewPayload;
+    }
+  | {
+      type: 'IMPORT_PROGRESS';
+      payload: { done: number; total: number; name: string };
+    }
+  | {
+      type: 'IMPORT_RESULT';
+      payload: {
+        added: ImportResultEntry[];
+        replaced: ImportResultEntry[];
+        keptExisting: ImportResultEntry[];
+        unchanged: ImportResultEntry[];
+        couldNotImport: ImportResultEntry[];
+      };
     };
 
 export type UIToPluginMessage =
@@ -133,5 +204,20 @@ export type UIToPluginMessage =
   | {
       type: 'CLEAR_DOCS_BULK';
       ids: string[];
+    }
+  | {
+      type: 'EXPORT_REQUEST';
+      format: ExportFormat;
+      ids: string[];
+      source: 'checked' | 'shown';
+    }
+  | {
+      type: 'IMPORT_PREVIEW_REQUEST';
+      content: unknown;
+    }
+  | {
+      type: 'IMPORT_CONFIRM';
+      planId: string;
+      choice: 'keep' | 'replace' | null;
     };
 

@@ -55,6 +55,27 @@
               <span id="bulk-count"></span>
               <button type="button" id="bulk-clear" class="link-button danger-link">Clear documentation…</button>
             </div>
+
+            <div class="export-footer">
+              <span id="export-source-label" class="export-source-label"></span>
+              <div class="export-menu-wrap">
+                <button type="button" id="export-menu-button" class="secondary"><span>Import / Export</span><span class="export-chevron" aria-hidden="true">▾</span></button>
+                <div id="export-menu" class="export-menu" hidden>
+                  <div class="export-menu-section">
+                    <div class="export-menu-heading">Export</div>
+                    <div id="export-scope-label" class="export-scope-label"></div>
+                    <button type="button" data-export-format="csv">CSV</button>
+                    <button type="button" data-export-format="json">JSON</button>
+                  </div>
+                  <div class="export-menu-divider" role="separator"></div>
+                  <div class="export-menu-section">
+                    <div class="export-menu-heading">Import</div>
+                    <button type="button" id="import-json-button">From JSON file…</button>
+                  </div>
+                </div>
+              </div>
+              <input type="file" id="import-file" accept=".json,application/json" hidden />
+            </div>
           </aside>
 
           <main class="panel panel-right editor-pane">
@@ -150,8 +171,16 @@
         <h3 id="modal-title"></h3>
         <p id="modal-body"></p>
         <div id="modal-list" class="modal-list"></div>
+        <div id="modal-extra" class="modal-extra"></div>
+        <div id="modal-progress" class="modal-progress" hidden>
+          <progress id="modal-progress-bar" max="1" value="0"></progress>
+          <div id="modal-progress-label" class="modal-progress-label"></div>
+          <div id="modal-progress-name" class="modal-progress-name"></div>
+        </div>
+        <textarea id="modal-export-content" class="modal-export-content" hidden readonly></textarea>
         <div class="modal-actions">
           <button type="button" id="modal-cancel" class="secondary">Cancel</button>
+          <button type="button" id="modal-copy" class="secondary" hidden>Copy</button>
           <button type="button" id="modal-confirm" class="danger">Clear documentation</button>
         </div>
       </div>
