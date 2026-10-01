@@ -9,6 +9,9 @@ import { PLUGIN_DATA_NAMESPACE, PLUGIN_DATA_DOC_KEY, REQUIRED_FIELDS, type Compo
 import { serializeCsv } from './export/csv';
 import { serializeJson } from './export/json';
 import { parseImportEnvelope, validateComponentDoc, type ImportComponentRecord } from './export/import';
+import { probeSelection, readTokenCatalogue } from './devTools';
+import { buildHandoverDoc, findHandoverFrame, prepareHandoverEnvironment } from './generate/build';
+import type { HandoverGenerationResultPayload, HandoverPreviewEntry } from './messages';
 
 const sendToUI = (message: PluginToUIMessage) => {
   figma.ui.postMessage(message);
@@ -504,6 +507,141 @@ const handleSaveDoc = async (payload: SaveDocPayload) => {
   }
 };
 
+interface HandoverGenerationPlan {
+  entries: Array<HandoverPreviewEntry & { error?: string }>;
+}
+
+const handoverPlans = new Map<string, HandoverGenerationPlan>();
+
+const handleHandoverPreview = async (ids: string[]) => {
+  try {
+    await figma.loadAllPagesAsync();
+    const outputPage = figma.root.children.find((page) => page.name === 'Handover docs') ?? null;
+    if (outputPage) await outputPage.loadAsync();
+    const entries: HandoverGenerationPlan['entries'] = [];
+
+    for (const id of ids) {
+      try {
+        const selected = await figma.getNodeByIdAsync(id);
+        const node = await resolveDocumentableNode(selected);
+        if (!node) {
+          entries.push({ id, name: selected && 'name' in selected ? selected.name : id, replacesExisting: false, error: 'Selected node is not a component or component set.' });
+          continue;
+        }
+        const existing = outputPage ? await findHandoverFrame(outputPage, node.id) : null;
+        entries.push({ id: node.id, name: node.name, replacesExisting: Boolean(existing) });
+      } catch (error) {
+        entries.push({ id, name: id, replacesExisting: false, error: error instanceof Error ? error.message : String(error) });
+      }
+    }
+
+    const planId = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    handoverPlans.set(planId, { entries });
+    sendToUI({ type: 'GENERATE_HANDOVER_PREVIEW', payload: { planId, entries } });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    sendToUI({
+      type: 'GENERATE_HANDOVER_RESULT',
+      payload: {
+        generated: [],
+        replaced: [],
+        failed: ids.map((id) => ({ id, name: id, reason: message })),
+        emptySectionCount: 0,
+        collapsedTextLayers: 0,
+        collapsedTextPaths: [],
+        tokenBindingReadback: [],
+        fontReport: { bodyFamily: '', bodyFallback: null, regularStyle: '', boldStyle: '', italicStyle: null, monoFamily: '', monoStyle: '', monoFallback: null, fallbacks: [], errors: [message] },
+        tokenReport: [],
+        errors: [message],
+      },
+    });
+  }
+};
+
+const handleHandoverConfirm = async (planId: string) => {
+  const plan = handoverPlans.get(planId);
+  if (!plan) return;
+  handoverPlans.delete(planId);
+
+  const result: HandoverGenerationResultPayload = {
+    generated: [],
+    replaced: [],
+    failed: [],
+    emptySectionCount: 0,
+    collapsedTextLayers: 0,
+    collapsedTextPaths: [],
+    tokenBindingReadback: [],
+    fontReport: { bodyFamily: '', bodyFallback: null, regularStyle: '', boldStyle: '', italicStyle: null, monoFamily: '', monoStyle: '', monoFallback: null, fallbacks: [], errors: [] },
+    tokenReport: [],
+    errors: [],
+  };
+  let environment: Awaited<ReturnType<typeof prepareHandoverEnvironment>>;
+  figma.commitUndo();
+  try {
+    environment = await prepareHandoverEnvironment();
+    result.fontReport = environment.fonts.report;
+    result.tokenReport = environment.tokens.report;
+    result.errors = environment.tokens.errors.concat(environment.fonts.report.errors);
+    console.log('[generate] token report', environment.tokens.report);
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    result.errors.push(reason);
+    result.fontReport.errors.push(reason);
+    plan.entries.forEach((entry) => result.failed.push({ id: entry.id, name: entry.name, reason: entry.error ?? reason }));
+    figma.commitUndo();
+    sendToUI({ type: 'GENERATE_HANDOVER_RESULT', payload: result });
+    return;
+  }
+
+  let lastFrame: FrameNode | null = null;
+  for (let index = 0; index < plan.entries.length; index += 1) {
+    const entry = plan.entries[index];
+    if (entry.error) {
+      result.failed.push({ id: entry.id, name: entry.name, reason: entry.error });
+    } else {
+      try {
+        const selected = await figma.getNodeByIdAsync(entry.id);
+        const node = await resolveDocumentableNode(selected);
+        if (!node) throw new Error('Component no longer exists or cannot be resolved.');
+        const generated = await buildHandoverDoc(node, readComponentDoc(node), environment);
+        result.emptySectionCount += generated.emptySectionCount;
+        result.collapsedTextLayers += generated.collapsedTextPaths.length;
+        result.collapsedTextPaths.push(...generated.collapsedTextPaths);
+        result.tokenBindingReadback.push(...generated.tokenBindingReadback);
+        lastFrame = generated.frame;
+        result.showDocFrameId = generated.frame.id;
+        const summary = { id: generated.id, name: generated.name, frameId: generated.frame.id };
+        if (generated.action === 'replaced') result.replaced.push(summary);
+        else result.generated.push(summary);
+        result.errors.push(...generated.errors);
+      } catch (error) {
+        result.failed.push({ id: entry.id, name: entry.name, reason: error instanceof Error ? error.message : String(error) });
+      }
+    }
+
+    sendToUI({ type: 'GENERATE_HANDOVER_PROGRESS', payload: { done: index + 1, total: plan.entries.length, name: entry.name } });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  }
+
+  figma.commitUndo();
+  sendToUI({ type: 'GENERATE_HANDOVER_RESULT', payload: result });
+};
+
+const showHandoverDoc = async (frameId: string) => {
+  try {
+    const node = await figma.getNodeByIdAsync(frameId);
+    if (!node || node.removed || node.type !== 'FRAME') return;
+    let current: BaseNode | null = node;
+    while (current && current.type !== 'PAGE') current = current.parent;
+    if (!current || current.type !== 'PAGE') return;
+    await figma.setCurrentPageAsync(current);
+    figma.currentPage.selection = [node];
+    figma.viewport.scrollAndZoomIntoView([node]);
+  } catch (error) {
+    console.error('[main] show handover doc failed', error);
+  }
+};
+
 let lastScope: ScanScope = 'page';
 let scanInFlight = false;
 let scanQueued = false;
@@ -681,6 +819,43 @@ figma.ui.onmessage = (message: UIToPluginMessage) => {
       void emitSelectionData().catch((error) => {
         console.error('[main] emitSelectionData rejected on INSPECT_SELECTION', error);
       });
+      break;
+    }
+    case 'STYLE_PROBE_REQUEST': {
+      void (async () => {
+        try {
+          const selected = figma.currentPage.selection[0] ?? null;
+          const payload = await probeSelection(selected);
+          sendToUI({ type: 'INSPECT_RESULT', payload });
+        } catch (error) {
+          const message = error instanceof Error ? error.message : String(error);
+          sendToUI({ type: 'INSPECT_RESULT', payload: { error: message, meta: { errors: [message] } } });
+        }
+      })();
+      break;
+    }
+    case 'TOKEN_CATALOGUE_REQUEST': {
+      void (async () => {
+        try {
+          const payload = await readTokenCatalogue();
+          sendToUI({ type: 'TOKEN_CATALOGUE_RESULT', payload });
+        } catch (error) {
+          const message = error instanceof Error ? error.message : String(error);
+          sendToUI({ type: 'TOKEN_CATALOGUE_RESULT', payload: { collections: [], note: 'Reading library values imports those variables into this file.', meta: { errors: [message], notes: [] } } });
+        }
+      })();
+      break;
+    }
+    case 'GENERATE_HANDOVER_PREVIEW_REQUEST': {
+      void handleHandoverPreview(message.ids);
+      break;
+    }
+    case 'GENERATE_HANDOVER_CONFIRM': {
+      void handleHandoverConfirm(message.planId);
+      break;
+    }
+    case 'SHOW_HANDOVER_DOC': {
+      void showHandoverDoc(message.frameId);
       break;
     }
     case 'CLEAR_RESULT': {

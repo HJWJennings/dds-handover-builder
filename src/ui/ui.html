@@ -53,6 +53,7 @@
 
             <div id="bulk-bar" class="bulk-bar" hidden>
               <span id="bulk-count"></span>
+              <button type="button" id="bulk-generate-handover" class="link-button">Generate handover docs…</button>
               <button type="button" id="bulk-clear" class="link-button danger-link">Clear documentation…</button>
             </div>
 
@@ -134,6 +135,7 @@
                   <button type="button" id="move-to-draft" class="link-button" hidden>Move back to draft</button>
                 </div>
                 <div class="footer-actions">
+                  <button type="button" id="generate-handover" class="secondary">Generate handover doc</button>
                   <button type="button" id="save-draft" class="secondary">Save draft</button>
                   <button type="button" id="save-primary" class="primary">Mark as ready</button>
                 </div>
@@ -157,9 +159,12 @@
               <h2>Inspector JSON</h2>
               <div class="actions">
                 <button id="inspect-selection" class="primary">Inspect selection</button>
+                <button id="style-probe" class="secondary">Style probe</button>
+                <button id="token-catalogue" class="secondary">Token catalogue</button>
                 <button id="copy-json" class="secondary">Copy JSON</button>
               </div>
             </div>
+            <div id="token-catalogue-note" class="dev-note" hidden>Reading library values imports those variables into this file.</div>
             <pre id="json-output">{}</pre>
           </main>
         </div>
@@ -180,6 +185,7 @@
         <textarea id="modal-export-content" class="modal-export-content" hidden readonly></textarea>
         <div class="modal-actions">
           <button type="button" id="modal-cancel" class="secondary">Cancel</button>
+          <button type="button" id="modal-show-doc" class="secondary" hidden>Show doc</button>
           <button type="button" id="modal-copy" class="secondary" hidden>Copy</button>
           <button type="button" id="modal-confirm" class="danger">Clear documentation</button>
         </div>

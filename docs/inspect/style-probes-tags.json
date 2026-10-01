@@ -1,0 +1,1801 @@
+{
+  "selectedNodeId": "4861:2516",
+  "selectedNodeType": "INSTANCE",
+  "name": "Tags",
+  "nodes": [
+    {
+      "name": "Tags",
+      "type": "COMPONENT",
+      "visible": true,
+      "size": {
+        "width": 1600,
+        "height": 3592
+      },
+      "layoutMode": "VERTICAL",
+      "padding": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "itemSpacing": 0,
+      "cornerRadius": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "opacity": 1,
+          "hex": "#FFFFFF",
+          "boundVariable": null,
+          "styleName": "Background/White - (colour-background-1)"
+        }
+      ],
+      "strokes": [],
+      "boundVariables": {},
+      "effects": [],
+      "children": [
+        {
+          "name": "Title and Description",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 296
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 80,
+            "right": 40,
+            "bottom": 80,
+            "left": 40
+          },
+          "itemSpacing": 8,
+          "cornerRadius": 0,
+          "fills": [
+            {
+              "type": "SOLID",
+              "opacity": 1,
+              "hex": "#00539F",
+              "boundVariable": null,
+              "styleName": "Background/Tesco Blue - (colour-background-dark-primary)"
+            }
+          ],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Tags",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 40,
+                "height": 24
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#FFFFFF",
+                  "boundVariable": null,
+                  "styleName": "Text/Header and Body White - (colour-text-on-dark)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Tags",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 20,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 24
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:25db02f742e948f4a04d68dacf679d028d9d4c0c,109:22",
+              "textStyleName": "Headings/Heading 4 - (text-headline-l)"
+            },
+            {
+              "name": "Tags",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 127,
+                "height": 68
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#FFFFFF",
+                  "boundVariable": null,
+                  "styleName": "Text/Header and Body White - (colour-text-on-dark)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Tags",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 64,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 68
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:cf5c6044a4a373e2587d438487ab6eabec7f10bb,109:15",
+              "textStyleName": "Oversize Headings/Oversize 1 - (text-display-xl)"
+            },
+            {
+              "name": "Tags are used to highlight or emphasise specific attributes of a product or feature to the customer.",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 28
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#FFFFFF",
+                  "boundVariable": null,
+                  "styleName": "Text/Header and Body White - (colour-text-on-dark)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Tags are used to highlight or emphasise specific attributes of a product or feat...",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Regular"
+              },
+              "fontSize": 20,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 28
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:15ba1410d0a12d52a624ef557f2db2e44038867c,109:25",
+              "textStyleName": "Body Large/Default Long-Form - (text-body-l-longform)"
+            }
+          ]
+        },
+        {
+          "name": "Visual reference",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 305
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Visual reference",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 304,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text/Tesco Blue - (colour-text-header-secondary)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Visual reference",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:1b6805d31a7e5d65c7a4204c2af35ee9eb3f9c05,109:18",
+              "textStyleName": "Oversize Headings/Oversize 4 - (text-display-s)"
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Key changes",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 349
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 40,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Key changes",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 230,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text/Tesco Blue - (colour-text-header-secondary)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Key changes",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:1b6805d31a7e5d65c7a4204c2af35ee9eb3f9c05,109:18",
+              "textStyleName": "Oversize Headings/Oversize 4 - (text-display-s)"
+            },
+            {
+              "name": "Font size has changes form 14px to 12px (text-label-xs) Overall height of the component has changed from 24px to 20px",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 56
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#666666",
+                  "boundVariable": null,
+                  "styleName": "Text/Body Grey - (colour-text-body)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Font size has changes form 14px to 12px (text-label-xs)\nOverall height of the co...",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Regular"
+              },
+              "fontSize": 20,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 28
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:15ba1410d0a12d52a624ef557f2db2e44038867c,109:25",
+              "textStyleName": "Body Large/Default Long-Form - (text-body-l-longform)"
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "When to use",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 241
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "When to use the component",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 532,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text/Tesco Blue - (colour-text-header-secondary)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "When to use the component",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:1b6805d31a7e5d65c7a4204c2af35ee9eb3f9c05,109:18",
+              "textStyleName": "Oversize Headings/Oversize 4 - (text-display-s)"
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "When to use",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 765
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Storybook hierarchy",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 383,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text/Tesco Blue - (colour-text-header-secondary)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Storybook hierarchy",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:1b6805d31a7e5d65c7a4204c2af35ee9eb3f9c05,109:18",
+              "textStyleName": "Oversize Headings/Oversize 4 - (text-display-s)"
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Responsive",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 193
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Responsive",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 214,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text Palette/Tesco Blue"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Responsive",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:032bae22c893141fc384a86ddc5624d926ff7706,317:10",
+              "textStyleName": "Oversize Headings/Oversize 4"
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "States",
+          "type": "FRAME",
+          "visible": false,
+          "size": {
+            "width": 1600,
+            "height": 545
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Variants",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 152,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text Palette/Tesco Blue"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Variants",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:032bae22c893141fc384a86ddc5624d926ff7706,317:10",
+              "textStyleName": "Oversize Headings/Oversize 4"
+            }
+          ]
+        },
+        {
+          "name": "States",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 344
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Variants",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 152,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text Palette/Tesco Blue"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Variants",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:032bae22c893141fc384a86ddc5624d926ff7706,317:10",
+              "textStyleName": "Oversize Headings/Oversize 4"
+            }
+          ]
+        },
+        {
+          "name": "Smaller theme",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 357
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Smaller theme",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 270,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text/Tesco Blue - (colour-text-header-secondary)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Smaller theme",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:1b6805d31a7e5d65c7a4204c2af35ee9eb3f9c05,109:18",
+              "textStyleName": "Oversize Headings/Oversize 4 - (text-display-s)"
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Design tokens",
+          "type": "FRAME",
+          "visible": false,
+          "size": {
+            "width": 1600,
+            "height": 1023
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Design Tokens",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 263,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text/Tesco Blue - (colour-text-header-secondary)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Design Tokens",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:1b6805d31a7e5d65c7a4204c2af35ee9eb3f9c05,109:18",
+              "textStyleName": "Oversize Headings/Oversize 4 - (text-display-s)"
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Interactive flows, animation and transitions",
+          "type": "FRAME",
+          "visible": false,
+          "size": {
+            "width": 1600,
+            "height": 425
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 40,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Interactive flows, animation and transitions",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 815,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text/Tesco Blue - (colour-text-header-secondary)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Interactive flows, animation and transitions",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:1b6805d31a7e5d65c7a4204c2af35ee9eb3f9c05,109:18",
+              "textStyleName": "Oversize Headings/Oversize 4 - (text-display-s)"
+            },
+            {
+              "name": "View current EDS 24px variant in storybook: https://portal.cdo.tesco.com/cdoportal/storybook/?path=/story/navigation-text-toggle--default",
+              "type": "TEXT",
+              "visible": false,
+              "size": {
+                "width": 776,
+                "height": 16
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#666666",
+                  "boundVariable": null,
+                  "styleName": "Text/Body Grey - (colour-text-body)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "View current EDS 24px variant in storybook: https://portal.cdo.tesco.com/cdoport...",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Regular"
+              },
+              "fontSize": 12,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 16
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:70687749df94ede9f4b9b8045e6bf5b24176ab77,109:34",
+              "textStyleName": "Body X-Small/Default Short-Form - (text-body-xs)"
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Configuration and behaviour",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 449
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Configuration and behaviour",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 539,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text/Tesco Blue - (colour-text-header-secondary)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Configuration and behaviour",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:1b6805d31a7e5d65c7a4204c2af35ee9eb3f9c05,109:18",
+              "textStyleName": "Oversize Headings/Oversize 4 - (text-display-s)"
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Accessibility",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 189
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 40,
+            "bottom": 0,
+            "left": 40
+          },
+          "itemSpacing": 40,
+          "cornerRadius": 0,
+          "fills": [],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "Accessibility",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 234,
+                "height": 44
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#00539F",
+                  "boundVariable": null,
+                  "styleName": "Text/Tesco Blue - (colour-text-header-secondary)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Accessibility",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 40,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 44
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:1b6805d31a7e5d65c7a4204c2af35ee9eb3f9c05,109:18",
+              "textStyleName": "Oversize Headings/Oversize 4 - (text-display-s)"
+            },
+            {
+              "name": "TBC",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 38,
+                "height": 24
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#000000",
+                  "boundVariable": null,
+                  "styleName": null
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "TBC",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 20,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 24
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "",
+              "textStyleName": null
+            },
+            {
+              "name": "Divider",
+              "type": "INSTANCE",
+              "visible": true,
+              "size": {
+                "width": 1520,
+                "height": 1
+              },
+              "layoutMode": "NONE",
+              "padding": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "itemSpacing": 0,
+              "cornerRadius": 0,
+              "fills": [],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "children": [
+                {
+                  "name": "_ Structure 🚫Don't copy me 🔒",
+                  "type": "INSTANCE",
+                  "visible": true,
+                  "size": {
+                    "width": 1520,
+                    "height": 1
+                  },
+                  "layoutMode": "NONE",
+                  "padding": {
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "itemSpacing": 0,
+                  "cornerRadius": 0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "opacity": 1,
+                      "hex": "#CCCCCC",
+                      "boundVariable": null,
+                      "styleName": "Line/Primary - (colour-border-primary)"
+                    }
+                  ],
+                  "strokes": [],
+                  "boundVariables": {},
+                  "effects": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Title and Description",
+          "type": "FRAME",
+          "visible": true,
+          "size": {
+            "width": 1600,
+            "height": 104
+          },
+          "layoutMode": "VERTICAL",
+          "padding": {
+            "top": 40,
+            "right": 20,
+            "bottom": 40,
+            "left": 40
+          },
+          "itemSpacing": 8,
+          "cornerRadius": 0,
+          "fills": [
+            {
+              "type": "SOLID",
+              "opacity": 1,
+              "hex": "#00539F",
+              "boundVariable": null,
+              "styleName": "Background/Tesco Blue - (colour-background-dark-primary)"
+            }
+          ],
+          "strokes": [],
+          "boundVariables": {},
+          "effects": [],
+          "children": [
+            {
+              "name": "DDS Web library",
+              "type": "TEXT",
+              "visible": true,
+              "size": {
+                "width": 150,
+                "height": 24
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#FFFFFF",
+                  "boundVariable": null,
+                  "styleName": "Text/Header and Body White - (colour-text-on-dark)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "DDS Web library",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Bold"
+              },
+              "fontSize": 20,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 24
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:25db02f742e948f4a04d68dacf679d028d9d4c0c,109:22",
+              "textStyleName": "Headings/Heading 4 - (text-headline-l)"
+            },
+            {
+              "name": "Behaviour specifications",
+              "type": "TEXT",
+              "visible": false,
+              "size": {
+                "width": 1540,
+                "height": 28
+              },
+              "layoutMode": null,
+              "padding": null,
+              "itemSpacing": null,
+              "cornerRadius": null,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "opacity": 1,
+                  "hex": "#FFFFFF",
+                  "boundVariable": null,
+                  "styleName": "Text/Header and Body White - (colour-text-on-dark)"
+                }
+              ],
+              "strokes": [],
+              "boundVariables": {},
+              "effects": [],
+              "characters": "Behaviour specifications",
+              "fontName": {
+                "family": "TESCO Modern",
+                "style": "Regular"
+              },
+              "fontSize": 20,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 28
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textCase": "ORIGINAL",
+              "textStyleId": "S:15ba1410d0a12d52a624ef557f2db2e44038867c,109:25",
+              "textStyleName": "Body Large/Default Long-Form - (text-body-l-longform)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "selectedWasInstance": true,
+    "mainComponentName": "Tags",
+    "visitedNodeCount": 55,
+    "truncated": false,
+    "nodesUsingStyles": 32,
+    "hardCodedPaints": 33,
+    "nodesUsingVariables": 0,
+    "distinctFontNames": [
+      "TESCO Modern Bold",
+      "TESCO Modern Regular"
+    ],
+    "distinctStyleNames": [
+      "Background/Tesco Blue - (colour-background-dark-primary)",
+      "Background/White - (colour-background-1)",
+      "Body Large/Default Long-Form - (text-body-l-longform)",
+      "Body X-Small/Default Short-Form - (text-body-xs)",
+      "Headings/Heading 4 - (text-headline-l)",
+      "Line/Primary - (colour-border-primary)",
+      "Oversize Headings/Oversize 1 - (text-display-xl)",
+      "Oversize Headings/Oversize 4",
+      "Oversize Headings/Oversize 4 - (text-display-s)",
+      "Text Palette/Tesco Blue",
+      "Text/Body Grey - (colour-text-body)",
+      "Text/Header and Body White - (colour-text-on-dark)",
+      "Text/Tesco Blue - (colour-text-header-secondary)"
+    ],
+    "distinctVariableNames": [],
+    "errors": []
+  }
+}

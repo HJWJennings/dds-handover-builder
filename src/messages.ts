@@ -72,6 +72,49 @@ export interface ImportResultEntry {
   status?: DocStatus;
 }
 
+export interface HandoverPreviewEntry {
+  id: string;
+  name: string;
+  replacesExisting: boolean;
+  error?: string;
+}
+
+export interface HandoverFontReport {
+  bodyFamily: string;
+  bodyFallback: string | null;
+  regularStyle: string;
+  boldStyle: string;
+  italicStyle: string | null;
+  monoFamily: string;
+  monoStyle: string;
+  monoFallback: string | null;
+  fallbacks: string[];
+  errors: string[];
+}
+
+export interface HandoverTokenReportEntry {
+  role: string;
+  variableUsed: string | null;
+  fallback: string | number | null;
+  resolvedValue?: string;
+  reason: string;
+  verify?: boolean;
+}
+
+export interface HandoverGenerationResultPayload {
+  generated: Array<{ id: string; name: string; frameId: string }>;
+  replaced: Array<{ id: string; name: string; frameId: string }>;
+  failed: Array<{ id: string; name: string; reason: string }>;
+  emptySectionCount: number;
+  collapsedTextLayers: number;
+  collapsedTextPaths: string[];
+  fontReport: HandoverFontReport;
+  tokenBindingReadback: string[];
+  tokenReport: HandoverTokenReportEntry[];
+  errors: string[];
+  showDocFrameId?: string;
+}
+
 export type PluginToUIMessage =
   | {
       type: 'INSPECT_RESULT';
@@ -166,6 +209,22 @@ export type PluginToUIMessage =
         unchanged: ImportResultEntry[];
         couldNotImport: ImportResultEntry[];
       };
+    }
+  | {
+      type: 'TOKEN_CATALOGUE_RESULT';
+      payload: unknown;
+    }
+  | {
+      type: 'GENERATE_HANDOVER_PREVIEW';
+      payload: { planId: string; entries: HandoverPreviewEntry[] };
+    }
+  | {
+      type: 'GENERATE_HANDOVER_PROGRESS';
+      payload: { done: number; total: number; name: string };
+    }
+  | {
+      type: 'GENERATE_HANDOVER_RESULT';
+      payload: HandoverGenerationResultPayload;
     };
 
 export type UIToPluginMessage =
@@ -219,5 +278,23 @@ export type UIToPluginMessage =
       type: 'IMPORT_CONFIRM';
       planId: string;
       choice: 'keep' | 'replace' | null;
+    }
+  | {
+      type: 'STYLE_PROBE_REQUEST';
+    }
+  | {
+      type: 'TOKEN_CATALOGUE_REQUEST';
+    }
+  | {
+      type: 'GENERATE_HANDOVER_PREVIEW_REQUEST';
+      ids: string[];
+    }
+  | {
+      type: 'GENERATE_HANDOVER_CONFIRM';
+      planId: string;
+    }
+  | {
+      type: 'SHOW_HANDOVER_DOC';
+      frameId: string;
     };
 

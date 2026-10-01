@@ -1,4 +1,4 @@
-import type { EditorPayload, ExportFormat, ImportPreviewEntry, ImportPreviewPayload, ImportResultEntry, PluginToUIMessage, SaveResultPayload, UIToPluginMessage } from '../messages';
+import type { EditorPayload, ExportFormat, HandoverGenerationResultPayload, HandoverPreviewEntry, ImportPreviewEntry, ImportPreviewPayload, ImportResultEntry, PluginToUIMessage, SaveResultPayload, UIToPluginMessage } from '../messages';
 import type { ComponentGroup, ComponentListItem, ScanScope } from '../scan';
 import type { ComponentDoc, ComponentDocLink } from '../store/types';
 import { applyMarkdownAction, parseMarkdown, type BlockNode, type InlineNode, type MarkdownAction } from '../shared/markdown';
@@ -30,6 +30,9 @@ tabButtons.forEach((button) => {
 const jsonOutput = document.getElementById('json-output') as HTMLPreElement | null;
 const selectionSummary = document.getElementById('selection-summary') as HTMLDivElement | null;
 const inspectButton = document.getElementById('inspect-selection') as HTMLButtonElement | null;
+const styleProbeButton = document.getElementById('style-probe') as HTMLButtonElement | null;
+const tokenCatalogueButton = document.getElementById('token-catalogue') as HTMLButtonElement | null;
+const tokenCatalogueNote = document.getElementById('token-catalogue-note') as HTMLDivElement | null;
 const copyButton = document.getElementById('copy-json') as HTMLButtonElement | null;
 
 const renderOutput = (value: unknown) => {
@@ -43,7 +46,20 @@ const updateSummary = (summary: string) => {
 };
 
 inspectButton?.addEventListener('click', () => {
+  if (tokenCatalogueNote) tokenCatalogueNote.hidden = true;
   post({ type: 'INSPECT_SELECTION' });
+});
+
+styleProbeButton?.addEventListener('click', () => {
+  if (tokenCatalogueNote) tokenCatalogueNote.hidden = true;
+  updateSummary('Running Style probe…');
+  post({ type: 'STYLE_PROBE_REQUEST' });
+});
+
+tokenCatalogueButton?.addEventListener('click', () => {
+  if (tokenCatalogueNote) tokenCatalogueNote.hidden = false;
+  updateSummary('Reading token catalogue…');
+  post({ type: 'TOKEN_CATALOGUE_REQUEST' });
 });
 
 copyButton?.addEventListener('click', async () => {
@@ -100,6 +116,7 @@ const refreshButton = document.getElementById('refresh-list') as HTMLButtonEleme
 const bulkBarEl = document.getElementById('bulk-bar') as HTMLDivElement | null;
 const bulkCountEl = document.getElementById('bulk-count') as HTMLSpanElement | null;
 const bulkClearButton = document.getElementById('bulk-clear') as HTMLButtonElement | null;
+const bulkGenerateHandoverButton = document.getElementById('bulk-generate-handover') as HTMLButtonElement | null;
 const exportMenuButton = document.getElementById('export-menu-button') as HTMLButtonElement | null;
 const exportMenuEl = document.getElementById('export-menu') as HTMLDivElement | null;
 const exportScopeLabel = document.getElementById('export-scope-label') as HTMLDivElement | null;
@@ -440,6 +457,7 @@ const modalProgressLabel = document.getElementById('modal-progress-label') as HT
 const modalProgressName = document.getElementById('modal-progress-name') as HTMLDivElement | null;
 const modalExportContent = document.getElementById('modal-export-content') as HTMLTextAreaElement | null;
 const modalCancelButton = document.getElementById('modal-cancel') as HTMLButtonElement | null;
+const modalShowDocButton = document.getElementById('modal-show-doc') as HTMLButtonElement | null;
 const modalConfirmButton = document.getElementById('modal-confirm') as HTMLButtonElement | null;
 const modalCopyButton = document.getElementById('modal-copy') as HTMLButtonElement | null;
 const modalActions = modalOverlay?.querySelector<HTMLDivElement>('.modal-actions') ?? null;
@@ -463,6 +481,7 @@ const openConfirmModal = (options: ConfirmModalOptions) => {
     modalConfirmButton.className = options.confirmClass ?? 'danger';
   }
   if (modalCopyButton) modalCopyButton.hidden = true;
+  if (modalShowDocButton) modalShowDocButton.hidden = true;
   if (modalCancelButton) modalCancelButton.disabled = false;
   if (modalConfirmButton) modalConfirmButton.disabled = false;
   if (modalActions) modalActions.hidden = false;
@@ -540,6 +559,14 @@ modalCopyButton?.addEventListener('click', () => {
   modalCopyButton.textContent = copied ? 'Copied' : 'Copy failed';
 });
 
+let pendingShowDocFrameId: string | null = null;
+
+modalShowDocButton?.addEventListener('click', () => {
+  if (!pendingShowDocFrameId) return;
+  post({ type: 'SHOW_HANDOVER_DOC', frameId: pendingShowDocFrameId });
+  closeModal();
+});
+
 modalCancelButton?.addEventListener('click', closeModal);
 
 modalConfirmButton?.addEventListener('click', () => {
@@ -585,6 +612,15 @@ bulkClearButton?.addEventListener('click', () => {
       post({ type: 'CLEAR_DOCS_BULK', ids });
     },
   });
+});
+
+const requestHandoverGeneration = (ids: string[]) => {
+  post({ type: 'GENERATE_HANDOVER_PREVIEW_REQUEST', ids });
+};
+
+bulkGenerateHandoverButton?.addEventListener('click', () => {
+  const ids = Array.from(state.checked);
+  if (ids.length > 0) requestHandoverGeneration(ids);
 });
 
 const exportFormatButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-export-format]'));
@@ -893,6 +929,135 @@ const showImportResult = (result: Extract<PluginToUIMessage, { type: 'IMPORT_RES
   renderBatchSummary(exportSourceLabel, outcomes);
 };
 
+const showHandoverPreview = (preview: { planId: string; entries: HandoverPreviewEntry[] }) => {
+  const validEntries = preview.entries.filter((entry) => !entry.error);
+  const replacementCount = validEntries.filter((entry) => entry.replacesExisting).length;
+  const names = preview.entries.slice(0, 5).map((entry) => {
+    if (entry.error) return `${entry.name}: ${entry.error}`;
+    return `${entry.name}${entry.replacesExisting ? ' · replaces existing doc' : ''}`;
+  });
+  if (preview.entries.length > 5) names.push(`+ ${preview.entries.length - 5} more`);
+
+  openConfirmModal({
+    title: 'Generate handover docs',
+    body: replacementCount > 0
+      ? `This will generate ${validEntries.length} document${validEntries.length === 1 ? '' : 's'}. Manual edits to ${replacementCount} existing generated document${replacementCount === 1 ? '' : 's'} will be lost.`
+      : `This will generate ${validEntries.length} document${validEntries.length === 1 ? '' : 's'} as native Figma frames.`,
+    confirmLabel: `Generate ${validEntries.length} doc${validEntries.length === 1 ? '' : 's'}`,
+    confirmClass: 'primary',
+    listItems: names,
+    onConfirm: () => {
+      startProgressModal('Generating handover docs', preview.entries.length, 'Generating');
+      post({ type: 'GENERATE_HANDOVER_CONFIRM', planId: preview.planId });
+    },
+  });
+  if (modalConfirmButton) modalConfirmButton.disabled = validEntries.length === 0;
+};
+
+const showHandoverResult = (result: HandoverGenerationResultPayload) => {
+  const generated = result.generated.map((entry) => ({ id: entry.id, name: entry.name }));
+  const replaced = result.replaced.map((entry) => ({ id: entry.id, name: entry.name }));
+  const failed = result.failed.map((entry) => ({ id: entry.id, name: entry.name, reason: entry.reason }));
+  const outcomes: BatchOutcome[] = [
+    { label: 'Generated', count: generated.length },
+    { label: 'Replaced', count: replaced.length },
+    { label: 'Failed', count: failed.length, danger: true },
+  ];
+  openConfirmModal({
+    title: 'Handover doc result',
+    body: '',
+    confirmLabel: 'Close',
+    confirmClass: 'secondary',
+    hideCancel: true,
+    onConfirm: () => {},
+  });
+  pendingShowDocFrameId = result.showDocFrameId ?? null;
+  if (modalShowDocButton) modalShowDocButton.hidden = !pendingShowDocFrameId;
+  renderBatchSummary(modalBodyEl, outcomes);
+  if (result.emptySectionCount > 0 && modalBodyEl) {
+    modalBodyEl.append(document.createTextNode(` · ${result.emptySectionCount} sections had no content`));
+  }
+  if (modalBodyEl) {
+    modalBodyEl.append(document.createTextNode(` · Layout check: ${result.collapsedTextLayers} collapsed text layers`));
+  }
+  if (modalExtraEl) {
+    appendResultSection(modalExtraEl, `Generated (${generated.length})`, generated);
+    appendResultSection(modalExtraEl, `Replaced (${replaced.length})`, replaced);
+    appendResultSection(modalExtraEl, `Failed (${failed.length})`, failed);
+
+    const fontSection = document.createElement('section');
+    fontSection.className = 'result-section';
+    const fontHeading = document.createElement('h4');
+    fontHeading.textContent = 'Fonts';
+    fontSection.appendChild(fontHeading);
+    const fontList = document.createElement('ul');
+    [
+      `Body: ${result.fontReport.bodyFamily || 'unavailable'} ${result.fontReport.regularStyle || ''}`.trim(),
+      `Bold: ${result.fontReport.boldStyle || 'unavailable'}`,
+      `Mono: ${result.fontReport.monoFamily || 'unavailable'} ${result.fontReport.monoStyle || ''}`.trim(),
+      `Italic: ${result.fontReport.italicStyle ?? 'not available; skipped'}`,
+      ...result.fontReport.fallbacks.map((fallback) => `Fallback: ${fallback}`),
+      ...result.fontReport.errors.map((error) => `Error: ${error}`),
+    ].forEach((line) => {
+      const item = document.createElement('li');
+      item.textContent = line;
+      fontList.appendChild(item);
+    });
+    fontSection.appendChild(fontList);
+    modalExtraEl.appendChild(fontSection);
+
+    const tokenSection = document.createElement('section');
+    tokenSection.className = 'result-section';
+    const tokenHeading = document.createElement('h4');
+    tokenHeading.textContent = 'Token report';
+    tokenSection.appendChild(tokenHeading);
+    const tokenList = document.createElement('ul');
+    result.tokenBindingReadback.forEach((line) => {
+      const item = document.createElement('li');
+      item.textContent = line;
+      if (line.includes('NOT FOUND in Web')) item.className = 'outcome-failure';
+      tokenList.appendChild(item);
+    });
+    const mismatchCount = result.tokenReport.filter((entry) => entry.reason.startsWith('value differs from expected:')).length;
+    const boundCount = result.tokenReport.filter((entry) => Boolean(entry.variableUsed) && !entry.reason.startsWith('value differs from expected:')).length;
+    const fallbackCount = result.tokenReport.length - boundCount - mismatchCount;
+    const tokenSummary = document.createElement('li');
+    tokenSummary.textContent = `${boundCount} roles bound to variables, ${fallbackCount} using fallback, ${mismatchCount} mismatches`;
+    tokenSummary.style.fontWeight = '600';
+    tokenList.appendChild(tokenSummary);
+    result.tokenReport.forEach((entry) => {
+      const item = document.createElement('li');
+      const resolution = entry.variableUsed ? `Variable: ${entry.variableUsed}` : `Fallback: ${String(entry.fallback ?? 'none')}`;
+      const valueReport = entry.resolvedValue ? ` · resolved ${entry.resolvedValue}` : '';
+      item.textContent = `${entry.role}: ${resolution}${valueReport} · ${entry.reason}`;
+      if (entry.reason.startsWith('NOT FOUND in Web') || entry.reason.startsWith('value differs from expected:')) item.className = 'outcome-failure';
+      tokenList.appendChild(item);
+    });
+    result.errors.forEach((error) => {
+      const item = document.createElement('li');
+      item.textContent = `Error: ${error}`;
+      item.className = 'outcome-failure';
+      tokenList.appendChild(item);
+    });
+    if (result.collapsedTextPaths.length > 0) {
+      const layoutHeading = document.createElement('h4');
+      layoutHeading.textContent = 'Layout check: collapsed text layers';
+      tokenSection.appendChild(layoutHeading);
+      const layoutList = document.createElement('ul');
+      result.collapsedTextPaths.forEach((path) => {
+        const item = document.createElement('li');
+        item.textContent = path;
+        item.className = 'outcome-failure';
+        layoutList.appendChild(item);
+      });
+      tokenSection.appendChild(layoutList);
+    }
+    tokenSection.appendChild(tokenList);
+    modalExtraEl.appendChild(tokenSection);
+  }
+  renderBatchSummary(exportSourceLabel, outcomes);
+};
+
 // ---------------------------------------------------------------------------
 // Editor (right pane, Components tab)
 // ---------------------------------------------------------------------------
@@ -1000,6 +1165,7 @@ const unsavedLabelEl = document.getElementById('unsaved-label') as HTMLSpanEleme
 const moveToDraftButton = document.getElementById('move-to-draft') as HTMLButtonElement | null;
 const saveDraftButton = document.getElementById('save-draft') as HTMLButtonElement | null;
 const savePrimaryButton = document.getElementById('save-primary') as HTMLButtonElement | null;
+const generateHandoverButton = document.getElementById('generate-handover') as HTMLButtonElement | null;
 
 const STATUS_PILL_LABEL: Record<string, string> = {
   documented: 'Documented',
@@ -1585,6 +1751,10 @@ saveDraftButton?.addEventListener('click', () => {
   void performSave('draft');
 });
 
+generateHandoverButton?.addEventListener('click', () => {
+  if (editorState.source) requestHandoverGeneration([editorState.source.id]);
+});
+
 savePrimaryButton?.addEventListener('click', () => {
   void performSave('ready');
 });
@@ -1651,6 +1821,24 @@ window.addEventListener('message', (event) => {
     case 'INSPECT_ERROR': {
       renderOutput({ error: message.payload?.message ?? 'Unknown error' });
       updateSummary(message.payload?.message ?? 'Inspector error');
+      break;
+    }
+    case 'TOKEN_CATALOGUE_RESULT': {
+      renderOutput(message.payload);
+      if (tokenCatalogueNote) tokenCatalogueNote.hidden = false;
+      updateSummary('Token catalogue ready');
+      break;
+    }
+    case 'GENERATE_HANDOVER_PREVIEW': {
+      showHandoverPreview(message.payload);
+      break;
+    }
+    case 'GENERATE_HANDOVER_PROGRESS': {
+      updateProgressModal(message.payload.done, message.payload.total, message.payload.name);
+      break;
+    }
+    case 'GENERATE_HANDOVER_RESULT': {
+      completeProgressModal(() => showHandoverResult(message.payload));
       break;
     }
     case 'SCAN_RESULT': {

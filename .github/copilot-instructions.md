@@ -61,12 +61,11 @@ Rich text fields are stored as a **restricted markdown subset**: bold, italic, s
 
 ## Handover doc generation: principles
 
-- **Template-driven, not hard-coded styling.** The doc is built by cloning a `🧩 Handover template` frame (found by name in the file, or on a page named `_Templates`). The template has named placeholder layers (for example `#title`, `#category`, `#purpose`, `#section/variants`, `#slot/variants-grid`). The code fills placeholders and generates content into `#slot/*` auto-layout frames. Designers restyle the template. Code doesn't change.
-- If no template exists, offer a "Create starter template" action that builds a basic one. It uses local text styles and variables when they exist, and falls back to neutral defaults otherwise.
-- Use auto layout everywhere, so sections grow with content.
+- Build each document directly in code with one `buildHandoverDoc(component, doc, ctx)` entry point. Do not create, clone, find, or version a persistent template. Existing `_Templates` pages/frames are user content and must remain untouched.
+- Use auto layout everywhere, so sections grow with content. Put every layout measurement and type-scale value in `src/generate/layout.ts`.
 - Mark each generated root frame with `setSharedPluginData("dds_compdoc", "generatedFor", componentId)`. Regenerating **replaces the existing frame in place** (same position and parent) and doesn't create duplicates.
 - Generated frames are output. Tell the user in the UI that manual edits to a generated doc are lost on regenerate.
-- Markdown → Figma text: map to `setRangeFontName` (bold/italic), `setRangeTextDecoration`, `setRangeListOptions` (lists), `setRangeHyperlink` (links), and text styles for H1 and code.
+- Markdown → Figma text: reuse `parseMarkdown` from `src/shared/markdown.ts`; map to `setRangeFontName` (bold/italic), `setRangeTextDecoration`, `setRangeListOptions` (lists), and `setRangeHyperlink` (links).
 - Show progress in the UI. Batch generation must yield (`await` between components) so Figma doesn't freeze. Support cancel.
 - Wrap every generate in a single undo-able operation where possible. Never modify the source component.
 
@@ -80,9 +79,11 @@ src/
   store/                // sharedPluginData read/write, schema migrations
   export/               // csv.ts, json.ts
   generate/
-    template.ts         // find/clone template, fill placeholders
-    markdown.ts         // md subset → styled Figma text
-    sections/           // one file per auto section (variants, onDark, theme, anatomy, config, interactions)
+    build.ts            // direct native frame construction and text-section filling
+    layout.ts           // all widths, paddings, gaps, columns and type scale
+    tokens.ts           // Web-only token selection, binding and fallback report
+    fonts.ts            // font discovery, loading and fallback report
+    markdown.ts         // restricted markdown → styled Figma text
   ui/                   // ui.html, ui.ts, components
 ```
 
@@ -101,3 +102,16 @@ src/
 - Components don't use TEXT properties (DDS convention). Show text content via the layer's existing characters and don't try to set text properties.
 - BOOLEAN property names carry ID suffixes (e.g. "Headline#75:0"). Strip "#…" for display, keep the full name for setProperties.
 - No prototype reactions currently. The interactions section is hidden unless reactions exist.
+
+## Handover doc design
+
+- Generated handover documents are native Figma frames, 1600px wide, with a 1520px inner content width and 40px horizontal page padding. Use vertical auto layout with no gap between sections; header band vertical padding is 80px with 8px internal gaps, and sections use 40px padding with 24px gaps.
+- Build from code for every generation; do not depend on named placeholders or stored template frames. Keep `buildHandoverDoc(component, doc, ctx)` as the generator entry point.
+- Section order: Header band; At a glance; Visual reference; Key changes; When to use; When NOT to use; Storybook hierarchy; Responsive; Variants; Smaller theme; Design tokens; Configuration and behaviour; Structure breakdown; Interactive flows, animation and transitions; Content guidance; Accessibility; AI guidance; Footer band. `SECTION_NUMBERS` defaults to false.
+- Empty sections use the muted text `Not documented yet.`; Key changes uses `None recorded.`. Keep `EMPTY_SECTIONS` configurable as `placeholder` or `hide`, default `placeholder`. Phase 4 slots use a dashed outline and muted `Auto-generated in Phase 5` or `Auto-generated in Phase 6` text.
+- Slots remain native dashed-outline frames named `#slot/<name>` for Phases 5-6. Place on-dark and theme slots after Variants; DDS vs EDS is a manual placeholder in Smaller theme.
+- Bind only to variables in the collection named `Web`. Use exact role candidates first; only use value matching when no confirmed candidate name exists. Bind an exact-name variable even when its value differs from the expected sRGB hex, and report both the resolved and expected values. Report every fallback, ambiguous match, mismatch and `NOT FOUND in Web`; never silently select among multiple matches. Do not bind to similarly named brand/native/global collections.
+- Expected sRGB blue values: `bandFill` and `heading` use `#00539F`; dark navy uses `#002343`. Do not use screenshot-sampled Display P3 values.
+- Preferred font family is exactly `TESCO Modern`, falling back to `Inter`; choose regular and bold styles by exact case-insensitive style name. Use `Italic`, then `Regular Italic`, only if available. Inline and block code prefer `Roboto Mono`, falling back to the body font. Load every font with `figma.loadFontAsync` before writing text and report chosen styles/fallbacks.
+- Keep all layout and type-scale constants in `src/generate/layout.ts`. The current placeholder scale is category 16/24; title 56/68 bold; summary 20/28; H2 32/44 bold; H3 24/32; body 20/28; caption 16/24.
+- Generation does not switch the user's page. Offer a `Show doc` action in the result modal to navigate to the output frame on `Handover docs`.

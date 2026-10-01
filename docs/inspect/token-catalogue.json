@@ -1,0 +1,3093 @@
+{
+  "tokenCollections": [
+    "Web",
+    "Web brand 2026",
+    "Collection 1"
+  ],
+  "collections": [
+    {
+      "name": "Web",
+      "source": "library",
+      "libraryName": "DDS Web library",
+      "count": 161,
+      "variables": [
+        {
+          "name": "Typography/colour-text-header-primary",
+          "type": "COLOR",
+          "key": "88623e755b62dbe8460beaa8fd5adb5c1c5a1768",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography/colour-text-body",
+          "type": "COLOR",
+          "key": "d7f79471c26d254f941c2114883b6cd8691826f7",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography/colour-text-on-dark",
+          "type": "COLOR",
+          "key": "4e90091a99173d7db49ff163d3fb8f2e08a4388e",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography/colour-text-header-secondary",
+          "type": "COLOR",
+          "key": "965bec6612c1d6dc248020418fab6fff2f532fcd",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Interaction/colour-interactive-default",
+          "type": "COLOR",
+          "key": "818232ce3e3ae9239223b8911d0f11084219d315",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Interaction/colour-interactive-active",
+          "type": "COLOR",
+          "key": "c8bdb06ee75dfbf351674ead5ecca771fd875feb",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Interaction/colour-interactive-inverse",
+          "type": "COLOR",
+          "key": "aa836e03359cdff7e465e6c1ae9bea3baee7925c",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Interaction/colour-Interactive-form",
+          "type": "COLOR",
+          "key": "aeefd64490acc362a5205d6be4cc8619a2aa372a",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Line/colour-border-primary",
+          "type": "COLOR",
+          "key": "f3e2cf3fa98c2cbc2014d0d01cd93772e3d1d66c",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Line/colour-border-secondary",
+          "type": "COLOR",
+          "key": "112d7ccae34e097286e29ad428f601bcf9ecc6dd",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Background/colour-background-1",
+          "type": "COLOR",
+          "key": "3e1862d5b36b0e680e2b54444a086b43854f2f19",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Background/colour-background-2",
+          "type": "COLOR",
+          "key": "d2bea2460d955a037d7c33bc54288d7296471423",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Background/colour-background-3",
+          "type": "COLOR",
+          "key": "f404172df8babdd33053ee364778bf986f5375d9",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Background/colour-background-dark-primary",
+          "type": "COLOR",
+          "key": "86ff58f62bbc8f84ecab1bb99381ae9e007a86f2",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-error",
+          "type": "COLOR",
+          "key": "b9cb805cc28f2a66d1a9b6bb99f3a0b66d10bf7b",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-error-tint",
+          "type": "COLOR",
+          "key": "58b497ef2e023edd93f3e22bdd0171022831af58",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-warning",
+          "type": "COLOR",
+          "key": "07ac66de691de9742741d693d62421c1bba49444",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-warning-tint",
+          "type": "COLOR",
+          "key": "29a637a6a1748c387a76e08474b0167b99058ccd",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-success",
+          "type": "COLOR",
+          "key": "f3700af530aab9456f0b2f1475924194cec682c3",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-success-tint",
+          "type": "COLOR",
+          "key": "0f924a7196746a49f61c3412020030d979053b11",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-info",
+          "type": "COLOR",
+          "key": "d868f1d85e15d7ed5ae3fe688e93110ccb256ca6",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-info-tint",
+          "type": "COLOR",
+          "key": "866cb2188d3e13d6d30c4c37429df79120f7a945",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-active",
+          "type": "COLOR",
+          "key": "f37f5cf95db7de7ecc2b2c8a99c0fa256a66a43c",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Messaging/colour-messaging-active-tint",
+          "type": "COLOR",
+          "key": "37ff2f1668c719cf5ae1031698615c686f87b605",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Tables/colour-table-header",
+          "type": "COLOR",
+          "key": "7443d4bcfd43498228e51e7f8bc924baa055da2f",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Tables/colour-table-cell-1",
+          "type": "COLOR",
+          "key": "23f79087b78cf3770fd5007cbc4043873458e2e4",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Tables/colour-table-cell-2",
+          "type": "COLOR",
+          "key": "07a54075d5ad34e39b41368716a1501957b3409f",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Tables/colour-table-border",
+          "type": "COLOR",
+          "key": "11e2f1703e3da3695f6e177650900762126dcdf3",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Nutrition/colour-nutri-green",
+          "type": "COLOR",
+          "key": "ad2cffab2d5d2e2b3f6d5d98f0517d1ead263020",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Nutrition/colour-nutri-amber",
+          "type": "COLOR",
+          "key": "c82db941ed988be9a6370138e9492a96e2c63b47",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Nutrition/colour-nutri-red",
+          "type": "COLOR",
+          "key": "57c95bc6727f06a125ed1b0932dbd63e1a38b396",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Value/colour-value-yellow",
+          "type": "COLOR",
+          "key": "c46f231037632eed8f0a83372c75149e20e00ee7",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Brand red/colour-brand-red",
+          "type": "COLOR",
+          "key": "740b2ebab9e4c6da309ae1d7941d2662b6cd0055",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Overlays/colour-overlay",
+          "type": "COLOR",
+          "key": "5c8e2efe8862b413fa52457e900ff25f43cd5664",
+          "values": {
+            "Tesco": "#000000",
+            "Tesco dark mode": "#FFFFFF"
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          }
+        },
+        {
+          "name": "Background/colour-background-dark-secondary",
+          "type": "COLOR",
+          "key": "7f3ed674596f2614f496cd60f19b4ff718f6a7b4",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Retain colour in dark mode/retain-interactive-inverse",
+          "type": "COLOR",
+          "key": "811f79497a655c258d78e36fa094e159318bd156",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Retain colour in dark mode/retain-interactive-default",
+          "type": "COLOR",
+          "key": "a4a1895923e6ed10c9a5347e9511f5b75183853f",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Retain colour in dark mode/retain-text-body",
+          "type": "COLOR",
+          "key": "3cdf1b8a45c79ab7951c8363ffa37545e98181ac",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Interaction/colour-interactive-error-form",
+          "type": "COLOR",
+          "key": "8d8499958354f08c5a56592438a886f1d735ac44",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Retain colour in dark mode/retain-value-yellow",
+          "type": "COLOR",
+          "key": "d6956c8cab58eeda638c0cd00b693e7e1cdfed4c",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Retain colour in dark mode/retain-header-primary",
+          "type": "COLOR",
+          "key": "ecee111bd3400d90d907dfad81363f3b74e70872",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Value/colour-value-black",
+          "type": "COLOR",
+          "key": "d6d5f6f9409d7dd95abb77d0edc862d498d84022",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-44",
+          "type": "FLOAT",
+          "key": "08dd04faf77b11d8ec132ba29b88c65e0d33ee32",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-52",
+          "type": "FLOAT",
+          "key": "ace3b433b7555e94a15c10246046ec3b50353927",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-68",
+          "type": "FLOAT",
+          "key": "b2c0a4d3695f72b40d8738bc7adb23e6068df2ea",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-16",
+          "type": "FLOAT",
+          "key": "e52e3727b7bfcbceddeca01aa12c81f7221a9fd9",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-32",
+          "type": "FLOAT",
+          "key": "d4ea0afa4fb84820a99f39e3f462d46b1f58ac1a",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-40",
+          "type": "FLOAT",
+          "key": "464e43b71cac74d69188161c2aa1fdd8b088c520",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-64",
+          "type": "FLOAT",
+          "key": "3668a57eb2c16b34137c8e929dfee49dd87421fe",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-56",
+          "type": "FLOAT",
+          "key": "bb403f4eba740c698e8a79918a266e964125228f",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-28",
+          "type": "FLOAT",
+          "key": "7b7bc8775c5d873099beddcdaa262c3215348d7d",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-60",
+          "type": "FLOAT",
+          "key": "a2770718e601ed209c997bebb3a8c0a51e9c00b3",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-36",
+          "type": "FLOAT",
+          "key": "9b6fca723ca6c81d2eaa80665edd7b9cf27ca578",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-18",
+          "type": "FLOAT",
+          "key": "649707f078a6b26947cb245edce59691bbe947bb",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-48",
+          "type": "FLOAT",
+          "key": "7ea3926fb8aedcb09676db903e72184324ba28e0",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-28",
+          "type": "FLOAT",
+          "key": "eb29b9d9a24c31bca13926755f79714890d23b06",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-24",
+          "type": "FLOAT",
+          "key": "403aefd78a4a011bfd18db64dbc9a5bb4dfb9c1a",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-20",
+          "type": "FLOAT",
+          "key": "ff03162b778e86000c8a0027028ee4851bfe39d4",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-16",
+          "type": "FLOAT",
+          "key": "8d01a86b7ce7621e697c8bb6f30e94d10c4ef09d",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-22",
+          "type": "FLOAT",
+          "key": "3ce2b286dfcce1e36b06cfaf6e269eaef05aaecb",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-24",
+          "type": "FLOAT",
+          "key": "a22a0f54ad803c952fc20bfc6dcd985e0f1d05fa",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-12",
+          "type": "FLOAT",
+          "key": "e4273929523499fc5590b2480be4e753a9353e36",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Line height/lineheight-20",
+          "type": "FLOAT",
+          "key": "97d3c43bc17042ab129d71af3c77dba487f23509",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-32",
+          "type": "FLOAT",
+          "key": "7415ccf5538ef5d75351e4c8d4b68c65210427a1",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Typography tokens/Size/fontsize-14",
+          "type": "FLOAT",
+          "key": "e4e45f9fe5ad368ac963050b44791d81a7274f0c",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Overlays/colour-overlay-2",
+          "type": "COLOR",
+          "key": "33f28bb27ad103436ab08207e106ddf71a9766c5",
+          "values": {
+            "Tesco": "#FFFFFF",
+            "Tesco dark mode": "#000000"
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          }
+        },
+        {
+          "name": "Spacing/Space-60",
+          "type": "FLOAT",
+          "key": "f20ff04054f6bbe1ec26ce795a2d7baed818c72a",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-32",
+          "type": "FLOAT",
+          "key": "6f65a501b32f84b20847d03c4fc82406ba3b479a",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-12",
+          "type": "FLOAT",
+          "key": "e573a5c39bc958a848fc15d1dba6370cecde7444",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-28",
+          "type": "FLOAT",
+          "key": "4eb66a37228e3c2f354534063d064e8d5b2d8519",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-24",
+          "type": "FLOAT",
+          "key": "7a1f590cc41aee286573df0605cff68b29db31d8",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-8",
+          "type": "FLOAT",
+          "key": "d89aad30610904cff30df8e86c46a104598107b5",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-80",
+          "type": "FLOAT",
+          "key": "9c74b6be9814705531fcfe84df8b3dc22e3e9887",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-56",
+          "type": "FLOAT",
+          "key": "361fe56b65cd960adfd731ffc4914d713402b8fa",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-20",
+          "type": "FLOAT",
+          "key": "1331aa7fc29aa995b30b4cfff8f576457d104ccf",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-48",
+          "type": "FLOAT",
+          "key": "2908ba9b81c78ad7beffd02ab4f070b7f3f7a503",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-36",
+          "type": "FLOAT",
+          "key": "a3dd823654db821861778afcb82729c2fde098a3",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-16",
+          "type": "FLOAT",
+          "key": "ba09915ead25220be708818ce7afaf2beb343e56",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-40",
+          "type": "FLOAT",
+          "key": "adfbc9d223f6bcc08dd84375b6417776e27a3a4f",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-0",
+          "type": "FLOAT",
+          "key": "54a76b29742619aed64dda77e9c75a4e3897d934",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-72",
+          "type": "FLOAT",
+          "key": "fcba78810c363b2fd71dc7b1c3a884b82f105da5",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-4",
+          "type": "FLOAT",
+          "key": "77167c05d75a9daaa169a5b0500672b9640b2338",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Retain colour in dark mode/retain-brand-tesco",
+          "type": "COLOR",
+          "key": "cd95aed4ec88c67922cf3791d8869285a6fb9c22",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Stroke weight/strokeweight-3",
+          "type": "FLOAT",
+          "key": "b5e18a14cfca8aaa2bbe0a2c21a53cf0b3185ab5",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-40",
+          "type": "FLOAT",
+          "key": "bf44ae9e379cc2e1e5d11835ccc208d983bf848a",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-2",
+          "type": "FLOAT",
+          "key": "b7b2e2f46b201e94c6aa5022b8c05e4f06b64196",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-80",
+          "type": "FLOAT",
+          "key": "c42ac66c3773b0bf31fc16c46e0e589ade1a9531",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-12",
+          "type": "FLOAT",
+          "key": "db3bd31dff481ae1933e5d623df039300297ae17",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-40",
+          "type": "FLOAT",
+          "key": "f04a3a1954f0eef8a9a3c562fd672bef988d6aa6",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-8",
+          "type": "FLOAT",
+          "key": "6cf9734bcaafc9aa13fcf4bf7e3167dcaa6fb0f1",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-20",
+          "type": "FLOAT",
+          "key": "852501edf0bb62d3b387eb5ae4879d2730c62029",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Stroke weight/strokeweight-1",
+          "type": "FLOAT",
+          "key": "76d4d81327e05efbcb141c907d325eadbbc3a952",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Spacing/Space-2",
+          "type": "FLOAT",
+          "key": "1a9cab9b203ecf3406dcd48c1484a6736d2f16a7",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-none",
+          "type": "FLOAT",
+          "key": "bc87622ddecb24062cc1b13e99496c47ae049777",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Stroke weight/strokeweight-2",
+          "type": "FLOAT",
+          "key": "31268ab99078a1f88f1bb6699e00a8b5b4b3c28c",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-32",
+          "type": "FLOAT",
+          "key": "e25534976ebfb2c777e7a53b7ce43ecc65fc4c16",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-36",
+          "type": "FLOAT",
+          "key": "6d01fced641b7a72c96a9cc3e199bb97f7c502de",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-72",
+          "type": "FLOAT",
+          "key": "f921e205379e5dbea6a84fa4d0cc546bb75caf0d",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-24",
+          "type": "FLOAT",
+          "key": "d1ac7a290cc74b803409a1f72b4b148342a74c28",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-4",
+          "type": "FLOAT",
+          "key": "62ae41a64cc9425251ec4490c693d80fdee9a5b6",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-64",
+          "type": "FLOAT",
+          "key": "79466e861df4311b9e161687ba4c725be9cda751",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-4",
+          "type": "FLOAT",
+          "key": "150f9e4b371a03dd011e3bd32c8e3dcc9ca34571",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-32",
+          "type": "FLOAT",
+          "key": "9c23178bd1880d13e164843e31fa5a9d9a32fbaa",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-56",
+          "type": "FLOAT",
+          "key": "924243fd198ecd4a5749f8056f038b71d8c5170f",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-28",
+          "type": "FLOAT",
+          "key": "e5828f2a694f314677e4d58fa7b943de27734765",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-24",
+          "type": "FLOAT",
+          "key": "319e7d68e6840fb5f089c4f1f0ff623515f4130b",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-28",
+          "type": "FLOAT",
+          "key": "163c57fb39f1e9cc17a96bab23a4a1141ff81e84",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-20",
+          "type": "FLOAT",
+          "key": "c1ed606a685e0ddcf8780a68b17d6abbe5a3d664",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-36",
+          "type": "FLOAT",
+          "key": "0ca88aad0ea58a94348c17c063defef648758023",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-12",
+          "type": "FLOAT",
+          "key": "8a634bc1c47fe17910988d1b4dcc6fb2f80d7a9e",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-16",
+          "type": "FLOAT",
+          "key": "e40b505212ac2ccbcb10f2f445e1dd642a39d390",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-16",
+          "type": "FLOAT",
+          "key": "098383e8aa3dc043a46fce40a3d239d949b3d32b",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Stroke weight/strokeweight-1+half",
+          "type": "FLOAT",
+          "key": "27028e26b42ea038a799710f8d8dfbf296a69c3d",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-0",
+          "type": "FLOAT",
+          "key": "9fe337e20670d89a6a14676afb1d29f7fa46de5f",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-48",
+          "type": "FLOAT",
+          "key": "eb25c500c7bb832f0b0e94e7b6c79ff6f7f4b496",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-8",
+          "type": "FLOAT",
+          "key": "53bf8a90b50915b49f9827b32b6373ffaa53c10d",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Sizing/size-60",
+          "type": "FLOAT",
+          "key": "ec9ded1aab583120be9fa94852d0e18939901b40",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Interaction/colour-interactive-navigation",
+          "type": "COLOR",
+          "key": "1c1cf2bbcf9374f517b1bd366f573a968a4d5e0c",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-green-2",
+          "type": "COLOR",
+          "key": "9b9ffd1e5250c23e59af0e31845753f7fb7a4869",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-red-2",
+          "type": "COLOR",
+          "key": "59aba0e796fa7141a9c6a488bd712e19755bb58b",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Stroke weight/strokeweight-2+half",
+          "type": "FLOAT",
+          "key": "de8106009c74035c03560f17474d755224db31c8",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-yellow-2",
+          "type": "COLOR",
+          "key": "08c55064cacf7b157dd3b4e90e39ffddb14e4952",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-green-1",
+          "type": "COLOR",
+          "key": "8dd8a6e019bf654325398668a9060fd8ec098898",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-focus-xlg",
+          "type": "FLOAT",
+          "key": "e1a26c32df4e4edaea1cc7043964afaa56646506",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Retain colour in dark mode/retain-brand-f&f",
+          "type": "COLOR",
+          "key": "55bf14ee42ed5601a87c2490d06c6fb408c9f1ad",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-pink-1",
+          "type": "COLOR",
+          "key": "7e4265006ec7e1022148d8b2e059f054f18f9533",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-orange-2",
+          "type": "COLOR",
+          "key": "1c15c4fb7040039e2e5e3519b31b324be37f9bde",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-button-lg",
+          "type": "FLOAT",
+          "key": "f83e7933d6e8564098e188082db85d3f92be22f8",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-purple-1",
+          "type": "COLOR",
+          "key": "7c963c279fb1b7407171758f59cd59efd0a1082b",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Background/colour-background-5",
+          "type": "COLOR",
+          "key": "fe4978aa61a2daf86b2b6df3e6182eb63bebeb86",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-orange-1",
+          "type": "COLOR",
+          "key": "d943af11d555446d83c590386b3a0af4a2099f76",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-button-sm",
+          "type": "FLOAT",
+          "key": "185146312098978f1ffc79ca814ef047f02a1c4f",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Background/colour-background-opacity",
+          "type": "COLOR",
+          "key": "c3e2fcb6cbf5984f078181baca3c92fe26b23c95",
+          "values": {
+            "Tesco": "#00539F",
+            "Tesco dark mode": "#FFFFFF"
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          }
+        },
+        {
+          "name": "Border radius/borderradius-lg",
+          "type": "FLOAT",
+          "key": "b8e0209cdbf88cb12829af700759af53dab14b0b",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-sm",
+          "type": "FLOAT",
+          "key": "97542825ac7629945b219e041fe8d50ddddf7529",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-purple-2",
+          "type": "COLOR",
+          "key": "ff6ef03b8d3b837b458eeadd82271eeaa1913ef3",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-red-1",
+          "type": "COLOR",
+          "key": "2285424cd3600eac21a66c704ebfed8d7842d084",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Background/colour-background-4",
+          "type": "COLOR",
+          "key": "11807f91d7919339cf8506a6370813b77c014b98",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-button-xlg",
+          "type": "FLOAT",
+          "key": "05b9f3c254fa5be22c4867e887497041f2d5a807",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-button-xsm",
+          "type": "FLOAT",
+          "key": "dec3472be0a789c51dca88953c465e3ccb255aa7",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-button-md",
+          "type": "FLOAT",
+          "key": "fa8b081472e2a26d74ca05d28b75786ae18ed05a",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary type/colour-brand-yellow-3",
+          "type": "COLOR",
+          "key": "1d8895a855e654429f0ae54f73879e32a480a9ee",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Stroke weight/strokeweight-none",
+          "type": "FLOAT",
+          "key": "91ba2c0b1834cc3f22293a3724ef81b49aeb217f",
+          "values": {
+            "Tesco": 0,
+            "Tesco dark mode": 0
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          }
+        },
+        {
+          "name": "Border radius/borderradius-md",
+          "type": "FLOAT",
+          "key": "a42cab76ec5d697f95567b16834dff2d93c51396",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-yellow-1",
+          "type": "COLOR",
+          "key": "4e12d1264e27bd015a9bab19207ffdd00f80210f",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-focus-sm",
+          "type": "FLOAT",
+          "key": "6932d63623c94cbefb20fa9c589686fa23f7adbd",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary type/colour-brand-pink-3",
+          "type": "COLOR",
+          "key": "11191d36867923a829f8307565a56e7f960940d0",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-focus-lg",
+          "type": "FLOAT",
+          "key": "4ae181be63116c2b8825c9c1424bd9b09bd2ef82",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Brand accent/colour-brand-accent",
+          "type": "COLOR",
+          "key": "08feb810443b1cf5c564a00cb1b9ac477ebf7205",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-focus-md",
+          "type": "FLOAT",
+          "key": "97adb10c4bb28fe1cd0482dd600bf0f21e1e5061",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary type/colour-brand-orange-3",
+          "type": "COLOR",
+          "key": "3500b47776e86a8dd02d07dbad228d825356880b",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary/colour-brand-pink-2",
+          "type": "COLOR",
+          "key": "8217cb020f8363e8e0af1716c75b6b76f0f9250b",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary type/colour-brand-red-3",
+          "type": "COLOR",
+          "key": "2624f9c95fc7276c134b0128fa47e682754707af",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary type/colour-brand-green-3",
+          "type": "COLOR",
+          "key": "cf271a5e4833949e2d164887ad3b2db05502f2eb",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Border radius/borderradius-focus-xsm",
+          "type": "FLOAT",
+          "key": "a3ded7eee5b276363bd0cd91769871b8eda5ab12",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Rebrand secondary type/colour-brand-purple-3",
+          "type": "COLOR",
+          "key": "a699fa0c8af0b88a581b65195429fb74b5810f10",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Overlays/colour-overlay-3",
+          "type": "COLOR",
+          "key": "1bafe9700ed6ec505a0934b0a85444f53504b241",
+          "values": {
+            "Tesco": "#F6F6F6",
+            "Tesco dark mode": "#333333"
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          }
+        },
+        {
+          "name": "Brand switches/colour-text-body-switch",
+          "type": "COLOR",
+          "key": "e4d8357820dd9537b3a2f7bd8ae140c3ffb5c84c",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Ai/colour-ai-tint",
+          "type": "COLOR",
+          "key": "5035d0e3693e95611ee3f30ed753fa1a3a2b0253",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Ai/colour-ai-secondary",
+          "type": "COLOR",
+          "key": "8103724af2c7fd63e090b34e322da5a1a21fe2e2",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        },
+        {
+          "name": "Ai/colour-ai-primary",
+          "type": "COLOR",
+          "key": "a15c51dca6851f500dc664595d7fdcba080cab5e",
+          "values": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "aliasTargets": {
+            "Tesco": null,
+            "Tesco dark mode": null
+          },
+          "modeErrors": {
+            "Tesco": "Mode \"Tesco\" was not found in collection Global tokens.",
+            "Tesco dark mode": "Mode \"Tesco dark mode\" was not found in collection Global tokens."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Web brand 2026",
+      "source": "library",
+      "libraryName": "DDS Web library",
+      "count": 0,
+      "variables": []
+    },
+    {
+      "name": "Collection 1",
+      "source": "library",
+      "libraryName": "DDS Web Documentation",
+      "count": 0,
+      "variables": []
+    },
+    {
+      "name": "Collection 1",
+      "source": "library",
+      "libraryName": "Web contributions",
+      "count": 0,
+      "variables": []
+    }
+  ],
+  "note": "Reading library values imports those variables into this file.",
+  "meta": {
+    "errors": [
+      "Failed to resolve Typography/colour-text-header-primary (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography/colour-text-header-primary (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography/colour-text-body (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography/colour-text-body (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography/colour-text-on-dark (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography/colour-text-on-dark (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography/colour-text-header-secondary (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography/colour-text-header-secondary (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-default (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-default (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-active (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-active (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-inverse (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-inverse (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-Interactive-form (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-Interactive-form (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Line/colour-border-primary (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Line/colour-border-primary (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Line/colour-border-secondary (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Line/colour-border-secondary (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-1 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-1 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-3 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-3 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-dark-primary (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-dark-primary (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-error (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-error (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-error-tint (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-error-tint (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-warning (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-warning (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-warning-tint (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-warning-tint (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-success (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-success (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-success-tint (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-success-tint (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-info (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-info (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-info-tint (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-info-tint (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-active (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-active (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-active-tint (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Messaging/colour-messaging-active-tint (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Tables/colour-table-header (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Tables/colour-table-header (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Tables/colour-table-cell-1 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Tables/colour-table-cell-1 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Tables/colour-table-cell-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Tables/colour-table-cell-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Tables/colour-table-border (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Tables/colour-table-border (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Nutrition/colour-nutri-green (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Nutrition/colour-nutri-green (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Nutrition/colour-nutri-amber (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Nutrition/colour-nutri-amber (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Nutrition/colour-nutri-red (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Nutrition/colour-nutri-red (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Value/colour-value-yellow (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Value/colour-value-yellow (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Brand red/colour-brand-red (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Brand red/colour-brand-red (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-dark-secondary (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-dark-secondary (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-interactive-inverse (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-interactive-inverse (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-interactive-default (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-interactive-default (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-text-body (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-text-body (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-error-form (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-error-form (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-value-yellow (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-value-yellow (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-header-primary (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-header-primary (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Value/colour-value-black (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Value/colour-value-black (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-44 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-44 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-52 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-52 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-68 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-68 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-16 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-16 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-32 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-32 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-40 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-40 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-64 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-64 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-56 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-56 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-28 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-28 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-60 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-60 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-36 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-36 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-18 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-18 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-48 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-48 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-28 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-28 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-24 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-24 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-20 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-20 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-16 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-16 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-22 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-22 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-24 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-24 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-12 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-12 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-20 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Line height/lineheight-20 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-32 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-32 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-14 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Typography tokens/Size/fontsize-14 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-60 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-60 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-32 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-32 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-12 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-12 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-28 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-28 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-24 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-24 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-8 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-8 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-80 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-80 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-56 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-56 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-20 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-20 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-48 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-48 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-36 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-36 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-16 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-16 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-40 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-40 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-0 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-0 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-72 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-72 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-4 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-4 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-brand-tesco (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-brand-tesco (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-3 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-3 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-40 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-40 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-80 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-80 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-12 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-12 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-40 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-40 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-8 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-8 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-20 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-20 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-1 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-1 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Spacing/Space-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-none (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-none (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-32 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-32 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-36 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-36 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-72 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-72 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-24 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-24 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-4 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-4 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-64 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-64 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-4 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-4 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-32 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-32 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-56 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-56 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-28 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-28 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-24 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-24 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-28 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-28 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-20 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-20 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-36 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-36 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-12 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-12 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-16 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-16 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-16 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-16 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-1+half (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-1+half (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-0 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-0 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-48 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-48 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-8 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-8 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-60 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Sizing/size-60 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-navigation (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Interaction/colour-interactive-navigation (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-green-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-green-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-red-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-red-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-2+half (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Stroke weight/strokeweight-2+half (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-yellow-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-yellow-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-green-1 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-green-1 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-xlg (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-xlg (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-brand-f&f (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Retain colour in dark mode/retain-brand-f&f (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-pink-1 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-pink-1 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-orange-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-orange-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-lg (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-lg (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-purple-1 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-purple-1 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-5 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-5 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-orange-1 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-orange-1 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-sm (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-sm (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-lg (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-lg (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-sm (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-sm (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-purple-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-purple-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-red-1 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-red-1 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-4 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Background/colour-background-4 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-xlg (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-xlg (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-xsm (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-xsm (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-md (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-button-md (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-yellow-3 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-yellow-3 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-md (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-md (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-yellow-1 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-yellow-1 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-sm (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-sm (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-pink-3 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-pink-3 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-lg (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-lg (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Brand accent/colour-brand-accent (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Brand accent/colour-brand-accent (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-md (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-md (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-orange-3 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-orange-3 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-pink-2 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary/colour-brand-pink-2 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-red-3 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-red-3 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-green-3 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-green-3 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-xsm (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Border radius/borderradius-focus-xsm (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-purple-3 (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Rebrand secondary type/colour-brand-purple-3 (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Brand switches/colour-text-body-switch (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Brand switches/colour-text-body-switch (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Ai/colour-ai-tint (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Ai/colour-ai-tint (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Ai/colour-ai-secondary (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Ai/colour-ai-secondary (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens.",
+      "Failed to resolve Ai/colour-ai-primary (Tesco): Mode \"Tesco\" was not found in collection Global tokens.",
+      "Failed to resolve Ai/colour-ai-primary (Tesco dark mode): Mode \"Tesco dark mode\" was not found in collection Global tokens."
+    ],
+    "notes": []
+  }
+}
