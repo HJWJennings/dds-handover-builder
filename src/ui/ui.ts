@@ -33,6 +33,7 @@ const inspectButton = document.getElementById('inspect-selection') as HTMLButton
 const styleProbeButton = document.getElementById('style-probe') as HTMLButtonElement | null;
 const tokenCatalogueButton = document.getElementById('token-catalogue') as HTMLButtonElement | null;
 const tokenCatalogueNote = document.getElementById('token-catalogue-note') as HTMLDivElement | null;
+const generateTwiceButton = document.getElementById('generate-twice') as HTMLButtonElement | null;
 const copyButton = document.getElementById('copy-json') as HTMLButtonElement | null;
 
 const renderOutput = (value: unknown) => {
@@ -60,6 +61,16 @@ tokenCatalogueButton?.addEventListener('click', () => {
   if (tokenCatalogueNote) tokenCatalogueNote.hidden = false;
   updateSummary('Reading token catalogue…');
   post({ type: 'TOKEN_CATALOGUE_REQUEST' });
+});
+
+generateTwiceButton?.addEventListener('click', () => {
+  const id = editorState.source?.id ?? state.selectedId;
+  if (!id) {
+    updateSummary('Select a component first.');
+    return;
+  }
+  updateSummary('Generating twice…');
+  post({ type: 'GENERATE_TWICE', id });
 });
 
 copyButton?.addEventListener('click', async () => {
@@ -955,6 +966,7 @@ const showHandoverPreview = (preview: { planId: string; entries: HandoverPreview
 };
 
 const showHandoverResult = (result: HandoverGenerationResultPayload) => {
+  const runLabel = result.runIndex !== undefined ? ` (run ${result.runIndex + 1} of 2)` : '';
   const generated = result.generated.map((entry) => ({ id: entry.id, name: entry.name }));
   const replaced = result.replaced.map((entry) => ({ id: entry.id, name: entry.name }));
   const failed = result.failed.map((entry) => ({ id: entry.id, name: entry.name, reason: entry.reason }));
@@ -964,7 +976,7 @@ const showHandoverResult = (result: HandoverGenerationResultPayload) => {
     { label: 'Failed', count: failed.length, danger: true },
   ];
   openConfirmModal({
-    title: 'Handover doc result',
+    title: `Handover doc result${runLabel}`,
     body: '',
     confirmLabel: 'Close',
     confirmClass: 'secondary',
@@ -978,7 +990,78 @@ const showHandoverResult = (result: HandoverGenerationResultPayload) => {
     modalBodyEl.append(document.createTextNode(` · ${result.emptySectionCount} sections had no content`));
   }
   if (modalBodyEl) {
-    modalBodyEl.append(document.createTextNode(` · Layout check: ${result.collapsedTextLayers} collapsed text layers`));
+    modalBodyEl.append(document.createTextNode(` · ${result.instanceCount} instances · Grids: ${result.gridCount}`));
+    modalBodyEl.append(document.createTextNode(` · Variants: placed ${result.variantsPlaced} of ${result.variantsTotal}`));
+    if (result.variantsOther > 0) modalBodyEl.append(document.createTextNode(` · Other variants: ${result.variantsOther}`));
+    modalBodyEl.append(document.createTextNode(` · On dark: ${result.onDarkStatuses.join(', ') || 'not available'}`));
+    modalBodyEl.append(document.createTextNode(` · Healed ${result.healedFrames} frames · Collapsed: ${result.collapsedCount} · Empty: ${result.emptyFrameCount}`));
+    if (result.narrowTextCount > 0) modalBodyEl.append(document.createTextNode(` · Narrow text: ${result.narrowTextCount}`));
+    if (result.outOfBoundsCount > 0) modalBodyEl.append(document.createTextNode(` · Out of bounds: ${result.outOfBoundsCount}`));
+    if (result.sectionErrors.length > 0) {
+      modalBodyEl.append(document.createTextNode(` · Generated with ${result.sectionErrors.length} section errors`));
+    }
+  }
+  if (modalExtraEl && result.sectionErrors.length > 0) {
+    const section = document.createElement('section');
+    section.className = 'result-section';
+    const heading = document.createElement('h4');
+    heading.textContent = 'Section errors';
+    section.appendChild(heading);
+    const list = document.createElement('ul');
+    result.sectionErrors.forEach((entry) => {
+      const item = document.createElement('li');
+      item.textContent = `Section failed: ${entry}`;
+      item.className = 'outcome-failure';
+      list.appendChild(item);
+    });
+    section.appendChild(list);
+    modalExtraEl.appendChild(section);
+  }
+  if (modalExtraEl && result.sections.length > 0) {
+    const section = document.createElement('section');
+    section.className = 'result-section';
+    const heading = document.createElement('h4');
+    heading.textContent = 'Sections';
+    section.appendChild(heading);
+    const list = document.createElement('ul');
+    result.sections.forEach((entry) => {
+      const item = document.createElement('li');
+      const stackLine = entry.stack?.split('\n').find((line) => line.trim().startsWith('at '));
+      item.textContent = `${entry.name}: ${entry.status}${entry.reason ? `: ${entry.reason}` : ''}${entry.status === 'failed' && stackLine ? ` — ${stackLine.trim()}` : ''} (${entry.durationMs}ms)`;
+      if (entry.status === 'failed') item.className = 'outcome-failure';
+      list.appendChild(item);
+    });
+    section.appendChild(list);
+    modalExtraEl.appendChild(section);
+  }
+  if (modalExtraEl && result.genLog.length > 0) {
+    const details = document.createElement('details');
+    details.className = 'result-log';
+    const summary = document.createElement('summary');
+    summary.textContent = `Log (${result.genLog.length} lines)`;
+    details.appendChild(summary);
+    const pre = document.createElement('pre');
+    pre.className = 'result-log-block';
+    pre.textContent = result.genLog.join('\n');
+    details.appendChild(pre);
+    const copyButton = document.createElement('button');
+    copyButton.type = 'button';
+    copyButton.className = 'secondary';
+    copyButton.textContent = 'Copy log';
+    copyButton.addEventListener('click', () => {
+      const textarea = document.createElement('textarea');
+      textarea.value = result.genLog.join('\n');
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      textarea.remove();
+      copyButton.textContent = 'Copied';
+      setTimeout(() => { copyButton.textContent = 'Copy log'; }, 1500);
+    });
+    details.appendChild(copyButton);
+    modalExtraEl.appendChild(details);
   }
   if (modalExtraEl) {
     appendResultSection(modalExtraEl, `Generated (${generated.length})`, generated);
@@ -1111,6 +1194,7 @@ interface EditorState {
   fields: ComponentDoc['fields'];
   docStatus: 'draft' | 'ready';
   syncToDescription: boolean;
+  handoverConfig: NonNullable<ComponentDoc['handoverConfig']>;
   dirty: boolean;
   missingFields: Set<string>;
   previewFields: Set<string>;
@@ -1135,6 +1219,7 @@ const editorState: EditorState = {
   fields: emptyFields(),
   docStatus: 'draft',
   syncToDescription: false,
+  handoverConfig: { onDark: 'auto', themes: 'auto' },
   dirty: false,
   missingFields: new Set(),
   previewFields: new Set(),
@@ -1157,6 +1242,9 @@ const fieldsContainer = document.getElementById('editor-fields') as HTMLDivEleme
 const linksListEl = document.getElementById('links-list') as HTMLDivElement | null;
 const addLinkButton = document.getElementById('add-link') as HTMLButtonElement | null;
 const syncCheckbox = document.getElementById('sync-to-description') as HTMLInputElement | null;
+const handoverAxesEl = document.getElementById('handover-axes') as HTMLDivElement | null;
+const handoverOnDarkSelect = document.getElementById('handover-on-dark') as HTMLSelectElement | null;
+const handoverThemesSelect = document.getElementById('handover-themes') as HTMLSelectElement | null;
 const prevButton = document.getElementById('editor-prev') as HTMLButtonElement | null;
 const skipButton = document.getElementById('editor-skip') as HTMLButtonElement | null;
 const nextButton = document.getElementById('editor-next') as HTMLButtonElement | null;
@@ -1457,6 +1545,68 @@ const updateFooterStatus = () => {
   if (savePrimaryButton) savePrimaryButton.textContent = editorState.docStatus === 'ready' ? 'Save' : 'Mark as ready';
 };
 
+const renderHandoverAxes = (variantProperties: Array<{ name: string; options: string[] }>) => {
+  if (!handoverAxesEl) return;
+  handoverAxesEl.innerHTML = '';
+  const axes = editorState.handoverConfig.axes ?? {};
+  const labels = editorState.handoverConfig.labels ?? {};
+  for (const property of variantProperties) {
+    const displayName = property.name.replace(/#.*$/, '');
+    const row = document.createElement('div');
+    row.className = 'handover-axis-row';
+
+    const axisRow = document.createElement('div');
+    axisRow.className = 'handover-axis-title';
+    const axisLabel = document.createElement('label');
+    axisLabel.textContent = displayName;
+    const select = document.createElement('select');
+    select.append(new Option('Auto', 'auto'), new Option('Columns', 'columns'), new Option('Rows', 'rows'));
+    select.value = axes[property.name] ?? 'auto';
+    select.addEventListener('change', () => {
+      editorState.handoverConfig.axes = { ...(editorState.handoverConfig.axes ?? {}), [property.name]: select.value as 'auto' | 'columns' | 'rows' };
+      markDirty();
+      updateFooterStatus();
+    });
+    axisLabel.appendChild(select);
+    axisRow.appendChild(axisLabel);
+
+    const reverseLabel = document.createElement('label');
+    reverseLabel.className = 'checkbox-label';
+    const reverseCheckbox = document.createElement('input');
+    reverseCheckbox.type = 'checkbox';
+    reverseCheckbox.checked = Boolean(editorState.handoverConfig.reverse?.[property.name]);
+    reverseCheckbox.addEventListener('change', () => {
+      editorState.handoverConfig.reverse = { ...(editorState.handoverConfig.reverse ?? {}), [property.name]: reverseCheckbox.checked };
+      markDirty();
+      updateFooterStatus();
+    });
+    reverseLabel.append(reverseCheckbox, document.createTextNode('Reverse order'));
+    axisRow.appendChild(reverseLabel);
+    row.appendChild(axisRow);
+
+    const labelsGrid = document.createElement('div');
+    labelsGrid.className = 'handover-axis-labels';
+    for (const option of property.options) {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = `${displayName} (${option})`;
+      input.value = labels[`${property.name}=${option}`] ?? '';
+      input.addEventListener('input', () => {
+        const key = `${property.name}=${option}`;
+        const next = { ...(editorState.handoverConfig.labels ?? {}) };
+        if (input.value.trim()) next[key] = input.value;
+        else delete next[key];
+        editorState.handoverConfig.labels = next;
+        markDirty();
+        updateFooterStatus();
+      });
+      labelsGrid.appendChild(input);
+    }
+    row.appendChild(labelsGrid);
+    handoverAxesEl.appendChild(row);
+  }
+};
+
 const renderEditor = () => {
   if (!editorRootEl || !editorEmptyEl) return;
 
@@ -1497,6 +1647,9 @@ const renderEditor = () => {
   }
 
   if (syncCheckbox) syncCheckbox.checked = editorState.syncToDescription;
+  renderHandoverAxes(source.variantProperties ?? []);
+  if (handoverOnDarkSelect) handoverOnDarkSelect.value = editorState.handoverConfig.onDark ?? 'auto';
+  if (handoverThemesSelect) handoverThemesSelect.value = editorState.handoverConfig.themes ?? 'auto';
 
   updateFooterStatus();
 
@@ -1511,6 +1664,13 @@ const applyEditorPayload = (payload: EditorPayload | null) => {
   editorState.fields = payload ? JSON.parse(JSON.stringify(payload.doc.fields)) : emptyFields();
   editorState.docStatus = payload?.doc.status ?? 'draft';
   editorState.syncToDescription = Boolean(payload?.doc.syncToDescription);
+  editorState.handoverConfig = {
+    axes: { ...(payload?.doc.handoverConfig?.axes ?? {}) },
+    labels: { ...(payload?.doc.handoverConfig?.labels ?? {}) },
+    reverse: { ...(payload?.doc.handoverConfig?.reverse ?? {}) },
+    onDark: payload?.doc.handoverConfig?.onDark ?? 'auto',
+    themes: payload?.doc.handoverConfig?.themes ?? 'auto',
+  };
   editorState.dirty = false;
   editorState.missingFields.clear();
   editorState.previewFields.clear();
@@ -1588,6 +1748,7 @@ const performSave = (status: 'draft' | 'ready'): Promise<boolean> => {
         fields: editorState.fields,
         status,
         syncToDescription: editorState.syncToDescription,
+        handoverConfig: editorState.handoverConfig,
       },
     });
   });
@@ -1743,6 +1904,18 @@ moveToDraftButton?.addEventListener('click', () => {
 
 syncCheckbox?.addEventListener('change', () => {
   editorState.syncToDescription = syncCheckbox.checked;
+  markDirty();
+  updateFooterStatus();
+});
+
+handoverOnDarkSelect?.addEventListener('change', () => {
+  editorState.handoverConfig.onDark = handoverOnDarkSelect.value as 'auto' | 'off';
+  markDirty();
+  updateFooterStatus();
+});
+
+handoverThemesSelect?.addEventListener('change', () => {
+  editorState.handoverConfig.themes = handoverThemesSelect.value as 'auto' | 'off';
   markDirty();
   updateFooterStatus();
 });

@@ -57,6 +57,49 @@ export const validateComponentDoc = (value: unknown): ComponentDoc => {
   if (doc.syncToDescription !== undefined && typeof doc.syncToDescription !== 'boolean') {
     throw new Error('syncToDescription must be a boolean.');
   }
+  let handoverConfig: ComponentDoc['handoverConfig'];
+  if (doc.handoverConfig !== undefined) {
+    if (!doc.handoverConfig || typeof doc.handoverConfig !== 'object' || Array.isArray(doc.handoverConfig)) {
+      throw new Error('handoverConfig must be an object.');
+    }
+    const config = doc.handoverConfig as Record<string, unknown>;
+    let axes: Record<string, 'auto' | 'columns' | 'rows'> | undefined;
+    let labels: Record<string, string> | undefined;
+    if (config.axes !== undefined) {
+      if (!config.axes || typeof config.axes !== 'object' || Array.isArray(config.axes)) throw new Error('handoverConfig.axes must be an object.');
+      axes = {};
+      for (const [key, value] of Object.entries(config.axes as Record<string, unknown>)) {
+        if (value !== 'auto' && value !== 'columns' && value !== 'rows') throw new Error(`handoverConfig.axes["${key}"] must be "auto", "columns" or "rows".`);
+        axes[key] = value;
+      }
+    }
+    if (config.labels !== undefined) {
+      if (!config.labels || typeof config.labels !== 'object' || Array.isArray(config.labels)) throw new Error('handoverConfig.labels must be an object.');
+      labels = {};
+      for (const [key, value] of Object.entries(config.labels as Record<string, unknown>)) {
+        if (typeof value !== 'string') throw new Error(`handoverConfig.labels["${key}"] must be a string.`);
+        labels[key] = value;
+      }
+    }
+    let reverse: Record<string, boolean> | undefined;
+    if (config.reverse !== undefined) {
+      if (!config.reverse || typeof config.reverse !== 'object' || Array.isArray(config.reverse)) throw new Error('handoverConfig.reverse must be an object.');
+      reverse = {};
+      for (const [key, value] of Object.entries(config.reverse as Record<string, unknown>)) {
+        if (typeof value !== 'boolean') throw new Error(`handoverConfig.reverse["${key}"] must be a boolean.`);
+        reverse[key] = value;
+      }
+    }
+    if (config.onDark !== undefined && config.onDark !== 'auto' && config.onDark !== 'off') throw new Error('handoverConfig.onDark must be "auto" or "off".');
+    if (config.themes !== undefined && config.themes !== 'auto' && config.themes !== 'off') throw new Error('handoverConfig.themes must be "auto" or "off".');
+    handoverConfig = {
+      axes,
+      labels,
+      reverse,
+      onDark: config.onDark as 'auto' | 'off' | undefined,
+      themes: config.themes as 'auto' | 'off' | undefined,
+    };
+  }
   if (doc.handover !== undefined) {
     if (!doc.handover || typeof doc.handover !== 'object') throw new Error('handover must be an object.');
     const handover = doc.handover as Record<string, unknown>;
@@ -84,6 +127,7 @@ export const validateComponentDoc = (value: unknown): ComponentDoc => {
       links,
     },
     handover: doc.handover as ComponentDoc['handover'],
+    handoverConfig,
     syncToDescription: doc.syncToDescription as boolean | undefined,
   };
 };

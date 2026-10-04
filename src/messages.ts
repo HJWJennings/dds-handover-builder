@@ -2,12 +2,19 @@ import type { ScanResult, ScanScope } from './scan';
 import type { ComponentDoc } from './store/types';
 import type { DocStatus } from './store/docStatus';
 
+export interface EditorVariantProperty {
+  name: string;
+  options: string[];
+}
+
 export interface EditorPayload {
   id: string;
   name: string;
   fullName: string;
   type: 'COMPONENT_SET' | 'COMPONENT';
   variantCount: number;
+  variantPropertyNames: string[];
+  variantProperties: EditorVariantProperty[];
   group: string;
   status: DocStatus;
   doc: ComponentDoc;
@@ -18,6 +25,7 @@ export interface SaveDocPayload {
   fields: ComponentDoc['fields'];
   status: 'draft' | 'ready';
   syncToDescription: boolean;
+  handoverConfig: NonNullable<ComponentDoc['handoverConfig']>;
 }
 
 export interface SaveResultPayload {
@@ -106,6 +114,20 @@ export interface HandoverGenerationResultPayload {
   replaced: Array<{ id: string; name: string; frameId: string }>;
   failed: Array<{ id: string; name: string; reason: string }>;
   emptySectionCount: number;
+  instanceCount: number;
+  gridCount: number;
+  variantsPlaced: number;
+  variantsTotal: number;
+  variantsOther: number;
+  onDarkStatuses: string[];
+  collapsedCount: number;
+  emptyFrameCount: number;
+  narrowTextCount: number;
+  outOfBoundsCount: number;
+  healedFrames: number;
+  sectionErrors: string[];
+  sections: Array<{ name: string; status: string; reason?: string; stack?: string; durationMs: number }>;
+  genLog: string[];
   collapsedTextLayers: number;
   collapsedTextPaths: string[];
   fontReport: HandoverFontReport;
@@ -113,6 +135,8 @@ export interface HandoverGenerationResultPayload {
   tokenReport: HandoverTokenReportEntry[];
   errors: string[];
   showDocFrameId?: string;
+  /** Set when this payload is one run of the "Generate twice" self-test. */
+  runIndex?: number;
 }
 
 export type PluginToUIMessage =
@@ -292,6 +316,10 @@ export type UIToPluginMessage =
   | {
       type: 'GENERATE_HANDOVER_CONFIRM';
       planId: string;
+    }
+  | {
+      type: 'GENERATE_TWICE';
+      id: string;
     }
   | {
       type: 'SHOW_HANDOVER_DOC';

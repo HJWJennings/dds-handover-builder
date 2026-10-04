@@ -120,6 +120,15 @@
                     Sync to description (Purpose + When to use + AI guidance)
                   </label>
                 </div>
+
+                <details class="handover-layout">
+                  <summary>Handover layout</summary>
+                  <div class="handover-layout-controls">
+                    <div id="handover-axes" class="handover-axes"></div>
+                    <label>On dark<select id="handover-on-dark"><option value="auto">Auto</option><option value="off">Off</option></select></label>
+                    <label>Themes<select id="handover-themes"><option value="auto">Auto</option><option value="off">Off</option></select></label>
+                  </div>
+                </details>
               </div>
 
               <div class="editor-footer">
@@ -161,6 +170,7 @@
                 <button id="inspect-selection" class="primary">Inspect selection</button>
                 <button id="style-probe" class="secondary">Style probe</button>
                 <button id="token-catalogue" class="secondary">Token catalogue</button>
+                <button id="generate-twice" class="secondary">Generate twice</button>
                 <button id="copy-json" class="secondary">Copy JSON</button>
               </div>
             </div>

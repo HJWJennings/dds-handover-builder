@@ -35,6 +35,11 @@ const toHex = (color: RGB | RGBA): string =>
 type ResolvedModeValue = { value: string | number; aliasTarget: string | null };
 const tokenValueCache = new Map<string, Promise<ResolvedModeValue>>();
 
+/** Clears every module-level cache so no value or node reference survives a generation. */
+export const resetGenerationState = (): void => {
+  tokenValueCache.clear();
+};
+
 const getModeValue = async (
   variable: Variable,
   modeName: string,

@@ -25,10 +25,12 @@ import {
   SLOT_DASH_PATTERN,
   SLOT_PADDING,
   SLOT_STROKE_WEIGHT,
+  setSizing,
 } from './layout';
 import { loadGenerationFonts, type GenerationFonts } from './fonts';
 import { appendLinks, appendMarkdown, appendStyledText, type HandoverTextRole } from './markdown';
-import { resolveHandoverTokens, type HandoverTokenSet, makeSolidPaint, bindSpacing } from './tokens';
+import { resolveHandoverTokens, type HandoverTokenSet, makeSolidPaint, bindSpacing, resetGenerationState } from './tokens';
+import { buildPhase5Visuals } from './visuals';
 
 export interface GenerationContext {
   outputPage: PageNode;
@@ -42,6 +44,21 @@ export interface GeneratedHandoverResult {
   action: 'generated' | 'replaced';
   frame: FrameNode;
   emptySectionCount: number;
+  instanceCount: number;
+  gridCount: number;
+  variantsPlaced: number;
+  variantsTotal: number;
+  variantsOther: number;
+  onDarkInfo: string;
+  collapsedCount: number;
+  emptyFrameCount: number;
+  narrowTextCount: number;
+  outOfBoundsCount: number;
+  healedFrames: number;
+  sectionErrors: string[];
+  sections: Array<{ name: string; status: string; reason?: string; durationMs: number }>;
+  genLog: string[];
+  warnings: string[];
   collapsedTextPaths: string[];
   tokenBindingReadback: string[];
   fontReport: GenerationFonts['report'];
@@ -61,7 +78,9 @@ const ensureOutputPage = async (): Promise<PageNode> => {
 const createAutoFrame = (name: string, width: number, tokens: HandoverTokenSet, fillRole?: keyof HandoverTokenSet['roles']): FrameNode => {
   const frame = figma.createFrame();
   frame.name = name;
+  // resize before any sizing is set; resize afterwards would switch axes to FIXED.
   frame.resize(width, FRAME_MIN_HEIGHT);
+  frame.clipsContent = false;
   frame.layoutMode = 'VERTICAL';
   frame.primaryAxisSizingMode = 'AUTO';
   frame.counterAxisSizingMode = 'FIXED';
@@ -112,12 +131,13 @@ const addText = (
 };
 
 const addGlanceCell = (parent: FrameNode, key: string, label: string, value: string, muted: boolean, ctx: GenerationContext) => {
-  const cell = createAutoFrame(`#glance/${key}/cell`, CONTENT_WIDTH / GLANCE_COLUMNS, ctx.tokens);
+  // HUG both axes; the FILL applied after appending evens out the columns.
+  const cell = createAutoFrame(`#glance/${key}/cell`, 1, ctx.tokens);
   setItemSpacing(cell, GLANCE_ITEM_TEXT_GAP, ctx.tokens);
   addText(cell, label, 'caption', ctx, `#glance/${key}/label`, { singleLine: true });
   addText(cell, value, 'caption', ctx, `#glance/${key}`, { singleLine: true, opacity: muted ? 0.55 : 1 });
   parent.appendChild(cell);
-  cell.layoutSizingHorizontal = 'FILL';
+  setSizing(cell, 'FILL');
 };
 
 const addSlot = (parent: FrameNode, key: string, ctx: GenerationContext, phase?: 5 | 6, manual = false) => {
@@ -126,9 +146,11 @@ const addSlot = (parent: FrameNode, key: string, ctx: GenerationContext, phase?:
   slot.strokeWeight = SLOT_STROKE_WEIGHT;
   slot.dashPattern = [...SLOT_DASH_PATTERN];
   bindPadding(slot, { top: SLOT_PADDING, right: SLOT_PADDING, bottom: SLOT_PADDING, left: SLOT_PADDING }, ctx.tokens);
-  addText(slot, manual ? 'Manual section' : `Auto-generated in Phase ${phase ?? 5}`, 'caption', ctx, `#slot/${key}/placeholder`, { singleLine: true, opacity: 0.6 });
+  const placeholder = addText(slot, manual ? 'Manual section' : `Auto-generated in Phase ${phase ?? 5}`, 'caption', ctx, `#slot/${key}/placeholder`, { singleLine: true, opacity: 0.6 });
+  // Remember the placeholder so generators can remove exactly this node, and only on success.
+  slot.setSharedPluginData(GENERATED_DATA_NAMESPACE, `placeholder:${key}`, placeholder.id);
   parent.appendChild(slot);
-  slot.layoutSizingHorizontal = 'FILL';
+  setSizing(slot, 'FILL');
   return slot;
 };
 
@@ -141,15 +163,17 @@ const addSectionFrame = (root: FrameNode, section: HandoverSectionDefinition, in
   const content = createAutoFrame(`#section/${section.key}/content`, CONTENT_WIDTH, ctx.tokens);
   setItemSpacing(content, SECTION_GAP, ctx.tokens);
   sectionFrame.appendChild(content);
-  content.layoutSizingHorizontal = 'FILL';
+  setSizing(content, 'FILL');
   if (index < count - 1) {
     const divider = createAutoFrame(`#divider/${section.key}`, CONTENT_WIDTH, ctx.tokens, 'divider');
-    divider.resize(CONTENT_WIDTH, DIVIDER_HEIGHT);
+    // Keep HUG horizontal; the FIXED height is set while the frame is unparented, before FILL is applied.
+    setSizing(divider, undefined, 'FIXED');
     sectionFrame.appendChild(divider);
-    divider.layoutSizingHorizontal = 'FILL';
+    setSizing(divider, 'FILL');
+    divider.resize(CONTENT_WIDTH, DIVIDER_HEIGHT);
   }
   root.appendChild(sectionFrame);
-  sectionFrame.layoutSizingHorizontal = 'FILL';
+  setSizing(sectionFrame, 'FILL');
   return { content, heading };
 };
 
@@ -248,7 +272,7 @@ const addAtAGlance = (root: FrameNode, component: DocumentableNode, doc: Compone
   addGlanceCell(strip, 'type', 'Type', componentType, false, ctx);
   addGlanceCell(strip, 'storybook-path', 'Storybook path', fields.storybookPath.trim() || 'Not documented yet.', !fields.storybookPath.trim(), ctx);
   root.appendChild(strip);
-  strip.layoutSizingHorizontal = 'FILL';
+  setSizing(strip, 'FILL');
 };
 
 const hasMeaningfulContent = (key: string, fields: ComponentDoc['fields']): boolean => {
@@ -334,24 +358,37 @@ const fillSection = (content: FrameNode, key: string, fields: ComponentDoc['fiel
   return Boolean(markdown.trim());
 };
 
-const buildFrame = async (component: DocumentableNode, doc: ComponentDoc | null, ctx: GenerationContext): Promise<{ frame: FrameNode; band: FrameNode; sectionHeading: TextNode; modeReport: string; emptySectionCount: number }> => {
+const buildFrame = async (component: DocumentableNode, doc: ComponentDoc | null, ctx: GenerationContext): Promise<{ frame: FrameNode; band: FrameNode; sectionHeading: TextNode; modeReport: string; emptySectionCount: number; sectionErrors: string[] }> => {
   const fields = doc?.fields ?? getOrCreateDoc(component).fields;
   const frame = createAutoFrame(`Handover — ${component.name.replace(/^[._]+/, '')}`, DOC_WIDTH, ctx.tokens, 'pageBackground');
-  frame.resize(DOC_WIDTH, FRAME_MIN_HEIGHT);
-  frame.clipsContent = false;
   setItemSpacing(frame, ROOT_SECTION_GAP, ctx.tokens);
   const modeReport = await setWebTescoMode(frame);
+  const sectionErrors: string[] = [];
+  const sectionFailed = (name: string, error: unknown, container?: FrameNode) => {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error('[gen] section failed', name, error instanceof Error ? error.stack : error);
+    sectionErrors.push(`${name}: ${message}`);
+    if (container) addText(container, `Couldn't build this section: ${message}`, 'body', ctx, `Section failed: ${name}`, { opacity: 0.55 });
+  };
 
-  const header = createAutoFrame('#header-band', DOC_WIDTH, ctx.tokens, 'bandFill');
-  bindPadding(header, { top: HEADER_VERTICAL_PADDING, right: PAGE_PADDING, bottom: HEADER_VERTICAL_PADDING, left: PAGE_PADDING }, ctx.tokens);
-  setItemSpacing(header, HEADER_TEXT_GAP, ctx.tokens);
-  addText(header, sourcePageName(component), 'category', ctx, '#category', { singleLine: true });
-  addText(header, component.name.replace(/^[._]+/, ''), 'title', ctx, '#title');
-  addText(header, fields.purpose.trim() || 'Not documented yet.', 'summary', ctx, '#summary', { opacity: fields.purpose.trim() ? 1 : 0.55 });
+  let header = createAutoFrame('#header-band', DOC_WIDTH, ctx.tokens, 'bandFill');
+  try {
+    bindPadding(header, { top: HEADER_VERTICAL_PADDING, right: PAGE_PADDING, bottom: HEADER_VERTICAL_PADDING, left: PAGE_PADDING }, ctx.tokens);
+    setItemSpacing(header, HEADER_TEXT_GAP, ctx.tokens);
+    addText(header, sourcePageName(component), 'category', ctx, '#category', { singleLine: true });
+    addText(header, component.name.replace(/^[._]+/, ''), 'title', ctx, '#title');
+    addText(header, fields.purpose.trim() || 'Not documented yet.', 'summary', ctx, '#summary', { opacity: fields.purpose.trim() ? 1 : 0.55 });
+  } catch (error) {
+    sectionFailed('Header', error, header);
+  }
   frame.appendChild(header);
-  header.layoutSizingHorizontal = 'FILL';
+  setSizing(header, 'FILL');
 
-  addAtAGlance(frame, component, doc, fields, ctx);
+  try {
+    addAtAGlance(frame, component, doc, fields, ctx);
+  } catch (error) {
+    sectionFailed('At a glance', error);
+  }
   let emptySectionCount = 0;
   const sections = EMPTY_SECTIONS === 'placeholder'
     ? HANDOVER_SECTIONS
@@ -361,19 +398,31 @@ const buildFrame = async (component: DocumentableNode, doc: ComponentDoc | null,
     const builtSection = addSectionFrame(frame, section, index, sections.length, ctx);
     firstSectionHeading ??= builtSection.heading;
     const content = builtSection.content;
-    if (!fillSection(content, section.key, fields, ctx)) emptySectionCount += 1;
+    try {
+      if (!fillSection(content, section.key, fields, ctx)) emptySectionCount += 1;
+    } catch (error) {
+      sectionFailed(section.title, error, content);
+    }
   });
 
   const footer = createAutoFrame('#footer-band', DOC_WIDTH, ctx.tokens, 'bandFill');
-  bindPadding(footer, { top: PAGE_PADDING, right: PAGE_PADDING, bottom: PAGE_PADDING, left: PAGE_PADDING }, ctx.tokens);
-  addText(footer, figma.root.name, 'footer', ctx, '#footer', { singleLine: true });
+  try {
+    bindPadding(footer, { top: PAGE_PADDING, right: PAGE_PADDING, bottom: PAGE_PADDING, left: PAGE_PADDING }, ctx.tokens);
+    addText(footer, figma.root.name, 'footer', ctx, '#footer', { singleLine: true });
+  } catch (error) {
+    sectionFailed('Footer', error, footer);
+  }
   frame.appendChild(footer);
-  footer.layoutSizingHorizontal = 'FILL';
-  if (!firstSectionHeading) throw new Error('No handover section heading was generated.');
-  return { frame, band: header, sectionHeading: firstSectionHeading, modeReport, emptySectionCount };
+  setSizing(footer, 'FILL');
+  if (!firstSectionHeading) {
+    const fallback = addText(frame, component.name, 'heading', ctx, '#fallback-heading');
+    firstSectionHeading = fallback;
+  }
+  return { frame, band: header, sectionHeading: firstSectionHeading, modeReport, emptySectionCount, sectionErrors };
 };
 
 export const prepareHandoverEnvironment = async (): Promise<GenerationContext> => {
+  resetGenerationState();
   const fonts = await loadGenerationFonts();
   const tokens = await resolveHandoverTokens();
   await figma.loadAllPagesAsync();
@@ -387,40 +436,152 @@ export const findHandoverFrame = async (page: PageNode, componentId: string): Pr
   page.findAll((node) => node.getSharedPluginData(GENERATED_DATA_NAMESPACE, GENERATED_DATA_KEY) === componentId)
     .find((node): node is FrameNode => node.type === 'FRAME') ?? null;
 
+/** Item 1d: rescue auto-layout frames stuck FIXED under 8px tall that have children. */
+const healCollapsedFrames = (root: FrameNode): number => {
+  let healed = 0;
+  for (const node of root.findAll((entry) => entry.type === 'FRAME')) {
+    const frame = node as FrameNode;
+    if (frame.layoutMode === 'NONE') continue;
+    if (frame.layoutSizingVertical === 'FIXED' && frame.height < 8 && frame.children.length > 0) {
+      setSizing(frame, undefined, 'HUG');
+      healed += 1;
+    }
+    if (frame.primaryAxisSizingMode === 'FIXED' && frame.layoutMode === 'VERTICAL' && frame.height < 8 && frame.children.length > 0) {
+      frame.primaryAxisSizingMode = 'AUTO';
+      healed += 1;
+    }
+  }
+  return healed;
+};
+
+/** Item 1e: audit every collapsed (has children) and empty auto-layout frame, plus tiny nodes. */
+const layoutAudit = (root: FrameNode): { collapsed: string[]; empty: string[]; narrowText: string[]; outOfBounds: string[] } => {
+  const collapsed: string[] = [];
+  const empty: string[] = [];
+  const narrowText: string[] = [];
+  const outOfBounds: string[] = [];
+  const pathOf = (node: BaseNode): string => {
+    const parts: string[] = [];
+    let current: BaseNode | null = node;
+    while (current && current.type !== 'PAGE') {
+      parts.unshift(current.name);
+      current = current.parent;
+    }
+    return parts.join(' / ');
+  };
+  const inVariantsSection = (node: BaseNode): boolean => {
+    let current: BaseNode | null = node;
+    while (current) {
+      if (current.name === '#section/variants') return true;
+      current = current.parent;
+    }
+    return false;
+  };
+  for (const node of root.findAll(() => true)) {
+    if (node.name.startsWith('#divider')) continue;
+    const isFrame = node.type === 'FRAME';
+    const auto = isFrame && (node as FrameNode).layoutMode !== 'NONE';
+    const tiny = node.width < 2 || node.height < 2;
+    if (auto && (node as FrameNode).children.length === 0) {
+      empty.push(`${pathOf(node)} · ${Math.round(node.width)}×${Math.round(node.height)} · ${(node as FrameNode).layoutSizingHorizontal}/${(node as FrameNode).layoutSizingVertical} · 0 children`);
+    } else if (tiny && 'children' in node && (node as ChildrenMixin).children.length > 0) {
+      collapsed.push(`${pathOf(node)} · ${Math.round(node.width)}×${Math.round(node.height)} · ${auto ? `${(node as FrameNode).layoutSizingHorizontal}/${(node as FrameNode).layoutSizingVertical}` : 'no auto layout'} · ${(node as ChildrenMixin).children.length} children`);
+    }
+    // Item 4: flag narrow text in the Variants section (one-letter-per-line headers).
+    if (node.type === 'TEXT' && inVariantsSection(node) && node.width < 24 && node.characters.length > 3) {
+      narrowText.push(`${pathOf(node)} · ${Math.round(node.width)}px wide · "${node.characters.slice(0, 24)}"`);
+    }
+    // Item 4: flag instances that spill outside their parent's bounds.
+    if (node.type === 'INSTANCE' && node.parent && 'width' in node.parent) {
+      const parent = node.parent as LayoutMixin & { x: number; y: number };
+      const inside = node.x >= -1 && node.y >= -1 && node.x + node.width <= parent.width + 1 && node.y + node.height <= parent.height + 1;
+      if (!inside) outOfBounds.push(`${pathOf(node)} · ${Math.round(node.width)}×${Math.round(node.height)} in ${Math.round(parent.width)}×${Math.round(parent.height)}`);
+    }
+  }
+  console.log('[gen] layout audit', { collapsed, empty, narrowText, outOfBounds });
+  return { collapsed, empty, narrowText, outOfBounds };
+};
+
 export const buildHandoverDoc = async (
   component: DocumentableNode,
   doc: ComponentDoc | null,
   ctx: GenerationContext,
 ): Promise<GeneratedHandoverResult> => {
+  // Replace-in-place: read the previous doc's position into plain numbers, then remove it,
+  // before any section runs. The old node object is never held across an await.
   const previous = await findHandoverFrame(ctx.outputPage, component.id);
-  const { frame, band, sectionHeading, modeReport, emptySectionCount } = await buildFrame(component, doc, ctx);
-  const existingFrames = ctx.outputPage.children.filter((node): node is FrameNode => node.type === 'FRAME' && node.id !== previous?.id);
+  let previousX: number | null = null;
+  let previousY: number | null = null;
+  if (previous && !previous.removed) {
+    previousX = previous.x;
+    previousY = previous.y;
+    previous.remove();
+  }
+  const { frame, band, sectionHeading, modeReport, emptySectionCount, sectionErrors } = await buildFrame(component, doc, ctx);
+  const existingFrames = ctx.outputPage.children.filter((node): node is FrameNode => node.type === 'FRAME');
   const rightmost = existingFrames.reduce((farRight, node) => Math.max(farRight, node.x + node.width), 0);
-  frame.x = previous ? previous.x : rightmost === 0 ? 0 : rightmost + PAGE_GAP;
-  frame.y = previous ? previous.y : 0;
+  frame.x = previousX ?? (rightmost === 0 ? 0 : rightmost + PAGE_GAP);
+  frame.y = previousY ?? 0;
   ctx.outputPage.appendChild(frame);
   frame.setSharedPluginData(GENERATED_DATA_NAMESPACE, GENERATED_DATA_KEY, component.id);
 
   try {
-    const collapsedTextPaths = getCollapsedTextPaths(frame);
-    console.log('[generate] layout check collapsed text layer paths', collapsedTextPaths);
+    let visualReport: Awaited<ReturnType<typeof buildPhase5Visuals>>;
+    try {
+      visualReport = await buildPhase5Visuals(frame, component, doc, ctx);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error('[gen] section failed', 'Phase 5 visuals', error instanceof Error ? error.stack : error);
+      sectionErrors.push(`Phase 5 visuals: ${message}`);
+      visualReport = {
+        instanceCount: 0,
+        gridCount: 0,
+        warnings: [`Phase 5 visuals: ${message}`],
+        sections: [{ name: 'phase5-visuals', status: 'failed', reason: message, durationMs: 0 }],
+        log: [],
+        variantsPlaced: 0,
+        variantsTotal: 0,
+        variantsOther: 0,
+        onDarkInfo: 'not available',
+        onDarkBackings: [],
+      };
+    }
+    const healedFrames = healCollapsedFrames(frame);
+    const audit = layoutAudit(frame);
     const tokenBindingReadback = [
       await readFillBinding('bandFill', band, ctx.tokens.roles.bandFill),
       await readFillBinding('heading', sectionHeading, ctx.tokens.roles.heading),
       modeReport,
     ];
-    if (previous && !previous.removed) previous.remove();
+    for (const backing of visualReport.onDarkBackings) {
+      tokenBindingReadback.push(await readFillBinding('onDarkBacking', backing, ctx.tokens.roles.bandFill));
+    }
     return {
       id: component.id,
       name: component.name,
       action: previous ? 'replaced' : 'generated',
       frame,
       emptySectionCount,
-      collapsedTextPaths,
+      instanceCount: visualReport.instanceCount,
+      gridCount: visualReport.gridCount,
+      variantsPlaced: visualReport.variantsPlaced,
+      variantsTotal: visualReport.variantsTotal,
+      variantsOther: visualReport.variantsOther,
+      onDarkInfo: visualReport.onDarkInfo,
+      collapsedCount: audit.collapsed.length,
+      emptyFrameCount: audit.empty.length,
+      narrowTextCount: audit.narrowText.length,
+      outOfBoundsCount: audit.outOfBounds.length,
+      healedFrames,
+      sectionErrors,
+      sections: visualReport.sections,
+      genLog: visualReport.log,
+      warnings: visualReport.warnings.concat(audit.narrowText, audit.outOfBounds),
+      collapsedTextPaths: audit.collapsed.concat(audit.empty),
       tokenBindingReadback,
       fontReport: ctx.fonts.report,
       tokenReport: ctx.tokens.report,
-      errors: ctx.tokens.errors.concat(ctx.fonts.report.errors),
+      errors: ctx.tokens.errors.concat(ctx.fonts.report.errors, visualReport.warnings),
     };
   } catch (error) {
     if (!frame.removed) frame.remove();

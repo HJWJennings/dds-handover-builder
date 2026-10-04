@@ -2,7 +2,7 @@ import { parseMarkdown, type BlockNode, type InlineNode } from '../shared/markdo
 import type { ComponentDoc } from '../store/types';
 import type { GenerationFonts } from './fonts';
 import { bindSpacing, makeSolidPaint, type HandoverTokenSet, type ResolvedTokenRole } from './tokens';
-import { CODE_BLOCK_FONT_SIZE, CODE_BLOCK_GAP, CODE_BLOCK_PADDING, TEXT_SCALE } from './layout';
+import { CODE_BLOCK_FONT_SIZE, CODE_BLOCK_GAP, CODE_BLOCK_PADDING, TEXT_SCALE, setSizing } from './layout';
 
 export type HandoverTextRole = keyof typeof TEXT_SCALE;
 export type TextResizeMode = 'HEIGHT' | 'WIDTH_AND_HEIGHT';
@@ -30,7 +30,7 @@ export const appendStyledText = (
   parent.appendChild(text);
   text.fontName = options.font ?? fontForRole(role, fonts);
   text.characters = characters || ' ';
-  text.layoutSizingHorizontal = options.resizeMode === 'WIDTH_AND_HEIGHT' ? 'HUG' : 'FILL';
+  setSizing(text, options.resizeMode === 'WIDTH_AND_HEIGHT' ? 'HUG' : 'FILL');
   text.textAutoResize = options.resizeMode ?? 'HEIGHT';
   text.textAlignHorizontal = 'LEFT';
   text.name = options.name ?? (characters.slice(0, 48) || 'Text');
@@ -103,7 +103,7 @@ const appendBlock = (container: FrameNode, block: BlockNode, fonts: GenerationFo
     codeFrame.itemSpacing = CODE_BLOCK_GAP;
     codeFrame.fills = [makeSolidPaint(tokens.roles.codeBackground.value, tokens.roles.codeBackground.variable)];
     container.appendChild(codeFrame);
-    codeFrame.layoutSizingHorizontal = 'FILL';
+    setSizing(codeFrame, 'FILL');
     appendStyledText(codeFrame, block.value, 'body', fonts, tokens, { name: 'Code', font: fonts.mono, fontSize: CODE_BLOCK_FONT_SIZE });
     return;
   }

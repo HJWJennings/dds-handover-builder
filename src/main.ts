@@ -60,6 +60,12 @@ const buildEditorPayload = (node: DocumentableNode): EditorPayload => ({
   fullName: node.name,
   type: node.type,
   variantCount: node.type === 'COMPONENT_SET' ? node.children.length : 1,
+  variantPropertyNames: getComponentPropertyDefinitions(node)
+    .filter((definition) => definition.type === 'VARIANT')
+    .map((definition) => definition.propertyName),
+  variantProperties: getComponentPropertyDefinitions(node)
+    .filter((definition) => definition.type === 'VARIANT')
+    .map((definition) => ({ name: definition.propertyName, options: definition.variantOptions.map(String) })),
   group: getGroupLabelForNode(node),
   status: getDocStatus(node),
   doc: getOrCreateDoc(node),
@@ -491,6 +497,7 @@ const handleSaveDoc = async (payload: SaveDocPayload) => {
       fields: payload.fields,
       handover: existing?.handover,
       syncToDescription: payload.syncToDescription,
+      handoverConfig: payload.handoverConfig,
     };
 
     writeComponentDoc(node, doc);
@@ -547,6 +554,20 @@ const handleHandoverPreview = async (ids: string[]) => {
         replaced: [],
         failed: ids.map((id) => ({ id, name: id, reason: message })),
         emptySectionCount: 0,
+        instanceCount: 0,
+        gridCount: 0,
+        variantsPlaced: 0,
+        variantsTotal: 0,
+        variantsOther: 0,
+        onDarkStatuses: [],
+        collapsedCount: 0,
+        emptyFrameCount: 0,
+        narrowTextCount: 0,
+        outOfBoundsCount: 0,
+        healedFrames: 0,
+        sectionErrors: [],
+        sections: [],
+        genLog: [],
         collapsedTextLayers: 0,
         collapsedTextPaths: [],
         tokenBindingReadback: [],
@@ -555,6 +576,93 @@ const handleHandoverPreview = async (ids: string[]) => {
         errors: [message],
       },
     });
+  }
+};
+
+const runOneGeneration = async (
+  id: string,
+  name: string,
+  result: HandoverGenerationResultPayload,
+  environment: Awaited<ReturnType<typeof prepareHandoverEnvironment>>,
+): Promise<void> => {
+  const selected = await figma.getNodeByIdAsync(id);
+  const node = await resolveDocumentableNode(selected);
+  if (!node) throw new Error('Component no longer exists or cannot be resolved.');
+  const generated = await buildHandoverDoc(node, readComponentDoc(node), environment);
+  result.emptySectionCount += generated.emptySectionCount;
+  result.instanceCount += generated.instanceCount;
+  result.gridCount += generated.gridCount;
+  result.variantsPlaced += generated.variantsPlaced;
+  result.variantsTotal += generated.variantsTotal;
+  result.variantsOther += generated.variantsOther;
+  if (generated.onDarkInfo && !result.onDarkStatuses.includes(generated.onDarkInfo)) result.onDarkStatuses.push(generated.onDarkInfo);
+  result.collapsedCount += generated.collapsedCount;
+  result.emptyFrameCount += generated.emptyFrameCount;
+  result.narrowTextCount += generated.narrowTextCount;
+  result.outOfBoundsCount += generated.outOfBoundsCount;
+  result.healedFrames += generated.healedFrames;
+  result.sectionErrors.push(...generated.sectionErrors);
+  result.sections.push(...generated.sections);
+  result.genLog.push(...generated.genLog);
+  result.collapsedTextLayers += generated.collapsedTextPaths.length;
+  result.collapsedTextPaths.push(...generated.collapsedTextPaths);
+  result.tokenBindingReadback.push(...generated.tokenBindingReadback);
+  result.showDocFrameId = generated.frame.id;
+  const summary = { id: generated.id, name: generated.name, frameId: generated.frame.id };
+  if (generated.action === 'replaced') result.replaced.push(summary);
+  else result.generated.push(summary);
+  result.errors.push(...generated.errors);
+  void name;
+};
+
+const freshGenerationResult = (): HandoverGenerationResultPayload => ({
+  generated: [],
+  replaced: [],
+  failed: [],
+  emptySectionCount: 0,
+  instanceCount: 0,
+  gridCount: 0,
+  variantsPlaced: 0,
+  variantsTotal: 0,
+  variantsOther: 0,
+  onDarkStatuses: [],
+  collapsedCount: 0,
+  emptyFrameCount: 0,
+  narrowTextCount: 0,
+  outOfBoundsCount: 0,
+  healedFrames: 0,
+  sectionErrors: [],
+  sections: [],
+  genLog: [],
+  collapsedTextLayers: 0,
+  collapsedTextPaths: [],
+  tokenBindingReadback: [],
+  fontReport: { bodyFamily: '', bodyFallback: null, regularStyle: '', boldStyle: '', italicStyle: null, monoFamily: '', monoStyle: '', monoFallback: null, fallbacks: [], errors: [] },
+  tokenReport: [],
+  errors: [],
+});
+
+/** Self-test: generate the selected component twice in a row; each run gets a fresh environment. */
+const handleGenerateTwice = async (id: string) => {
+  for (let runIndex = 0; runIndex < 2; runIndex += 1) {
+    const result = freshGenerationResult();
+    result.runIndex = runIndex;
+    figma.commitUndo();
+    try {
+      const environment = await prepareHandoverEnvironment();
+      result.fontReport = environment.fonts.report;
+      result.tokenReport = environment.tokens.report;
+      result.errors = environment.tokens.errors.concat(environment.fonts.report.errors);
+      const selected = await figma.getNodeByIdAsync(id);
+      const node = await resolveDocumentableNode(selected);
+      if (!node) throw new Error('Component no longer exists or cannot be resolved.');
+      await runOneGeneration(id, node.name, result, environment);
+    } catch (error) {
+      result.failed.push({ id, name: id, reason: error instanceof Error ? error.message : String(error) });
+    }
+    figma.commitUndo();
+    sendToUI({ type: 'GENERATE_HANDOVER_RESULT', payload: result });
+    await new Promise((resolve) => setTimeout(resolve, 0));
   }
 };
 
@@ -568,6 +676,20 @@ const handleHandoverConfirm = async (planId: string) => {
     replaced: [],
     failed: [],
     emptySectionCount: 0,
+    instanceCount: 0,
+    gridCount: 0,
+    variantsPlaced: 0,
+    variantsTotal: 0,
+    variantsOther: 0,
+    onDarkStatuses: [],
+    collapsedCount: 0,
+    emptyFrameCount: 0,
+    narrowTextCount: 0,
+    outOfBoundsCount: 0,
+    healedFrames: 0,
+    sectionErrors: [],
+    sections: [],
+    genLog: [],
     collapsedTextLayers: 0,
     collapsedTextPaths: [],
     tokenBindingReadback: [],
@@ -593,27 +715,13 @@ const handleHandoverConfirm = async (planId: string) => {
     return;
   }
 
-  let lastFrame: FrameNode | null = null;
   for (let index = 0; index < plan.entries.length; index += 1) {
     const entry = plan.entries[index];
     if (entry.error) {
       result.failed.push({ id: entry.id, name: entry.name, reason: entry.error });
     } else {
       try {
-        const selected = await figma.getNodeByIdAsync(entry.id);
-        const node = await resolveDocumentableNode(selected);
-        if (!node) throw new Error('Component no longer exists or cannot be resolved.');
-        const generated = await buildHandoverDoc(node, readComponentDoc(node), environment);
-        result.emptySectionCount += generated.emptySectionCount;
-        result.collapsedTextLayers += generated.collapsedTextPaths.length;
-        result.collapsedTextPaths.push(...generated.collapsedTextPaths);
-        result.tokenBindingReadback.push(...generated.tokenBindingReadback);
-        lastFrame = generated.frame;
-        result.showDocFrameId = generated.frame.id;
-        const summary = { id: generated.id, name: generated.name, frameId: generated.frame.id };
-        if (generated.action === 'replaced') result.replaced.push(summary);
-        else result.generated.push(summary);
-        result.errors.push(...generated.errors);
+        await runOneGeneration(entry.id, entry.name, result, environment);
       } catch (error) {
         result.failed.push({ id: entry.id, name: entry.name, reason: error instanceof Error ? error.message : String(error) });
       }
@@ -852,6 +960,10 @@ figma.ui.onmessage = (message: UIToPluginMessage) => {
     }
     case 'GENERATE_HANDOVER_CONFIRM': {
       void handleHandoverConfirm(message.planId);
+      break;
+    }
+    case 'GENERATE_TWICE': {
+      void handleGenerateTwice(message.id);
       break;
     }
     case 'SHOW_HANDOVER_DOC': {

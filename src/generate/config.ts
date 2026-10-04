@@ -1,4 +1,5 @@
 export const HANDOVER_OUTPUT_PAGE = 'Handover docs';
+export const THEME_MODES = ['F&F', 'Lo-Fi'] as const;
 export const GENERATED_DATA_NAMESPACE = 'dds_compdoc';
 export const GENERATED_DATA_KEY = 'generatedFor';
 export const EMPTY_SECTIONS: 'placeholder' | 'hide' = 'placeholder';
@@ -55,7 +56,7 @@ export const TOKEN_ROLE_DEFINITIONS: TokenRoleDefinition[] = [
   { role: 'textBody', candidates: ['Typography/colour-text-body'], fallback: '#666666' },
   { role: 'textPrimary', candidates: ['Typography/colour-text-header-primary'], fallback: '#333333' },
   { role: 'pageBackground', candidates: ['Background/colour-background-1'], fallback: '#FFFFFF' },
-  { role: 'divider', candidates: ['Line/colour-border-primary'], fallback: '#E5E5E5', verify: true },
+  { role: 'divider', candidates: ['Line/colour-border-primary'], fallback: '#CCCCCC' },
   { role: 'bandFill', candidates: ['Background/colour-background-dark-primary'], collectionPathPrefix: 'Background/', matchTescoHex: '#00539F', fallback: '#00539F' },
   { role: 'heading', candidates: ['Typography/colour-text-header-secondary'], collectionPathPrefix: 'Typography/', matchTescoHex: '#00539F', fallback: '#00539F' },
   { role: 'codeBackground', candidates: ['Background/colour-background-2'], collectionPathPrefix: 'Background/', matchTescoHex: '#F6F6F6', fallback: '#F6F6F6' },
