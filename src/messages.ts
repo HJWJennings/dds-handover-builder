@@ -128,6 +128,22 @@ export interface HandoverGenerationResultPayload {
   sectionErrors: string[];
   sections: Array<{ name: string; status: string; reason?: string; stack?: string; durationMs: number }>;
   genLog: string[];
+  themeChecks: string[];
+  /** One row per generated component for the bulk results table. */
+  bulkRows: Array<{
+    name: string;
+    type: 'set' | 'component';
+    variantProps: number;
+    booleanProps: number;
+    variants: number;
+    grids: number;
+    instances: number;
+    sectionsOk: number;
+    sectionsSkipped: number;
+    sectionsFailed: number;
+    warnings: number;
+    firstFailure: string;
+  }>;
   collapsedTextLayers: number;
   collapsedTextPaths: string[];
   fontReport: HandoverFontReport;
@@ -320,6 +336,9 @@ export type UIToPluginMessage =
   | {
       type: 'GENERATE_TWICE';
       id: string;
+    }
+  | {
+      type: 'GENERATE_ALL_ON_PAGE';
     }
   | {
       type: 'SHOW_HANDOVER_DOC';

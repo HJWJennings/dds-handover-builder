@@ -4,6 +4,23 @@ export const GENERATED_DATA_NAMESPACE = 'dds_compdoc';
 export const GENERATED_DATA_KEY = 'generatedFor';
 export const EMPTY_SECTIONS: 'placeholder' | 'hide' = 'placeholder';
 
+// DDS conventions: pointing the plugin at another library is a one-file change.
+export const WEB_COLLECTION_NAME = 'Web';
+export const BASE_MODE = 'Tesco';
+export const DARK_MODE = 'Tesco dark mode';
+/** Theme dark-mode naming rule: "<theme> dark mode". */
+export const themeDarkModeName = (theme: string) => `${theme} dark mode`;
+/** Synthetic On dark axis name (not a real property; never looked up in definitions). */
+export const SYNTHETIC_ON_DARK = 'On dark';
+/** Property-name patterns. */
+export const ON_DARK_PROPERTY_PATTERN = /(on[ _-]?dark|inverse)/i;
+export const STATE_PROPERTY_PATTERN = /^(state|status|interaction|focus(ed)?|hover)$/i;
+/** Values that mean "on" for the on-dark axis. */
+export const ON_VALUE_PATTERN = /^(yes|true|on|dark|inverse)$/i;
+export const PREFERRED_FONT_FAMILY = 'TESCO Modern';
+export const FALLBACK_FONT_FAMILY = 'Inter';
+export const MONO_FONT_FAMILY = 'Roboto Mono';
+
 export interface HandoverSectionDefinition {
   key: string;
   title: string;

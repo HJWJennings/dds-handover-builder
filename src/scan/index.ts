@@ -71,7 +71,7 @@ export const getGroupLabelForNode = (node: ComponentSetNode | ComponentNode): st
   return split?.group ?? findAncestorGroupName(node) ?? 'Ungrouped';
 };
 
-const collectTopLevelComponents = (page: PageNode): TopLevelNode[] => {
+export const collectTopLevelComponents = (page: PageNode): TopLevelNode[] => {
   const found = page.findAllWithCriteria({ types: ['COMPONENT', 'COMPONENT_SET'] });
 
   return found.filter((node): node is TopLevelNode => {

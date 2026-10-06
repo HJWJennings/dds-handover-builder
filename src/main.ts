@@ -1,7 +1,7 @@
 import uiHtml from './generated/ui-embed';
 import type { EditorPayload, ExportFormat, ImportPreviewEntry, ImportPreviewPayload, ImportResultEntry, PluginToUIMessage, SaveDocPayload, UIToPluginMessage } from './messages';
 import { getComponentPropertyDefinitions, inspectSelectionNode } from './inspect';
-import { scanComponents, getGroupLabelForNode } from './scan';
+import { scanComponents, getGroupLabelForNode, collectTopLevelComponents } from './scan';
 import type { ScanResult, ScanScope } from './scan';
 import { resolveDocumentableNode, type DocumentableNode } from './store/resolveComponent';
 import { getOrCreateDoc, getDocStatus, readComponentDoc, writeComponentDoc, buildDescriptionMarkdown } from './store/docStatus';
@@ -520,6 +520,21 @@ interface HandoverGenerationPlan {
 
 const handoverPlans = new Map<string, HandoverGenerationPlan>();
 
+/** Dev: generate handover docs for every component on the current page, via the bulk path. */
+const handleGenerateAllOnPage = async () => {
+  try {
+    await figma.currentPage.loadAsync();
+    const ids = collectTopLevelComponents(figma.currentPage).map((node) => node.id);
+    if (ids.length === 0) {
+      sendToUI({ type: 'GENERATE_HANDOVER_RESULT', payload: { ...freshGenerationResult(), failed: [{ id: 'page', name: 'This page', reason: 'No components on this page.' }] } });
+      return;
+    }
+    await handleHandoverPreview(ids);
+  } catch (error) {
+    sendToUI({ type: 'GENERATE_HANDOVER_RESULT', payload: { ...freshGenerationResult(), failed: [{ id: 'page', name: 'This page', reason: error instanceof Error ? error.message : String(error) }] } });
+  }
+};
+
 const handleHandoverPreview = async (ids: string[]) => {
   try {
     await figma.loadAllPagesAsync();
@@ -568,6 +583,8 @@ const handleHandoverPreview = async (ids: string[]) => {
         sectionErrors: [],
         sections: [],
         genLog: [],
+        themeChecks: [],
+        bulkRows: [],
         collapsedTextLayers: 0,
         collapsedTextPaths: [],
         tokenBindingReadback: [],
@@ -604,6 +621,8 @@ const runOneGeneration = async (
   result.sectionErrors.push(...generated.sectionErrors);
   result.sections.push(...generated.sections);
   result.genLog.push(...generated.genLog);
+  result.themeChecks.push(...generated.themeChecks);
+  result.bulkRows.push({ name: generated.name, ...generated.summary });
   result.collapsedTextLayers += generated.collapsedTextPaths.length;
   result.collapsedTextPaths.push(...generated.collapsedTextPaths);
   result.tokenBindingReadback.push(...generated.tokenBindingReadback);
@@ -634,6 +653,8 @@ const freshGenerationResult = (): HandoverGenerationResultPayload => ({
   sectionErrors: [],
   sections: [],
   genLog: [],
+  themeChecks: [],
+  bulkRows: [],
   collapsedTextLayers: 0,
   collapsedTextPaths: [],
   tokenBindingReadback: [],
@@ -690,6 +711,8 @@ const handleHandoverConfirm = async (planId: string) => {
     sectionErrors: [],
     sections: [],
     genLog: [],
+    themeChecks: [],
+    bulkRows: [],
     collapsedTextLayers: 0,
     collapsedTextPaths: [],
     tokenBindingReadback: [],
@@ -964,6 +987,10 @@ figma.ui.onmessage = (message: UIToPluginMessage) => {
     }
     case 'GENERATE_TWICE': {
       void handleGenerateTwice(message.id);
+      break;
+    }
+    case 'GENERATE_ALL_ON_PAGE': {
+      void handleGenerateAllOnPage();
       break;
     }
     case 'SHOW_HANDOVER_DOC': {

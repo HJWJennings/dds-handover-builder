@@ -31,6 +31,7 @@ import { loadGenerationFonts, type GenerationFonts } from './fonts';
 import { appendLinks, appendMarkdown, appendStyledText, type HandoverTextRole } from './markdown';
 import { resolveHandoverTokens, type HandoverTokenSet, makeSolidPaint, bindSpacing, resetGenerationState } from './tokens';
 import { buildPhase5Visuals } from './visuals';
+import { getComponentPropertyDefinitions } from '../inspect';
 
 export interface GenerationContext {
   outputPage: PageNode;
@@ -58,6 +59,21 @@ export interface GeneratedHandoverResult {
   sectionErrors: string[];
   sections: Array<{ name: string; status: string; reason?: string; durationMs: number }>;
   genLog: string[];
+  themeChecks: string[];
+  /** Per-component row for the bulk results table. */
+  summary: {
+    type: 'set' | 'component';
+    variantProps: number;
+    booleanProps: number;
+    variants: number;
+    grids: number;
+    instances: number;
+    sectionsOk: number;
+    sectionsSkipped: number;
+    sectionsFailed: number;
+    warnings: number;
+    firstFailure: string;
+  };
   warnings: string[];
   collapsedTextPaths: string[];
   tokenBindingReadback: string[];
@@ -539,6 +555,7 @@ export const buildHandoverDoc = async (
         warnings: [`Phase 5 visuals: ${message}`],
         sections: [{ name: 'phase5-visuals', status: 'failed', reason: message, durationMs: 0 }],
         log: [],
+        themeChecks: [],
         variantsPlaced: 0,
         variantsTotal: 0,
         variantsOther: 0,
@@ -576,6 +593,23 @@ export const buildHandoverDoc = async (
       sectionErrors,
       sections: visualReport.sections,
       genLog: visualReport.log,
+      themeChecks: visualReport.themeChecks,
+      summary: (() => {
+        const propDefs = getComponentPropertyDefinitions(component);
+        return {
+          type: component.type === 'COMPONENT_SET' ? 'set' as const : 'component' as const,
+          variantProps: propDefs.filter((def) => def.type === 'VARIANT').length,
+          booleanProps: propDefs.filter((def) => def.type === 'BOOLEAN').length,
+          variants: visualReport.variantsTotal,
+          grids: visualReport.gridCount,
+          instances: visualReport.instanceCount,
+          sectionsOk: visualReport.sections.filter((section) => section.status === 'ok').length,
+          sectionsSkipped: visualReport.sections.filter((section) => section.status === 'skipped').length,
+          sectionsFailed: visualReport.sections.filter((section) => section.status === 'failed').length,
+          warnings: visualReport.warnings.length,
+          firstFailure: visualReport.sections.find((section) => section.status === 'failed')?.reason ?? '',
+        };
+      })(),
       warnings: visualReport.warnings.concat(audit.narrowText, audit.outOfBounds),
       collapsedTextPaths: audit.collapsed.concat(audit.empty),
       tokenBindingReadback,

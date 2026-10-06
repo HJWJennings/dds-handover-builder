@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "test": "esbuild tests/plan.test.ts --bundle --platform=node --format=esm --outfile=build/tests.mjs --external:figma && node --test build/tests.mjs",
     "watch": "node scripts/build.mjs --watch",
     "dev": "npm run watch"
   },

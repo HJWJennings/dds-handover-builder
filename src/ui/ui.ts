@@ -34,6 +34,7 @@ const styleProbeButton = document.getElementById('style-probe') as HTMLButtonEle
 const tokenCatalogueButton = document.getElementById('token-catalogue') as HTMLButtonElement | null;
 const tokenCatalogueNote = document.getElementById('token-catalogue-note') as HTMLDivElement | null;
 const generateTwiceButton = document.getElementById('generate-twice') as HTMLButtonElement | null;
+const generateAllPageButton = document.getElementById('generate-all-page') as HTMLButtonElement | null;
 const copyButton = document.getElementById('copy-json') as HTMLButtonElement | null;
 
 const renderOutput = (value: unknown) => {
@@ -71,6 +72,11 @@ generateTwiceButton?.addEventListener('click', () => {
   }
   updateSummary('Generating twice…');
   post({ type: 'GENERATE_TWICE', id });
+});
+
+generateAllPageButton?.addEventListener('click', () => {
+  updateSummary('Generating all components on this page…');
+  post({ type: 'GENERATE_ALL_ON_PAGE' });
 });
 
 copyButton?.addEventListener('click', async () => {
@@ -1032,6 +1038,71 @@ const showHandoverResult = (result: HandoverGenerationResultPayload) => {
       list.appendChild(item);
     });
     section.appendChild(list);
+    modalExtraEl.appendChild(section);
+  }
+  if (modalExtraEl && result.themeChecks.length > 0) {
+    const section = document.createElement('section');
+    section.className = 'result-section';
+    const heading = document.createElement('h4');
+    heading.textContent = 'Theme check';
+    section.appendChild(heading);
+    const list = document.createElement('ul');
+    [`main: Tesco · ${result.variantsPlaced} variants`, ...result.themeChecks].forEach((line) => {
+      const item = document.createElement('li');
+      item.textContent = line;
+      if (line.includes('MISMATCH')) item.className = 'outcome-failure';
+      list.appendChild(item);
+    });
+    section.appendChild(list);
+    modalExtraEl.appendChild(section);
+  }
+  if (modalExtraEl && result.bulkRows.length > 0) {
+    const section = document.createElement('section');
+    section.className = 'result-section';
+    const heading = document.createElement('h4');
+    heading.textContent = 'Components';
+    section.appendChild(heading);
+    const table = document.createElement('table');
+    table.className = 'bulk-table';
+    const head = document.createElement('tr');
+    ['Name', 'Type', 'VARIANT', 'BOOLEAN', 'Variants', 'Grids', 'Instances', 'ok', 'skip', 'fail', 'Warnings', 'First failure'].forEach((label) => {
+      const cell = document.createElement('th');
+      cell.textContent = label;
+      head.appendChild(cell);
+    });
+    table.appendChild(head);
+    result.bulkRows.forEach((row) => {
+      const tr = document.createElement('tr');
+      [row.name, row.type, String(row.variantProps), String(row.booleanProps), String(row.variants), String(row.grids), String(row.instances), String(row.sectionsOk), String(row.sectionsSkipped), String(row.sectionsFailed), String(row.warnings), row.firstFailure].forEach((value, index) => {
+        const cell = document.createElement('td');
+        cell.textContent = value;
+        if (index === 10 && row.firstFailure) cell.className = 'outcome-failure';
+        tr.appendChild(cell);
+      });
+      table.appendChild(tr);
+    });
+    section.appendChild(table);
+    const copyTable = document.createElement('button');
+    copyTable.type = 'button';
+    copyTable.className = 'secondary';
+    copyTable.textContent = 'Copy table (CSV)';
+    copyTable.addEventListener('click', () => {
+      const csv = [
+        ['Name', 'Type', 'VARIANT', 'BOOLEAN', 'Variants', 'Grids', 'Instances', 'ok', 'skip', 'fail', 'Warnings', 'First failure'].join(','),
+        ...result.bulkRows.map((row) => [row.name, row.type, row.variantProps, row.booleanProps, row.variants, row.grids, row.instances, row.sectionsOk, row.sectionsSkipped, row.sectionsFailed, row.warnings, `"${row.firstFailure.replace(/"/g, '""')}"`].join(',')),
+      ].join('\n');
+      const textarea = document.createElement('textarea');
+      textarea.value = csv;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      textarea.remove();
+      copyTable.textContent = 'Copied';
+      setTimeout(() => { copyTable.textContent = 'Copy table (CSV)'; }, 1500);
+    });
+    section.appendChild(copyTable);
     modalExtraEl.appendChild(section);
   }
   if (modalExtraEl && result.genLog.length > 0) {

@@ -1,7 +1,8 @@
 import type { ComponentDoc } from '../store/types';
 import type { DocumentableNode } from '../store/docStatus';
 import { getComponentPropertyDefinitions } from '../inspect';
-import { THEME_MODES } from './config';
+import { THEME_MODES, themeDarkModeName, WEB_COLLECTION_NAME } from './config';
+import { planGrid, type GridPlan } from './plan';
 import {
   CONTENT_WIDTH,
   GRID_COLUMN_GAP,
@@ -29,6 +30,7 @@ export interface Phase5VisualReport {
   warnings: string[];
   sections: SectionStatus[];
   log: string[];
+  themeChecks: string[];
   variantsPlaced: number;
   variantsTotal: number;
   variantsOther: number;
@@ -383,58 +385,6 @@ const variantsByPosition = (variants: ComponentNode[]): ComponentNode[] =>
 
 // ---------- Grid builder ----------
 
-interface AxisPlan {
-  columnAxes: string[];
-  rowAxes: string[];
-}
-
-const planAxes = (defs: PropertyDef[], doc: ComponentDoc | null): AxisPlan => {
-  const overrides = doc?.handoverConfig?.axes ?? {};
-  const optionCount = (name: string) => defs.find((def) => def.propertyName === name)?.variantOptions.length ?? 0;
-  const columns: string[] = [];
-  const rows: string[] = [];
-  const pool: string[] = [];
-  for (const def of defs) {
-    const override = overrides[def.propertyName];
-    if (override === 'columns') columns.push(def.propertyName);
-    else if (override === 'rows') rows.push(def.propertyName);
-    else pool.push(def.propertyName);
-  }
-  const darkIndex = pool.findIndex((name) => ON_DARK_PATTERN.test(stripHash(name)));
-  if (darkIndex >= 0) columns.unshift(pool.splice(darkIndex, 1)[0]);
-  const stateIndex = pool.findIndex((name) => STATE_PATTERN.test(stripHash(name)));
-  if (stateIndex >= 0) columns.push(pool.splice(stateIndex, 1)[0]);
-  const remaining = pool.sort((a, b) => optionCount(a) - optionCount(b));
-  while (columns.length < 2 && remaining.length > 0) columns.push(remaining.shift() as string);
-  rows.push(...remaining);
-  return { columnAxes: columns.slice(0, 2), rowAxes: rows.slice(0, 3) };
-};
-
-const combosFor = (
-  axes: string[],
-  variants: ComponentNode[],
-  defs: PropertyDef[],
-  doc: ComponentDoc | null,
-  direction: 'columns' | 'rows',
-): Array<Record<string, string>> => {
-  if (axes.length === 0) return [];
-  const orders = axes.map((axis) => designOrder(variants, axis, defs, direction, doc));
-  const result: Array<Record<string, string>> = [];
-  const walk = (index: number, acc: Record<string, string>) => {
-    if (index === axes.length) {
-      result.push({ ...acc });
-      return;
-    }
-    for (const value of orders[index]) {
-      acc[axes[index]] = value;
-      walk(index + 1, acc);
-    }
-    delete acc[axes[index]];
-  };
-  walk(0, {});
-  return result.filter((combo) => variants.some((variant) => axes.every((axis) => variantValue(variant, axis) === combo[axis])));
-};
-
 const rowKeyOf = (combo: Record<string, string>, rowAxes: string[]): string =>
   rowAxes.map((axis) => combo[axis]).join('‖');
 
@@ -468,36 +418,61 @@ const naturalText = (
 const renderGrid = (
   parent: FrameNode,
   variants: ComponentNode[],
-  plan: AxisPlan,
-  defs: PropertyDef[],
+  plan: GridPlan,
   params: {
     width: number;
     doc: ComponentDoc | null;
     booleans: Array<[string, boolean]>;
     onDarkBackings: FrameNode[];
+    /** Synthetic On dark axis — only ever enabled when the component's onDarkSource is "mode". */
     syntheticDark?: { enabled: boolean; darkCollections: VariableCollection[]; darkModeName: string };
   },
   ctx: VisualContext,
   report: Phase5VisualReport,
 ): { node: FrameNode; placed: number; unplaced: ComponentNode[] } => {
   const doc = params.doc;
-  const effectiveColumnAxes = params.syntheticDark?.enabled ? [SYNTHETIC_ON_DARK, ...plan.columnAxes] : plan.columnAxes;
-  const columnCombos: Array<Record<string, string>> = params.syntheticDark?.enabled
-    ? ([{ [SYNTHETIC_ON_DARK]: 'No' }, { [SYNTHETIC_ON_DARK]: 'Yes' }] as Array<Record<string, string>>).flatMap((dark) =>
-        combosFor(plan.columnAxes, variants, defs, doc, 'columns').map((combo) => ({ ...dark, ...combo })))
-    : combosFor(plan.columnAxes, variants, defs, doc, 'columns');
-  const rowCombos = combosFor(plan.rowAxes, variants, defs, doc, 'rows');
-  const leafCombos = columnCombos.length > 0 && rowCombos.length > 0
-    ? columnCombos.flatMap((column) => rowCombos.map((row) => ({ ...column, ...row })))
-    : columnCombos.length > 0
-      ? columnCombos
-      : rowCombos;
+  const softAssert = (condition: boolean, message: string) => {
+    if (!condition) {
+      genLog(report.log, 'warn', '[gen] assert', message);
+      report.warnings.push(message);
+    }
+  };
 
-  const match = (combo: Record<string, string>) =>
-    variants.find((entry) => plan.columnAxes.concat(plan.rowAxes).every((axis) => variantValue(entry, axis) === combo[axis])) ?? null;
+  const effectiveColumnAxes = plan.columnAxes.map((axis) => axis.name);
+  const effectiveRowAxes = plan.rowAxes.map((axis) => axis.name);
+  const columnCombos = plan.leaves.map((leaf) => leaf.values);
+  const effectiveRowCombos = plan.rows.map((row) => row.values);
+  const leafCombos = columnCombos.length > 0
+    ? columnCombos.flatMap((column) => effectiveRowCombos.map((row) => ({ ...column, ...row })))
+    : effectiveRowCombos;
+
+  // Soft asserts from the plan plus a placement sanity check.
+  plan.warnings.forEach((message) => softAssert(false, message));
+  if (columnCombos.length === 0) throw new Error('zero columns: plan produced no leaves');
+  if (effectiveRowCombos.length === 0) throw new Error('zero rows: plan produced no rows');
+
+  // Placement comes from the plan; variants resolve by name.
+  const byName = new Map(variants.map((variant) => [variant.name, variant]));
+  const match = (combo: Record<string, string>) => {
+    const placement = plan.placements.find((entry) => {
+      const leaf = plan.leaves[entry.leafIndex];
+      const row = plan.rows[entry.rowIndex];
+      return leaf && row
+        && effectiveColumnAxes.every((axis) => leaf.values[axis] === combo[axis])
+        && effectiveRowAxes.every((axis) => row.values[axis] === combo[axis]);
+    });
+    return placement ? byName.get(placement.variantName) ?? null : null;
+  };
   const placedIds = new Set(leafCombos.map((combo) => match(combo)?.id).filter((id): id is string => Boolean(id)));
   const unplaced = variants.filter((variant) => !placedIds.has(variant.id));
   const labelText = (axis: string, value: string) => labelFor(doc, axis, value);
+
+  genLog(report.log, 'log', '[gen] plan', JSON.stringify({
+    columns: plan.columnAxes.map((axis) => `${axis.name}${axis.synthetic ? ' (synthetic)' : ''}: ${axis.values.join('/')}`),
+    rows: plan.rowAxes.map((axis) => `${axis.name}: ${axis.values.join('/')}`),
+    leaves: plan.leaves.length,
+    placements: plan.placements.length,
+  }));
 
   // Shared measurements. The grid frame is created first so texts are made in their real parent.
   //   The grid is layoutMode NONE: it is sized only with resize() from the computed numbers.
@@ -528,13 +503,13 @@ const renderGrid = (
       Math.max(1, ...headerTexts.filter((entry) => entry.level === level).map((entry) => entry.height)) + HEADER_ROW_PAD);
 
     for (const axis of plan.rowAxes) {
-      const values = [...new Set(rowCombos.map((combo) => combo[axis]))];
+      const values = [...new Set(effectiveRowCombos.map((combo) => combo[axis.name]))];
       for (const value of values) {
-        labelTexts.push({ axis, value, ...naturalText(grid, labelText(axis, value), 'caption', ctx, false) });
+        labelTexts.push({ axis: axis.name, value, ...naturalText(grid, labelText(axis.name, value), 'caption', ctx, false) });
       }
     }
     labelColWidths = plan.rowAxes.map((axis) =>
-      Math.max(ROW_LABEL_COL_WIDTH, ...labelTexts.filter((entry) => entry.axis === axis).map((entry) => entry.width)) + BODY_PAD);
+      Math.max(ROW_LABEL_COL_WIDTH, ...labelTexts.filter((entry) => entry.axis === axis.name).map((entry) => entry.width)) + BODY_PAD);
 
     const sizeOf = (combo: Record<string, string>) => {
       const variant = match(combo);
@@ -543,9 +518,9 @@ const renderGrid = (
     const innerLevel = effectiveColumnAxes.length - 1;
     columnWidths = columnCombos.map((column) => {
       const headerWidth = headerTexts.find((entry) => entry.level === innerLevel && entry.value === column[effectiveColumnAxes[innerLevel]])?.width ?? 1;
-      return Math.max(MIN_COLUMN_WIDTH, ...rowCombos.map((row) => sizeOf({ ...column, ...row }).width + CELL_PAD), headerWidth + CELL_PAD);
+      return Math.max(MIN_COLUMN_WIDTH, ...effectiveRowCombos.map((row) => sizeOf({ ...column, ...row }).width + CELL_PAD), headerWidth + CELL_PAD);
     });
-    rowHeights = rowCombos.map((row) =>
+    rowHeights = effectiveRowCombos.map((row) =>
       Math.max(1, ...columnCombos.map((column) => sizeOf({ ...column, ...row }).height + CELL_PAD)));
 
     genLog(report.log, 'log', '[gen] col widths', columnCombos.map((column, index) => ({
@@ -567,6 +542,11 @@ const renderGrid = (
     cursor += leafIndexes.reduce((total, index) => total + columnWidths[index], 0) + GRID_COLUMN_GAP * Math.max(0, leafIndexes.length - 1) + GROUP_GAP;
   }
   const totalWidth = Math.max(1, cursor - GROUP_GAP);
+  // Fit belongs to the planner; the grid must still never exceed the content width.
+  if (totalWidth > params.width) {
+    genLog(report.log, 'warn', '[gen] grid too wide', Math.round(totalWidth), 'exceeds', params.width);
+    report.warnings.push(`grid too wide: ${Math.round(totalWidth)}px exceeds ${params.width}px content width`);
+  }
   const headerBlockHeight = headerRowHeights.reduce((total, height) => total + height, 0) + GRID_ROW_GAP * Math.max(0, headerRowHeights.length - 1);
   const bodyTop = headerBlockHeight + GRID_TO_HEADER_GAP;
   const bodyHeight = rowHeights.reduce((total, height) => total + height, 0) + ROW_GAP * Math.max(0, rowHeights.length - 1) + 2 * BODY_PAD;
@@ -612,11 +592,11 @@ const renderGrid = (
       const axis = plan.rowAxes[axisIndex];
       let rowY = bodyTop + BODY_PAD;
       let rowIndex = 0;
-      while (rowIndex < rowCombos.length) {
-        const combo = rowCombos[rowIndex];
-        const text = labelTexts.find((entry) => entry.axis === axis && entry.value === combo[axis])?.node;
+      while (rowIndex < effectiveRowCombos.length) {
+        const combo = effectiveRowCombos[rowIndex];
+        const text = labelTexts.find((entry) => entry.axis === axis.name && entry.value === combo[axis.name])?.node;
         if (axisIndex === 0) {
-          const spanCount = rowCombos.filter((entry) => entry[axis] === combo[axis]).length;
+          const spanCount = effectiveRowCombos.filter((entry) => entry[axis.name] === combo[axis.name]).length;
           const spanHeight = rowHeights.slice(rowIndex, rowIndex + spanCount).reduce((total, height) => total + height, 0) + ROW_GAP * Math.max(0, spanCount - 1);
           if (text) {
             const token = ctx.tokens.roles.textBody;
@@ -692,7 +672,7 @@ const renderGrid = (
       }
 
       let rowY = 0;
-      rowCombos.forEach((rowCombo, rowIndex) => {
+      effectiveRowCombos.forEach((rowCombo, rowIndex) => {
         let leafX = 0;
         for (const leafIndex of leafIndexes) {
           const combo = { ...columnCombos[leafIndex], ...rowCombo };
@@ -759,6 +739,8 @@ const fillVariants = (
   ctx: VisualContext,
   report: Phase5VisualReport,
   defs: PropertyDef[],
+  onDarkSource: 'property' | 'mode' | 'none',
+  webCollections: VariableCollection[],
 ): string | undefined => {
   const slot = prepareSlot(root, 'variants');
   if (!slot) return 'slot not found';
@@ -795,14 +777,44 @@ const fillVariants = (
   if (variantDefs.length === 0) {
     genLog(report.log, 'log', '[gen] variants skip', 'no VARIANT properties');
   }
-  const plan = planAxes(variantDefs, doc);
-  genLog(report.log, 'log', '[gen] variants axes', { columns: plan.columnAxes.map(stripHash), rows: plan.rowAxes.map(stripHash) });
+  const plan = planGrid({
+    properties: defs.map((def) => ({
+      name: def.propertyName,
+      type: def.type === 'BOOLEAN' ? 'BOOLEAN' : 'VARIANT',
+      options: def.variantOptions,
+      defaultValue: def.defaultValue !== undefined ? String(def.defaultValue) : undefined,
+    })),
+    variants: variants.map((variant) => ({
+      name: variant.name,
+      values: Object.fromEntries(variantDefs.map((def) => [def.propertyName, variantValue(variant, def.propertyName)])),
+      x: variant.x,
+      y: variant.y,
+      width: variant.width,
+      height: variant.height,
+    })),
+    onDarkSource,
+    theme: null,
+    contentWidth: CONTENT_WIDTH,
+    labelColWidth: ROW_LABEL_COL_WIDTH,
+    config: doc?.handoverConfig,
+  });
+  genLog(report.log, 'log', '[gen] variants axes', { columns: plan.columnAxes.map((axis) => stripHash(axis.name)), rows: plan.rowAxes.map((axis) => stripHash(axis.name)), onDarkSource });
+  if (plan.placements.length === 0) {
+    return `no placements: ${JSON.stringify({ columns: plan.columnAxes.map((axis) => axis.name), leaves: plan.leaves.length })}`;
+  }
 
-  const grid = renderGrid(slot, variants, plan, variantDefs, {
+  // Synthetic On dark axis exists only when the component's on-dark source is "mode".
+  const darkCollections = webCollections.filter((collection) => collection.modes.some((mode) => mode.name === 'Tesco dark mode'));
+  const syntheticDark = onDarkSource === 'mode' && darkCollections.length > 0
+    ? { enabled: true, darkCollections, darkModeName: 'Tesco dark mode' }
+    : undefined;
+
+  const grid = renderGrid(slot, variants, plan, {
     width: CONTENT_WIDTH,
     doc,
     booleans: [],
     onDarkBackings: report.onDarkBackings,
+    syntheticDark,
   }, ctx, report);
 
   if (grid.placed === 0 || grid.node.width <= 0 || grid.node.height <= 0) {
@@ -850,28 +862,26 @@ const fillOnDark = async (
   defs: PropertyDef[],
   ctx: VisualContext,
   report: Phase5VisualReport,
+  onDarkSource: 'property' | 'mode' | 'none',
 ): Promise<string | undefined> => {
-  const onDarkIsVariant = component.type === 'COMPONENT_SET'
-    && defs.some((def) => def.type === 'VARIANT' && ON_DARK_PATTERN.test(stripHash(def.propertyName)));
-  const onDarkIsBoolean = defs.some((def) => def.type === 'BOOLEAN' && ON_DARK_PATTERN.test(stripHash(def.propertyName)));
+  void defs;
+  void ctx;
   if (doc?.handoverConfig?.onDark === 'off') {
     removeSlot(root, 'on-dark');
     report.onDarkInfo = 'not available';
     return 'turned off in Handover layout';
   }
-  if (onDarkIsVariant || onDarkIsBoolean) {
+  if (onDarkSource === 'property') {
     removeSlot(root, 'on-dark');
-    report.onDarkInfo = onDarkIsVariant ? 'grid axis (VARIANT)' : 'grid axis (BOOLEAN)';
+    report.onDarkInfo = 'grid axis (property)';
     return 'on dark is a grid axis';
   }
-  const collections = await getWebCollections(report);
-  const darkCollections = collections.filter((collection) => collection.modes.some((mode) => mode.name === 'Tesco dark mode'));
-  if (darkCollections.length === 0) {
+  if (onDarkSource === 'none') {
     removeSlot(root, 'on-dark');
     report.onDarkInfo = 'not available';
     return 'no Tesco dark mode';
   }
-  // Mode-based: synthetic on-dark axis lives inside the main grid; nothing separate to build.
+  // Mode-based: the synthetic On dark axis lives inside the main grid; nothing separate to build.
   removeSlot(root, 'on-dark');
   report.onDarkInfo = 'mode-based (synthetic axis)';
   return 'synthetic axis in main grid';
@@ -884,6 +894,8 @@ const fillThemes = async (
   defs: PropertyDef[],
   ctx: VisualContext,
   report: Phase5VisualReport,
+  onDarkSource: 'property' | 'mode' | 'none',
+  collections: VariableCollection[],
 ): Promise<string | undefined> => {
   if (doc?.handoverConfig?.themes === 'off') {
     removeSlot(root, 'theme');
@@ -891,13 +903,32 @@ const fillThemes = async (
   }
   const slot = prepareSlot(root, 'theme');
   if (!slot) return 'slot not found';
-  const collections = await getWebCollections(report);
   const variants = component.type === 'COMPONENT_SET'
     ? component.children.filter((child): child is ComponentNode => child.type === 'COMPONENT')
     : [];
   const variantDefs = defs.filter((def) => def.type === 'VARIANT');
   const base = getBaseComponent(component);
-  const plan = planAxes(variantDefs, doc);
+  const plannerInput = (theme: { name: string; hasDarkMode: boolean } | null) => ({
+    properties: defs.map((def) => ({
+      name: def.propertyName,
+      type: def.type === 'BOOLEAN' ? 'BOOLEAN' as const : 'VARIANT' as const,
+      options: def.variantOptions,
+      defaultValue: def.defaultValue !== undefined ? String(def.defaultValue) : undefined,
+    })),
+    variants: variants.map((variant) => ({
+      name: variant.name,
+      values: Object.fromEntries(variantDefs.map((def) => [def.propertyName, variantValue(variant, def.propertyName)])),
+      x: variant.x,
+      y: variant.y,
+      width: variant.width,
+      height: variant.height,
+    })),
+    onDarkSource,
+    theme,
+    contentWidth: CONTENT_WIDTH,
+    labelColWidth: ROW_LABEL_COL_WIDTH,
+    config: doc?.handoverConfig,
+  });
   const fullGridAffordable = variants.length > 0 && report.instanceCount + variants.length * THEME_MODES.length <= MAX_DOC_INSTANCES;
   if (!fullGridAffordable && variants.length > 0) {
     report.warnings.push(`Variants × (1 + themes) exceeds the ${MAX_DOC_INSTANCES} instance limit; themes show the default variant only.`);
@@ -911,8 +942,10 @@ const fillThemes = async (
       report.warnings.push(`Theme mode "${modeName}" not found in any Web collection; skipped.`);
       continue;
     }
-    const darkModeName = `${modeName} dark mode`;
-    const darkAvailable = collections.filter((collection) => collection.modes.some((mode) => mode.name === darkModeName));
+    const darkModeName = themeDarkModeName(modeName);
+    const darkAvailable = onDarkSource === 'mode'
+      ? collections.filter((collection) => collection.modes.some((mode) => mode.name === darkModeName))
+      : [];
     const section = vFrame(`#theme/${modeName}`);
     section.itemSpacing = SECTION_GAP;
     slot.appendChild(section);
@@ -934,14 +967,15 @@ const fillThemes = async (
     }
 
     const themeBackings: FrameNode[] = [];
-    const grid = renderGrid(section, variants, plan, variantDefs, {
+    const plan = planGrid(plannerInput({ name: modeName, hasDarkMode: darkAvailable.length > 0 }));
+    const grid = renderGrid(section, variants, plan, {
       width: CONTENT_WIDTH,
       doc,
       booleans: [],
       onDarkBackings: themeBackings,
-      syntheticDark: { enabled: darkAvailable.length > 0, darkCollections: darkAvailable, darkModeName },
+      syntheticDark: darkAvailable.length > 0 ? { enabled: true, darkCollections: darkAvailable, darkModeName } : undefined,
     }, ctx, report);
-    if (darkAvailable.length === 0) {
+    if (onDarkSource === 'mode' && darkAvailable.length === 0) {
       report.warnings.push(`Theme "${modeName}" has no dark mode ("${darkModeName}"); its grid has no on-dark axis.`);
     }
     if (grid.placed === 0) {
@@ -949,9 +983,25 @@ const fillThemes = async (
       addNote(section, "Couldn't build the grid: see console", ctx);
       continue;
     }
-    const bodies = grid.node.findAll((node) => node.type === 'FRAME' && node.name.startsWith('#variants/grid/body')) as FrameNode[];
-    for (const body of bodies) for (const collection of available) setMode(body, collection, modeName, report);
+    // The absolute-coordinate grid holds bodies, backing and instances itself; the theme mode is
+    // applied to the grid frame only — titles, headers and row labels keep the doc's mode.
+    for (const collection of available) setMode(grid.node, collection, modeName, report);
     themeBackings.forEach((backing) => report.onDarkBackings.push(backing));
+
+    // Theme check: read the mode from an instance inside the grid (not a header), mapped through
+    // the collection that owns the bound variable. "unverified" when a mode id can't be mapped.
+    const web = available.find((collection) => collection.name === WEB_COLLECTION_NAME) ?? available[0];
+    const instance = grid.node.findAll((node) => node.type === 'INSTANCE')[0];
+    let resolvedName = 'unverified';
+    if (instance) {
+      const instanceModes = (instance as InstanceNode).resolvedVariableModes;
+      const modeId = instanceModes[web.id];
+      resolvedName = web.modes.find((mode) => mode.modeId === modeId)?.name ?? 'unverified';
+    }
+    genLog(report.log, 'log', '[gen] theme modes', modeName, { instance: resolvedName });
+    const ok = resolvedName === modeName;
+    report.themeChecks.push(`${modeName}: Web resolved to ${resolvedName}${ok ? ' (ok)' : resolvedName === 'unverified' ? ' (unverified)' : ' (MISMATCH)'} · ${grid.placed} instances`);
+    if (!ok && resolvedName !== 'unverified') report.warnings.push(`Theme "${modeName}" resolved to "${resolvedName}" on the grid; expected "${modeName}".`);
     built += 1;
   }
   return built === 0 ? 'no theme modes available' : (removePlaceholder(root, 'theme'), undefined);
@@ -1005,6 +1055,7 @@ export const buildPhase5Visuals = async (
     warnings: [],
     sections: [],
     log: [],
+    themeChecks: [],
     variantsPlaced: 0,
     variantsTotal: 0,
     variantsOther: 0,
@@ -1015,6 +1066,14 @@ export const buildPhase5Visuals = async (
   setSizingLogger((level, ...args) => genLog(report.log, level, ...args));
   genLog(report.log, 'log', '[gen] start', { component: component.name, type: component.type });
 
+  // Decide once per component, before any grid: property beats mode beats none.
+  const onDarkIsProperty = defs.some((def) =>
+    (def.type === 'VARIANT' || def.type === 'BOOLEAN') && ON_DARK_PATTERN.test(stripHash(def.propertyName)));
+  const webCollections = await getWebCollections(report);
+  const hasTescoDark = webCollections.some((collection) => collection.modes.some((mode) => mode.name === 'Tesco dark mode'));
+  const onDarkSource: 'property' | 'mode' | 'none' = onDarkIsProperty ? 'property' : hasTescoDark ? 'mode' : 'none';
+  genLog(report.log, 'log', '[gen] onDarkSource', onDarkSource);
+
   const content = (key: string): FrameNode | null => {
     const section = root.findAll((node) => node.name === `#section/${key}/content`)[0];
     return section && section.type === 'FRAME' ? section : null;
@@ -1023,13 +1082,20 @@ export const buildPhase5Visuals = async (
   // Sections run strictly one after another, each awaited before the next starts.
   const builders: Array<[string, () => Promise<string | undefined> | string | undefined, FrameNode | null]> = [
     ['visual-reference', () => fillVisualReference(root, component, ctx, report), content('visual-reference')],
-    ['variants', () => fillVariants(root, component, doc, ctx, report, defs), content('variants')],
-    ['on-dark', () => fillOnDark(root, component, doc, defs, ctx, report), content('variants')],
-    ['themes', () => fillThemes(root, component, doc, defs, ctx, report), content('smaller-theme')],
+    ['variants', () => fillVariants(root, component, doc, ctx, report, defs, onDarkSource, webCollections), content('variants')],
+    ['on-dark', () => fillOnDark(root, component, doc, defs, ctx, report, onDarkSource), content('variants')],
+    ['themes', () => fillThemes(root, component, doc, defs, ctx, report, onDarkSource, webCollections), content('smaller-theme')],
     ['configuration', () => fillConfiguration(root, component, ctx, report, defs), content('configuration-behaviour')],
   ];
   for (const [name, build, container] of builders) {
     report.sections.push(await runSectionAsync(name, build, container, ctx, report.log));
+  }
+
+  // Placed-vs-total: with a synthetic On dark axis each variant legitimately appears once per
+  // synthetic group, so the expectation counts distinct variants, not instances.
+  const expectedVariants = report.variantsTotal;
+  if (expectedVariants > 0 && report.variantsPlaced < expectedVariants) {
+    report.warnings.push(`variants: ok but placed ${report.variantsPlaced} of ${expectedVariants}`);
   }
 
   // On-dark backings inherit the doc root's Tesco mode; log and warn on dark modes.
@@ -1043,9 +1109,16 @@ export const buildPhase5Visuals = async (
     }
   }
 
-  // Item 2: any slot that still holds its placeholder while a builder exists gets a red warning.
-  const builtSlots = ['visual-reference', 'variants', 'theme', 'configuration'];
-  for (const key of builtSlots) {
+  // Item 2: only slots whose section reported "ok" may be flagged for a remaining placeholder.
+  const okSections = new Set(report.sections.filter((section) => section.status === 'ok').map((section) => section.name));
+  const builtSlots: Array<[string, string]> = [
+    ['visual-reference', 'visual-reference'],
+    ['variants', 'variants'],
+    ['themes', 'theme'],
+    ['configuration', 'configuration'],
+  ];
+  for (const [sectionName, key] of builtSlots) {
+    if (!okSections.has(sectionName)) continue;
     const slot = root.findAll((node) => node.type === 'FRAME' && node.name === `#slot/${key}`)[0];
     if (slot && slot.type === 'FRAME') {
       const hasPlaceholder = slot.children.some((child) => child.type === 'TEXT' && child.characters.startsWith('Auto-generated in Phase'));

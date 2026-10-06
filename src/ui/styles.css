@@ -751,6 +751,26 @@ button.primary:hover {
   word-break: break-all;
 }
 
+.bulk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+  margin: 8px 0;
+}
+
+.bulk-table th,
+.bulk-table td {
+  text-align: left;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--figma-color-border);
+  color: var(--figma-color-text);
+}
+
+.bulk-table th {
+  color: var(--figma-color-text-secondary);
+  font-weight: 600;
+}
+
 .handover-axis-row:last-child {
   border-bottom: none;
   padding-bottom: 0;
